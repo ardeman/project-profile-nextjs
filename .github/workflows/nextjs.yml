@@ -60,8 +60,9 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup pnpm (if applicable)
         if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
-        run: |
-          npm install -g pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8 # You can specify a different version if needed
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
