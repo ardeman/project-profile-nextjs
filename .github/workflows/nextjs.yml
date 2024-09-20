@@ -56,8 +56,6 @@ jobs:
       - name: Setup pnpm (if applicable)
         if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         uses: pnpm/action-setup@v4
-        with:
-          version: 8 # You can specify a different version if needed
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
