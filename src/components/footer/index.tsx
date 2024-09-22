@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
       <p>
-        Reversed engineered from{' '}
+        Reverse engineered from{' '}
         <a
           href="https://brittanychiang.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
