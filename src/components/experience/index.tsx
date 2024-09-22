@@ -5,8 +5,8 @@ export const Experience = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Work experience"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
+      <div className="bg-secondary/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+        <h2 className="text-primary text-sm font-bold uppercase tracking-widest lg:sr-only">
           Experience
         </h2>
       </div>
@@ -22,10 +22,10 @@ export const Experience = () => {
                 2024 — Present
               </header>
               <div className="z-10 sm:col-span-6">
-                <h3 className="font-medium leading-snug text-slate-200">
+                <h3 className="text-primary font-medium leading-snug">
                   <div>
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
                       href="https://www.klaviyo.com"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -66,22 +66,22 @@ export const Experience = () => {
                   aria-label="Technologies used"
                 >
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       JavaScript
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       TypeScript
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       React
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       Storybook
                     </div>
                   </li>
@@ -99,10 +99,10 @@ export const Experience = () => {
                 2018 — 2024
               </header>
               <div className="z-10 sm:col-span-6">
-                <h3 className="font-medium leading-snug text-slate-200">
+                <h3 className="text-primary font-medium leading-snug">
                   <div>
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
                       href="https://upstatement.com"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -162,52 +162,52 @@ export const Experience = () => {
                   aria-label="Technologies used"
                 >
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       JavaScript
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       TypeScript
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       HTML &amp; SCSS
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       React
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       Next.js
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       React Native
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       WordPress
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       Contentful
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       Node.js
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       PHP
                     </div>
                   </li>
@@ -225,10 +225,10 @@ export const Experience = () => {
                 July — Dec 2017
               </header>
               <div className="z-10 sm:col-span-6">
-                <h3 className="font-medium leading-snug text-slate-200">
+                <h3 className="text-primary font-medium leading-snug">
                   <div>
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
                       href="https://www.apple.com/apple-music/"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -269,7 +269,7 @@ export const Experience = () => {
                 >
                   <li className="mr-4">
                     <a
-                      className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                       href="https://developer.apple.com/documentation/musickitjs"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -290,7 +290,7 @@ export const Experience = () => {
                   </li>
                   <li className="mr-4">
                     <a
-                      className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                       href="https://9to5mac.com/2018/06/03/apple-music-embeddable-web-player-listen-browser/"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -311,7 +311,7 @@ export const Experience = () => {
                   </li>
                   <li className="mr-4">
                     <a
-                      className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-teal-300 focus-visible:text-teal-300"
+                      className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                       href="https://www.theverge.com/2017/10/5/16433770/facebook-messenger-apple-music-bot-song-streaming"
                       target="_blank"
                       rel="noreferrer noopener"
@@ -336,22 +336,22 @@ export const Experience = () => {
                   aria-label="Technologies used"
                 >
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       Ember
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       SCSS
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       JavaScript
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
                       MusicKit.js
                     </div>
                   </li>
@@ -362,7 +362,7 @@ export const Experience = () => {
         </ol>
         <div className="mt-12">
           <a
-            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-semibold leading-tight"
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"

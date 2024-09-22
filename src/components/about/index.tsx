@@ -5,8 +5,8 @@ export const About = () => {
       aria-label="About me"
       className="scroll-mt-16 lg:scroll-mt-24"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
+      <div className="bg-secondary/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+        <h2 className="text-primary text-sm font-bold uppercase tracking-widest lg:sr-only">
           About
         </h2>
       </div>
@@ -17,7 +17,7 @@ export const About = () => {
           development. Fast-forward to today, and I&rsquo;ve had the privilege
           of building software for an{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://us.mullenlowe.com/"
             target="_blank"
             rel="noreferrer noopener"
@@ -27,7 +27,7 @@ export const About = () => {
           </a>
           , a{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://starry.com/"
             target="_blank"
             rel="noreferrer noopener"
@@ -37,7 +37,7 @@ export const About = () => {
           </a>
           , a{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://www.apple.com/apple-music/"
             target="_blank"
             rel="noreferrer noopener"
@@ -45,9 +45,9 @@ export const About = () => {
           >
             huge corporation
           </a>
-          , and a
+          , and a{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://upstatement.com/"
             target="_blank"
             rel="noreferrer noopener"
@@ -59,9 +59,9 @@ export const About = () => {
         </p>
         <p>
           My main focus these days is building accessible user interfaces for
-          our customers at
+          our customers at{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://www.klaviyo.com/"
             target="_blank"
             rel="noreferrer noopener"
@@ -73,7 +73,7 @@ export const About = () => {
           engineering meet — things that look good but are also built well under
           the hood. In my free time, I&rsquo;ve also released an{' '}
           <a
-            className="font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
+            className="hover:text-info focus-visible:text-info text-primary font-medium"
             href="https://www.newline.co/courses/build-a-spotify-connected-app"
             target="_blank"
             rel="noreferrer noopener"

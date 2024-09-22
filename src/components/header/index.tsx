@@ -45,10 +45,10 @@ export const Header = (props: TProps) => {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+        <h1 className="text-primary text-4xl font-bold tracking-tight sm:text-5xl">
           <a href="/">Ardeman</a>
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+        <h2 className="text-primary mt-3 text-lg font-medium tracking-tight sm:text-xl">
           Frontend Engineer
         </h2>
         <p className="mt-4 max-w-xs leading-normal">
@@ -69,16 +69,16 @@ export const Header = (props: TProps) => {
                     className={twMerge(
                       'nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all motion-reduce:transition-none',
                       activeSection === sectionId
-                        ? 'w-16 bg-teal-300'
-                        : 'group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200'
+                        ? 'bg-primary w-16'
+                        : 'group-hover:bg-primary group-focus-visible:bg-primary group-hover:w-16 group-focus-visible:w-16'
                     )}
                   ></span>
                   <span
                     className={twMerge(
                       'nav-text text-xs font-bold uppercase tracking-widest',
                       activeSection === sectionId
-                        ? 'text-teal-300'
-                        : 'text-slate-500 group-hover:text-slate-200 group-focus-visible:text-slate-200'
+                        ? 'text-primary'
+                        : 'group-hover:text-primary group-focus-visible:text-primary text-slate-500'
                     )}
                   >
                     {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}
@@ -95,7 +95,7 @@ export const Header = (props: TProps) => {
       >
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className="block hover:text-slate-200"
+            className="hover:text-primary block"
             href="https://github.com/ardeman"
             target="_blank"
             rel="noreferrer noopener"
@@ -116,7 +116,7 @@ export const Header = (props: TProps) => {
         </li>
         <li className="mr-5 shrink-0 text-xs">
           <a
-            className="block hover:text-slate-200"
+            className="hover:text-primary block"
             href="https://www.linkedin.com/in/ardeman/"
             target="_blank"
             rel="noreferrer noopener"
