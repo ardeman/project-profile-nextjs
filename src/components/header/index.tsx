@@ -20,15 +20,12 @@ export const Header = (props: TProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2
       for (const sectionId of sections) {
         const section = document.querySelector(`#${sectionId}`)
-        // console.log('sectionId', sectionId)
         if (section) {
           const { top, bottom } = section.getBoundingClientRect()
-          const isActive = top <= scrollPosition && bottom >= scrollPosition
+          const isActive = top <= 96 && bottom >= 0
           if (isActive) {
-            // console.log(top, bottom, scrollPosition, isActive, sectionId);
             setActiveSection(sectionId)
           }
         }
