@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
       <p>
-        Inspired from{' '}
+        Reversed engineered from{' '}
         <a
           href="https://brittanychiang.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
@@ -12,7 +12,7 @@ export const Footer = () => {
         >
           Brittany Chiang
         </a>{' '}
-        résumé and coded in{' '}
+        personal website and coded in{' '}
         <a
           href="https://code.visualstudio.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
@@ -24,6 +24,16 @@ export const Footer = () => {
         </a>
         . Built with{' '}
         <a
+          href="https://nextjs.org/"
+          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Next.js (opens in a new tab)"
+        >
+          Next.js
+        </a>{' '}
+        and{' '}
+        <a
           href="https://tailwindcss.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
           target="_blank"
@@ -32,7 +42,17 @@ export const Footer = () => {
         >
           Tailwind CSS
         </a>
-        , hosted on{' '}
+        , deployed with{' '}
+        <a
+          href="https://github.com/features/actions"
+          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label="Vercel (opens in a new tab)"
+        >
+          GitHub Actions
+        </a>{' '}
+        on{' '}
         <a
           href="https://pages.github.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
