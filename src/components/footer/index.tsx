@@ -11,8 +11,8 @@ export const Footer = () => {
           aria-label="Brittany Chiang (opens in a new tab)"
         >
           Brittany Chiang
-        </a>{' '}
-        personal website and coded in{' '}
+        </a>
+        &rsquo;s personal website and coded in{' '}
         <a
           href="https://code.visualstudio.com/"
           className="hover:text-info focus-visible:text-info text-muted font-medium"
