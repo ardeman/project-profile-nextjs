@@ -95,8 +95,8 @@ jobs:
           else
             echo "No public folder found."
           fi
-      - name: Verify public folder copied to out
-        run: ls -la out/public
+      - name: Verify build output
+        run: ls -la out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
