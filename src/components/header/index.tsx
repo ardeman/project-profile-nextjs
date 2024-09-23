@@ -6,9 +6,10 @@ import { twMerge } from 'tailwind-merge'
 
 import { useLinkedinContext } from '@/contexts'
 import { useGetProfile, useGetProfileSummary } from '@/hooks'
+import { TProfile, TProfileSummary } from '@/types'
 
 import { socials } from './data'
-import { TProfile, TProfileSummary, TProps } from './type'
+import { TProps } from './type'
 
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props

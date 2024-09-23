@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 
-import { TProfile, TProfileSummary } from '@/components/header/type'
+import { TProfile, TProfileSummary } from '@/types'
 
 type LinkedinContextValue = {
   profileData: TProfile | null
