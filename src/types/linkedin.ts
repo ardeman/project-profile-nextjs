@@ -16,3 +16,7 @@ export type TPositions = {
   'Started On': string
   'Finished On': string
 }
+
+export type TSkills = {
+  Name: string
+}

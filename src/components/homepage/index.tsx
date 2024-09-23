@@ -5,15 +5,21 @@ import { useEffect } from 'react'
 
 import { About, Experience, Footer } from '@/components'
 import { useLinkedinContext } from '@/contexts'
-import { useGetPositions, useGetProfile, useGetProfileSummary } from '@/hooks'
-import { TPositions, TProfile, TProfileSummary } from '@/types'
+import {
+  useGetPositions,
+  useGetProfile,
+  useGetProfileSummary,
+  useGetSkills,
+} from '@/hooks'
+import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
 
 export const Homepage = () => {
-  const { setProfileData, setProfileSummary, setPositions } =
+  const { setProfileData, setProfileSummary, setPositions, setSkills } =
     useLinkedinContext()
   const { data: profileDataCsv } = useGetProfile()
   const { data: profileSummaryCsv } = useGetProfileSummary()
   const { data: positionsCsv } = useGetPositions()
+  const { data: skillsCsv } = useGetSkills()
 
   useEffect(() => {
     if (profileDataCsv) {
@@ -57,6 +63,19 @@ export const Homepage = () => {
       })
     }
   }, [positionsCsv, setPositions])
+
+  useEffect(() => {
+    if (skillsCsv) {
+      // Parse the skills CSV
+      Papa.parse(skillsCsv, {
+        header: true,
+        complete: (results) => {
+          const data = results.data as TSkills[]
+          setSkills(data) // Set the CSV data as skills
+        },
+      })
+    }
+  }, [skillsCsv, setSkills])
 
   return (
     <main

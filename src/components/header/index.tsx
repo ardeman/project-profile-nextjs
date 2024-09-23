@@ -11,7 +11,7 @@ import { TProps } from './type'
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props
   const [sections, setSections] = useState<string[]>([])
-  const { profileData, profileSummary } = useLinkedinContext()
+  const { profileData, profileSummary, skills } = useLinkedinContext()
 
   useEffect(() => {
     const sectionElements = document.querySelectorAll('section[id]')
@@ -59,16 +59,19 @@ export const Header = (props: TProps) => {
           className="mt-2 flex flex-wrap"
           aria-label="Technologies used"
         >
-          <li className="mr-1.5 mt-2">
-            <div className="text-info flex items-center rounded-full bg-[#6C5C5C]/10 px-3 py-1 text-xs font-medium leading-5 dark:bg-teal-400/10">
-              JavaScript
-            </div>
-          </li>
-          <li className="mr-1.5 mt-2">
-            <div className="text-info flex items-center rounded-full bg-[#6C5C5C]/10 px-3 py-1 text-xs font-medium leading-5 dark:bg-teal-400/10">
-              TypeScript
-            </div>
-          </li>
+          {skills?.map(
+            (skill) =>
+              skill.Name && (
+                <li
+                  key={skill.Name}
+                  className="mr-1.5 mt-2"
+                >
+                  <div className="text-info flex items-center rounded-full bg-[#6C5C5C]/10 px-3 py-1 text-xs font-medium leading-5 dark:bg-teal-400/10">
+                    {skill.Name}
+                  </div>
+                </li>
+              )
+          )}
         </ul>
         <nav
           className="nav hidden lg:block"
