@@ -67,7 +67,14 @@ export const Experience = () => {
                         </div>
                       </h3>
                       <p className="mt-2 text-sm leading-normal">
-                        {position.Description}
+                        {position.Description?.split(/(?<=\.)\s+(?=-)/)?.map(
+                          (sentence, index) => (
+                            <span key={index}>
+                              {index > 0 && <br />}
+                              {sentence.trim()}
+                            </span>
+                          )
+                        )}
                       </p>
                       {/* <ul
                     className="mt-2 flex flex-wrap"
