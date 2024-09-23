@@ -7,13 +7,15 @@ import {
   useState,
 } from 'react'
 
-import { TProfile, TProfileSummary } from '@/types'
+import { TPositions, TProfile, TProfileSummary } from '@/types'
 
 type LinkedinContextValue = {
   profileData: TProfile | null
   setProfileData: Dispatch<SetStateAction<TProfile | null>>
   profileSummary: TProfileSummary | null
   setProfileSummary: Dispatch<SetStateAction<TProfileSummary | null>>
+  positions: TPositions[] | null
+  setPositions: Dispatch<SetStateAction<TPositions[] | null>>
 }
 
 const LinkedinContext = createContext<LinkedinContextValue | undefined>(
@@ -26,12 +28,15 @@ const LinkedinProvider = (props: PropsWithChildren) => {
   const [profileSummary, setProfileSummary] = useState<TProfileSummary | null>(
     null
   )
+  const [positions, setPositions] = useState<TPositions[] | null>(null)
 
   const value = {
     profileData,
     setProfileData,
     profileSummary,
     setProfileSummary,
+    positions,
+    setPositions,
   }
 
   return (

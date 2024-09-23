@@ -5,13 +5,15 @@ import { useEffect } from 'react'
 
 import { About, Experience, Projects, Blog, Footer } from '@/components'
 import { useLinkedinContext } from '@/contexts'
-import { useGetProfile, useGetProfileSummary } from '@/hooks'
-import { TProfile, TProfileSummary } from '@/types'
+import { useGetPositions, useGetProfile, useGetProfileSummary } from '@/hooks'
+import { TPositions, TProfile, TProfileSummary } from '@/types'
 
 export const Homepage = () => {
-  const { setProfileData, setProfileSummary } = useLinkedinContext()
+  const { setProfileData, setProfileSummary, setPositions } =
+    useLinkedinContext()
   const { data: profileDataCsv } = useGetProfile()
   const { data: profileSummaryCsv } = useGetProfileSummary()
+  const { data: positionsCsv } = useGetPositions()
 
   useEffect(() => {
     if (profileDataCsv) {
@@ -42,6 +44,19 @@ export const Homepage = () => {
       })
     }
   }, [profileSummaryCsv, setProfileSummary])
+
+  useEffect(() => {
+    if (positionsCsv) {
+      // Parse the positions CSV
+      Papa.parse(positionsCsv, {
+        header: true,
+        complete: (results) => {
+          const data = results.data as TPositions[]
+          setPositions(data) // Set the CSV data as positions
+        },
+      })
+    }
+  }, [positionsCsv, setPositions])
 
   return (
     <main
