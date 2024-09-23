@@ -13,6 +13,8 @@ import {
 } from '@/hooks'
 import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
 
+import { Skills } from '../skill'
+
 export const Homepage = () => {
   const { setProfileData, setProfileSummary, setPositions, setSkills } =
     useLinkedinContext()
@@ -83,6 +85,7 @@ export const Homepage = () => {
       className="space-y-16 pt-24 md:space-y-24 lg:w-1/2 lg:space-y-36 lg:py-24"
     >
       <About />
+      <Skills />
       <Experience />
       {/* <Projects /> */}
       {/* <Blog /> */}
