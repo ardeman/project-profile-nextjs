@@ -3,7 +3,7 @@
 import Papa from 'papaparse'
 import { useEffect } from 'react'
 
-import { About, Experience, Projects, Blog, Footer } from '@/components'
+import { About, Experience, Footer } from '@/components'
 import { useLinkedinContext } from '@/contexts'
 import { useGetPositions, useGetProfile, useGetProfileSummary } from '@/hooks'
 import { TPositions, TProfile, TProfileSummary } from '@/types'
@@ -65,8 +65,8 @@ export const Homepage = () => {
     >
       <About />
       <Experience />
-      <Projects />
-      <Blog />
+      {/* <Projects /> */}
+      {/* <Blog /> */}
       <Footer />
     </main>
   )
