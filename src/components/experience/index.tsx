@@ -123,21 +123,6 @@ export const Experience = () => {
                       </a>
                     </li>
                   </ul> */}
-                      {/* <ul
-                    className="mt-2 flex flex-wrap"
-                    aria-label="Technologies used"
-                  >
-                    <li className="mr-1.5 mt-2">
-                      <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
-                        JavaScript
-                      </div>
-                    </li>
-                    <li className="mr-1.5 mt-2">
-                      <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
-                        TypeScript
-                      </div>
-                    </li>
-                  </ul> */}
                     </div>
                   </div>
                 </li>
