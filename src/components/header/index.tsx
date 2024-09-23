@@ -4,8 +4,7 @@ import Papa from 'papaparse'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { useGetProfile } from '@/hooks'
-import { useGetProfileSummary } from '@/hooks/use-get-profile-summary'
+import { useGetProfile, useGetProfileSummary } from '@/hooks'
 
 import { TProfile, TProfileSummary, TProps } from './type'
 

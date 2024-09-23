@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { Pointer, Header } from '@/components'
 
-import { ReactQueryProvider } from './query-client-provider'
+import { Providers } from './providers'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -48,16 +48,18 @@ const RootLayout = ({
           className="relative"
           onMouseMove={handleMouseMove}
         >
-          <Pointer position={position} />
-          <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-[family-name:var(--font-geist-mono)] md:px-12 md:py-20 lg:px-24 lg:py-0">
-            <div className="lg:flex lg:justify-between lg:gap-4">
-              <Header
-                setActiveSection={setActiveSection}
-                activeSection={activeSection}
-              />
-              <ReactQueryProvider>{children}</ReactQueryProvider>
+          <Providers>
+            <Pointer position={position} />
+            <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-[family-name:var(--font-geist-mono)] md:px-12 md:py-20 lg:px-24 lg:py-0">
+              <div className="lg:flex lg:justify-between lg:gap-4">
+                <Header
+                  setActiveSection={setActiveSection}
+                  activeSection={activeSection}
+                />
+                {children}
+              </div>
             </div>
-          </div>
+          </Providers>
         </div>
       </body>
     </html>
