@@ -12,4 +12,11 @@ export type TProfileSummary = {
 export type TProfile = {
   'First Name': string
   Headline: string
+  Summary: string
+}
+
+export type TSocial = {
+  name: string
+  url: string
+  icon: JSX.Element
 }
