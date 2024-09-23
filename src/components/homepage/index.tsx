@@ -3,7 +3,7 @@
 import Papa from 'papaparse'
 import { useEffect } from 'react'
 
-import { About, Experience, Footer } from '@/components'
+import { About, Experience, Skills, Footer } from '@/components'
 import { useLinkedinContext } from '@/contexts'
 import {
   useGetPositions,
@@ -12,8 +12,6 @@ import {
   useGetSkills,
 } from '@/hooks'
 import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
-
-import { Skills } from '../skill'
 
 export const Homepage = () => {
   const { setProfileData, setProfileSummary, setPositions, setSkills } =
