@@ -4,6 +4,7 @@ import Papa from 'papaparse'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { useLinkedinContext } from '@/contexts'
 import { useGetProfile, useGetProfileSummary } from '@/hooks'
 
 import { TProfile, TProfileSummary, TProps } from './type'
@@ -11,10 +12,8 @@ import { TProfile, TProfileSummary, TProps } from './type'
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props
   const [sections, setSections] = useState<string[]>([])
-  const [profileSummary, setProfileSummary] = useState<TProfileSummary | null>(
-    null
-  )
-  const [profileData, setProfileData] = useState<TProfile | null>(null)
+  const { profileData, setProfileData, profileSummary, setProfileSummary } =
+    useLinkedinContext()
 
   const { data: profileDataCsv } = useGetProfile()
   const { data: profileSummaryCsv } = useGetProfileSummary()
@@ -32,7 +31,7 @@ export const Header = (props: TProps) => {
         },
       })
     }
-  }, [profileDataCsv])
+  }, [profileDataCsv, setProfileData])
 
   useEffect(() => {
     if (profileSummaryCsv) {
@@ -47,7 +46,7 @@ export const Header = (props: TProps) => {
         },
       })
     }
-  }, [profileSummaryCsv])
+  }, [profileSummaryCsv, setProfileSummary])
 
   useEffect(() => {
     const sectionElements = document.querySelectorAll('section[id]')
@@ -83,13 +82,13 @@ export const Header = (props: TProps) => {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
         <h1 className="text-primary text-4xl font-bold tracking-tight sm:text-5xl">
-          <a href="/">{profileData?.['First Name'] || 'Name'}</a>
+          <a href="/">{profileData?.['First Name']}</a>
         </h1>
         <h2 className="text-primary mt-3 text-lg font-medium tracking-tight sm:text-xl">
-          {profileData?.['Headline'] || 'Headline'}
+          {profileData?.['Headline']}
         </h2>
         <p className="mt-4 max-w-xs leading-normal">
-          {profileSummary?.['Profile Summary'] || 'Profile Summary'}
+          {profileSummary?.['Profile Summary']}
         </p>
         <nav
           className="nav hidden lg:block"
