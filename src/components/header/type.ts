@@ -4,3 +4,12 @@ export type TProps = {
   setActiveSection: Dispatch<SetStateAction<string>>
   activeSection: string
 }
+
+export type TProfileSummary = {
+  'Profile Summary': string
+}
+
+export type TProfile = {
+  'First Name': string
+  Headline: string
+}

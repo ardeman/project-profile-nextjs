@@ -1,13 +1,61 @@
 'use client'
 
+import Papa from 'papaparse'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { TProps } from './type'
+import { TProfile, TProfileSummary, TProps } from './type'
 
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props
   const [sections, setSections] = useState<string[]>([])
+  const [profileSummary, setProfileSummary] = useState<TProfileSummary | null>(
+    null
+  )
+  const [profileData, setProfileData] = useState<TProfile | null>(null)
+
+  useEffect(() => {
+    fetch('/linkedin/Profile.csv') // Fetch the CSV file
+      .then((response) => response.text())
+      .then((csv) => {
+        Papa.parse(csv, {
+          header: true,
+          complete: (results) => {
+            const data = results.data as TProfile[] // Cast parsed data to array of ProfileData
+
+            if (data.length > 0) {
+              setProfileData(data[0]) // Set the first row of CSV as profileData
+            }
+          },
+          // error: (error: any) => {
+          //   console.error('Error parsing CSV: ', error)
+          // }
+        })
+      })
+  }, [])
+
+  useEffect(() => {
+    const loadProfileSummary = async () => {
+      const response = await fetch('/linkedin/Profile Summary.csv') // Adjust path if necessary
+      const reader = response.body?.getReader()
+      const result = await reader?.read()
+      const decoder = new TextDecoder('utf8')
+      const csv = decoder.decode(result?.value)
+
+      // Parse CSV
+      Papa.parse(csv, {
+        header: true, // Since your CSV has a header
+        complete: (results) => {
+          const data = results.data as TProfileSummary[]
+          if (data.length > 0) {
+            setProfileSummary(data[0])
+          }
+        },
+      })
+    }
+
+    loadProfileSummary()
+  }, [])
 
   useEffect(() => {
     const sectionElements = document.querySelectorAll('section[id]')
@@ -43,13 +91,13 @@ export const Header = (props: TProps) => {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
         <h1 className="text-primary text-4xl font-bold tracking-tight sm:text-5xl">
-          <a href="/">Ardeman</a>
+          <a href="/">{profileData?.['First Name'] || 'Name'}</a>
         </h1>
         <h2 className="text-primary mt-3 text-lg font-medium tracking-tight sm:text-xl">
-          Frontend Engineer
+          {profileData?.['Headline'] || 'Headline'}
         </h2>
         <p className="mt-4 max-w-xs leading-normal">
-          I build pixel-perfect, engaging, and accessible digital experiences.
+          {profileSummary?.['Profile Summary'] || 'Profile Summary'}
         </p>
         <nav
           className="nav hidden lg:block"
