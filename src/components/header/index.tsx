@@ -1,12 +1,9 @@
 'use client'
 
-import Papa from 'papaparse'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { useLinkedinContext } from '@/contexts'
-import { useGetProfile, useGetProfileSummary } from '@/hooks'
-import { TProfile, TProfileSummary } from '@/types'
 
 import { socials } from './data'
 import { TProps } from './type'
@@ -14,40 +11,7 @@ import { TProps } from './type'
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props
   const [sections, setSections] = useState<string[]>([])
-  const { profileData, setProfileData, profileSummary, setProfileSummary } =
-    useLinkedinContext()
-  const { data: profileDataCsv } = useGetProfile()
-  const { data: profileSummaryCsv } = useGetProfileSummary()
-
-  useEffect(() => {
-    if (profileDataCsv) {
-      // Parse the CSV data
-      Papa.parse(profileDataCsv, {
-        header: true,
-        complete: (results) => {
-          const data = results.data as TProfile[]
-          if (data.length > 0) {
-            setProfileData(data[0]) // Set the first row of CSV as profileData
-          }
-        },
-      })
-    }
-  }, [profileDataCsv, setProfileData])
-
-  useEffect(() => {
-    if (profileSummaryCsv) {
-      // Parse the profile summary CSV
-      Papa.parse(profileSummaryCsv, {
-        header: true,
-        complete: (results) => {
-          const data = results.data as TProfileSummary[]
-          if (data.length > 0) {
-            setProfileSummary(data[0]) // Set the first row of CSV as profile summary
-          }
-        },
-      })
-    }
-  }, [profileSummaryCsv, setProfileSummary])
+  const { profileData, profileSummary } = useLinkedinContext()
 
   useEffect(() => {
     const sectionElements = document.querySelectorAll('section[id]')
