@@ -4,6 +4,9 @@ import Papa from 'papaparse'
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { useGetProfile } from '@/hooks'
+import { useGetProfileSummary } from '@/hooks/use-get-profile-summary'
+
 import { TProfile, TProfileSummary, TProps } from './type'
 
 export const Header = (props: TProps) => {
@@ -14,48 +17,38 @@ export const Header = (props: TProps) => {
   )
   const [profileData, setProfileData] = useState<TProfile | null>(null)
 
-  useEffect(() => {
-    fetch('/linkedin/Profile.csv') // Fetch the CSV file
-      .then((response) => response.text())
-      .then((csv) => {
-        Papa.parse(csv, {
-          header: true,
-          complete: (results) => {
-            const data = results.data as TProfile[] // Cast parsed data to array of ProfileData
-
-            if (data.length > 0) {
-              setProfileData(data[0]) // Set the first row of CSV as profileData
-            }
-          },
-          // error: (error: any) => {
-          //   console.error('Error parsing CSV: ', error)
-          // }
-        })
-      })
-  }, [])
+  const { data: profileDataCsv } = useGetProfile()
+  const { data: profileSummaryCsv } = useGetProfileSummary()
 
   useEffect(() => {
-    const loadProfileSummary = async () => {
-      const response = await fetch('/linkedin/Profile Summary.csv') // Adjust path if necessary
-      const reader = response.body?.getReader()
-      const result = await reader?.read()
-      const decoder = new TextDecoder('utf8')
-      const csv = decoder.decode(result?.value)
-
-      // Parse CSV
-      Papa.parse(csv, {
-        header: true, // Since your CSV has a header
+    if (profileDataCsv) {
+      // Parse the CSV data
+      Papa.parse(profileDataCsv, {
+        header: true,
         complete: (results) => {
-          const data = results.data as TProfileSummary[]
+          const data = results.data as TProfile[]
           if (data.length > 0) {
-            setProfileSummary(data[0])
+            setProfileData(data[0]) // Set the first row of CSV as profileData
           }
         },
       })
     }
+  }, [profileDataCsv])
 
-    loadProfileSummary()
-  }, [])
+  useEffect(() => {
+    if (profileSummaryCsv) {
+      // Parse the profile summary CSV
+      Papa.parse(profileSummaryCsv, {
+        header: true,
+        complete: (results) => {
+          const data = results.data as TProfileSummary[]
+          if (data.length > 0) {
+            setProfileSummary(data[0]) // Set the first row of CSV as profile summary
+          }
+        },
+      })
+    }
+  }, [profileSummaryCsv])
 
   useEffect(() => {
     const sectionElements = document.querySelectorAll('section[id]')

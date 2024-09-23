@@ -7,6 +7,8 @@ import { twMerge } from 'tailwind-merge'
 
 import { Pointer, Header } from '@/components'
 
+import { ReactQueryProvider } from './query-client-provider'
+
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -53,7 +55,7 @@ const RootLayout = ({
                 setActiveSection={setActiveSection}
                 activeSection={activeSection}
               />
-              {children}
+              <ReactQueryProvider>{children}</ReactQueryProvider>
             </div>
           </div>
         </div>
