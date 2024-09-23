@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchCsv } from '@/apis'
+import { getCsvRequest } from '@/apis'
 
 export const useGetProfileSummary = () =>
   useQuery({
     queryKey: ['profile-summary'],
-    queryFn: () => fetchCsv('/linkedin-data-export/Profile Summary.csv'),
+    queryFn: () => getCsvRequest('/linkedin-data-export/Profile Summary.csv'),
   })
