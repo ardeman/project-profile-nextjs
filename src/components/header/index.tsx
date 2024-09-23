@@ -66,7 +66,7 @@ export const Header = (props: TProps) => {
                   key={skill.Name}
                   className="mr-1.5 mt-2"
                 >
-                  <div className="text-info flex items-center rounded-full bg-zinc-700/10 px-3 py-1 text-xs font-medium leading-5 dark:bg-teal-400/10">
+                  <div className="text-info flex items-center rounded-full bg-red-700/10 px-3 py-1 text-xs font-medium leading-5 dark:bg-teal-400/10">
                     {skill.Name}
                   </div>
                 </li>
