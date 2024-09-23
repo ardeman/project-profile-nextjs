@@ -87,14 +87,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Copy public folder to out
-        run: |
-          if [ -d "public" ]; then
-            cp -r public out/public
-            echo "Public folder copied successfully."
-          else
-            echo "No public folder found."
-          fi
       - name: Verify build output
         run: ls -laR out
       - name: Upload artifact
