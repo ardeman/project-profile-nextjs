@@ -79,7 +79,7 @@ export const Header = (props: TProps) => {
                       'nav-text text-xs font-bold uppercase tracking-widest',
                       activeSection === sectionId
                         ? 'text-primary'
-                        : 'group-hover:text-primary group-focus-visible:text-primary text-slate-500'
+                        : 'group-hover:text-primary group-focus-visible:text-primary text-tertiary'
                     )}
                   >
                     {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}

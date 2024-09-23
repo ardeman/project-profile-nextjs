@@ -3,18 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --primary: #593534;
+  --primary: #802a1a;
   --secondary: #dfdbc3;
+  --tertiary: #6c5d5c;
   --info: #171717;
-  --muted: #f9f9f9;
-  --accent: #3a2322;
-  --pointer: rgba(29, 78, 216, 0.15);
+  --muted: #593534;
+  --accent: #f9f9f9;
+  --pointer: rgba(83, 83, 59, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #e2e8f0;
     --secondary: #0f172a;
+    --tertiary: #64748b;
     --info: #4fd1c5;
     --muted: #94a3b8;
     --accent: #134e4a;

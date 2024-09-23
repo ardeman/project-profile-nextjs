@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
+    <footer className="text-tertiary max-w-md pb-16 text-sm sm:pb-0">
       <p>
         Inspired from{' '}
         <a
