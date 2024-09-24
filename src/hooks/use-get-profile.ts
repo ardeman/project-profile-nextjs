@@ -5,5 +5,5 @@ import { getCsvRequest } from '@/apis'
 export const useGetProfile = () =>
   useQuery({
     queryKey: ['profile'],
-    queryFn: () => getCsvRequest('/linkedin-data-export/Profile.csv'),
+    queryFn: () => getCsvRequest('/linkedin/Profile.csv'),
   })

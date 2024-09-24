@@ -132,7 +132,7 @@ export const Experience = () => {
         <div className="mt-12">
           <a
             className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-            href="/resume.pdf"
+            href="/download/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"
             aria-label="View Full Résumé (opens in a new tab)"
