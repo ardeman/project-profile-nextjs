@@ -1,7 +1,7 @@
 'use client'
 
-import { OpenInNewTabIcon } from '@/components/icons'
 import { useLinkedinContext } from '@/contexts'
+import { OpenInNewTabIcon } from '@/icons'
 
 export const Experience = () => {
   const { positions } = useLinkedinContext()

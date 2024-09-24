@@ -2,10 +2,10 @@
 
 import localFont from 'next/font/local'
 import './globals.css'
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Pointer, Header } from '@/components'
+import { Header, Pointer } from '@/components'
 import { LinkedinProvider } from '@/contexts'
 
 import { Providers } from './providers'
@@ -31,10 +31,15 @@ const RootLayout = ({
     y: 0,
   })
   const [activeSection, setActiveSection] = useState<string>('')
+  const [isMounted, setIsMounted] = useState<boolean>(false)
 
   const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     setPosition({ x: event.clientX, y: event.clientY })
   }
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <html lang="en">
@@ -54,10 +59,14 @@ const RootLayout = ({
               <Pointer position={position} />
               <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-[family-name:var(--font-geist-mono)] md:px-12 md:py-20 lg:px-24 lg:py-0">
                 <div className="lg:flex lg:justify-between lg:gap-4">
-                  <Header
-                    setActiveSection={setActiveSection}
-                    activeSection={activeSection}
-                  />
+                  {isMounted &&
+                    typeof window !== 'undefined' &&
+                    window.location.pathname === '/' && (
+                      <Header
+                        setActiveSection={setActiveSection}
+                        activeSection={activeSection}
+                      />
+                    )}
                   {children}
                 </div>
               </div>

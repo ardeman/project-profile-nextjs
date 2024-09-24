@@ -3,7 +3,7 @@
 import Papa from 'papaparse'
 import { useEffect } from 'react'
 
-import { About, Experience, Skills, Footer } from '@/components'
+import { About, Experience, Skills, Footer, Projects } from '@/components'
 import { useLinkedinContext } from '@/contexts'
 import {
   useGetPositions,
@@ -85,7 +85,7 @@ export const Homepage = () => {
       <About />
       <Skills />
       <Experience />
-      {/* <Projects /> */}
+      <Projects />
       {/* <Blog /> */}
       <Footer />
     </main>

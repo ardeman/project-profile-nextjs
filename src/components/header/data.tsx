@@ -1,4 +1,4 @@
-import { GitHubIcon, LinkedInIcon } from '@/components/icons'
+import { GitHubIcon, LinkedInIcon } from '@/icons'
 
 import { TSocial } from './type'
 
