@@ -5,7 +5,7 @@ import { Homepage } from '@/components'
 export const metadata: Metadata = {
   title: 'Ardeman',
   description:
-    'Ardeman is a software engineer who builds accessible, inclusive products and digital experiences for the web.',
+    'Ardeman is a software engineer dedicated to creating accessible and inclusive digital products and web experiences.',
 }
 
 const Home = () => {
