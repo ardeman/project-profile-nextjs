@@ -18,7 +18,7 @@ export const Skills = () => {
       </div>
       <div>
         <ul
-          className="mt-2 flex flex-wrap"
+          className="flex flex-wrap"
           aria-label="Technologies used"
         >
           {skills?.map(
