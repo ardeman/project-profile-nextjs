@@ -12,8 +12,8 @@ export const Experience = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Work experience"
     >
-      <div className="bg-secondary/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-primary text-sm font-bold uppercase tracking-widest lg:sr-only">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-orange-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-slate-200">
           Experience
         </h2>
       </div>
@@ -29,7 +29,7 @@ export const Experience = () => {
                   <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                     <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-zinc-100/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg dark:lg:group-hover:bg-slate-800/50"></div>
                     <header
-                      className="text-tertiary z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide sm:col-span-2"
+                      className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-red-600 sm:col-span-2 dark:text-slate-500"
                       aria-label={`${position['Started On']} — ${
                         position['Finished On'] || 'Present'
                       }`}
@@ -38,10 +38,10 @@ export const Experience = () => {
                       {position['Finished On'] || 'Present'}
                     </header>
                     <div className="z-10 sm:col-span-6">
-                      <h3 className="text-primary font-medium leading-snug">
+                      <h3 className="font-medium leading-snug text-red-900 dark:text-slate-200">
                         <div>
                           <a
-                            className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                            className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                             href={`https://www.google.com/search?q=${position['Company Name']}`}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -59,7 +59,7 @@ export const Experience = () => {
                         </div>
                         <div>
                           <div
-                            className="text-tertiary"
+                            className="text-red-600 dark:text-slate-500"
                             aria-hidden="true"
                           >
                             {position.Location}
@@ -82,7 +82,7 @@ export const Experience = () => {
                   >
                     <li className="mr-4">
                       <a
-                        className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                         href="https://developer.apple.com/documentation/musickitjs"
                         target="_blank"
                         rel="noreferrer noopener"
@@ -103,7 +103,7 @@ export const Experience = () => {
                     </li>
                     <li className="mr-4">
                       <a
-                        className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                         href="https://9to5mac.com/2018/06/03/apple-music-embeddable-web-player-listen-browser/"
                         target="_blank"
                         rel="noreferrer noopener"
@@ -131,7 +131,7 @@ export const Experience = () => {
         </ol>
         <div className="mt-12">
           <a
-            className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-semibold leading-tight"
+            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"

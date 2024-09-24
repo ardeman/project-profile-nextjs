@@ -8,14 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        tertiary: 'var(--tertiary)',
-        info: 'var(--info)',
-        muted: 'var(--muted)',
-        accent: 'var(--accent)',
-      },
+      colors: {},
     },
   },
   plugins: [],

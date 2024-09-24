@@ -5,8 +5,8 @@ export const Blog = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Blog posts"
     >
-      <div className="bg-secondary/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-primary text-sm font-bold uppercase tracking-widest lg:sr-only">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-orange-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-slate-200">
           Blog
         </h2>
       </div>
@@ -16,7 +16,7 @@ export const Blog = () => {
             <div className="group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
               <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
               {/* <img alt="Telescope" loading="lazy" width="200" height="48" decoding="async" data-nimg="1"
-                className="text-transparent z-10 col-span-2 rounded border-2 border-primary/10 transition group-hover:border-primary/30 sm:col-span-2"
+                className="text-transparent z-10 col-span-2 rounded border-2 dark:border-slate-200/10 border-red-900/10 transition group-hover:border-red-900/30 dark:group-hover:border-slate-200/30 sm:col-span-2"
                 srcSet="
                     /_next/image?url=%2Fimages%2Fwriting%2Falgolia-search.jpeg&amp;w=256&amp;q=75 1x,
                     /_next/image?url=%2Fimages%2Fwriting%2Falgolia-search.jpeg&amp;w=640&amp;q=75 2x
@@ -25,7 +25,7 @@ export const Blog = () => {
                 <p className="-mt-1 text-sm font-semibold leading-6">2020</p>
                 <h3 className="-mt-1">
                   <a
-                    className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                     href="https://upstatement.com/blog/integrating-algolia-search-with-wordpress-multisite/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -60,7 +60,7 @@ export const Blog = () => {
             <div className="group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
               <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
               {/* <img alt="Headless horseamn" loading="lazy" width="200" height="48" decoding="async" data-nimg="1"
-                className="text-transparent z-10 col-span-2 rounded border-2 border-primary/10 transition group-hover:border-primary/30 sm:col-span-2"
+                className="text-transparent z-10 col-span-2 rounded border-2 dark:border-slate-200/10 border-red-900/10 transition dark:group-hover:border-slate-200/30 group-hover:border-red-900/30 sm:col-span-2"
                 srcSet="
                     /_next/image?url=%2Fimages%2Fwriting%2Fheadless.jpeg&amp;w=256&amp;q=75 1x,
                     /_next/image?url=%2Fimages%2Fwriting%2Fheadless.jpeg&amp;w=640&amp;q=75 2x
@@ -69,7 +69,7 @@ export const Blog = () => {
                 <p className="-mt-1 text-sm font-semibold leading-6">2019</p>
                 <h3 className="-mt-1">
                   <a
-                    className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                     href="https://upstatement.com/blog/building-a-headless-mobile-app-cms-from-scratch/"
                     target="_blank"
                     rel="noreferrer noopener"

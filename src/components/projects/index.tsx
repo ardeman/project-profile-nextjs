@@ -5,8 +5,8 @@ export const Projects = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Selected projects"
     >
-      <div className="bg-secondary/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="text-primary text-sm font-bold uppercase tracking-widest lg:sr-only">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-orange-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-slate-200">
           Projects
         </h2>
       </div>
@@ -18,7 +18,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                     href="https://www.newline.co/courses/build-a-spotify-connected-app"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -55,7 +55,7 @@ export const Projects = () => {
               </div>
               {/* <img alt="Build a Spotify Connected App Newline course marketing card" loading="lazy" width="200"
                 height="48" decoding="async" data-nimg="1"
-                className="rounded text-transparent border-2 border-primary/10 transition group-hover:border-primary/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="rounded text-transparent border-2 border-red-900/10 dark:border-slate-200/10 transition group-hover:border-red-900/30 dark:group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
                 srcSet="
                     /_next/image?url=%2Fimages%2Fprojects%2Fcourse-card.png&amp;w=256&amp;q=75 1x,
                     /_next/image?url=%2Fimages%2Fprojects%2Fcourse-card.png&amp;w=640&amp;q=75 2x
@@ -68,7 +68,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                     href="https://spotify-profile.herokuapp.com/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -104,7 +104,7 @@ export const Projects = () => {
                   playlists and more.
                 </p>
                 <a
-                  className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                   href="https://github.com/bchiang7/spotify-profile"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -130,22 +130,22 @@ export const Projects = () => {
                   aria-label="Technologies used:"
                 >
                   <li className="mr-1.5 mt-2">
-                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
+                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
                       React
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
+                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
                       Express
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
+                    <div className="ttext-gray-900 flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 dark:text-teal-400">
                       Spotify API
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="text-info flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5">
+                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
                       Heroku
                     </div>
                   </li>
@@ -153,7 +153,7 @@ export const Projects = () => {
               </div>
               {/* <img alt="Spotify Profile app homepage" loading="lazy" width="200" height="48" decoding="async"
                 data-nimg="1"
-                className="text-transparent rounded border-2 border-primary/10 transition group-hover:border-primary/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="text-transparent rounded border-2 border-red-900/10 dark:border-slate-200/10 transition group-hover:border-red-900/30 dark:group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
                 srcSet="
                     /_next/image?url=%2Fimages%2Fprojects%2Fspotify-profile.png&amp;w=256&amp;q=75 1x,
                     /_next/image?url=%2Fimages%2Fprojects%2Fspotify-profile.png&amp;w=640&amp;q=75 2x
@@ -166,7 +166,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link hover:text-info focus-visible:text-info text-primary inline-flex items-baseline text-base font-medium leading-tight"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                     href="https://halcyon-theme.netlify.app/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -199,7 +199,7 @@ export const Projects = () => {
                   iTerm, and more.
                 </p>
                 <a
-                  className="hover:text-info focus-visible:text-info relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
                   href="https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -220,7 +220,7 @@ export const Projects = () => {
               </div>
               {/* <img alt="Halcyon Theme homepage hero with screenshot of VS Code editor" loading="lazy" width="200"
                 height="48" decoding="async" data-nimg="1"
-                className="text-transparent rounded border-2 border-primary/10 transition group-hover:border-primary/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="text-transparent rounded border-2 border-red-900/10 dark:border-slate-200/10 transition group-hover:border-red-900/30 dark:group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
                 srcSet="
                     /_next/image?url=%2Fimages%2Fprojects%2Fhalcyon.png&amp;w=256&amp;q=75 1x,
                     /_next/image?url=%2Fimages%2Fprojects%2Fhalcyon.png&amp;w=640&amp;q=75 2x
@@ -230,16 +230,16 @@ export const Projects = () => {
         </ul>
         <div className="mt-12">
           <a
-            className="text-primary group inline-flex items-center font-semibold leading-tight"
+            className="group inline-flex items-center font-semibold leading-tight text-red-900 dark:text-slate-200"
             aria-label="View Full Project Archive"
             href="/archive"
           >
             <span>
-              <span className="group-hover:border-info border-b border-transparent pb-px transition motion-reduce:transition-none">
+              <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-teal-400">
                 View Full Project{' '}
               </span>
               <span className="whitespace-nowrap">
-                <span className="group-hover:border-info border-b border-transparent pb-px transition motion-reduce:transition-none">
+                <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-teal-400">
                   Archive
                 </span>
                 <svg

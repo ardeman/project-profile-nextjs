@@ -1,11 +1,11 @@
 export const Footer = () => {
   return (
-    <footer className="text-tertiary max-w-md pb-16 text-sm sm:pb-0">
+    <footer className="max-w-md pb-16 text-sm text-red-600 sm:pb-0 dark:text-slate-500">
       <p>
         Inspired from{' '}
         <a
           href="https://brittanychiang.com/"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Brittany Chiang (opens in a new tab)"
@@ -15,7 +15,7 @@ export const Footer = () => {
         &rsquo;s personal website and coded in{' '}
         <a
           href="https://code.visualstudio.com/"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Visual Studio Code (opens in a new tab)"
@@ -25,7 +25,7 @@ export const Footer = () => {
         . Built with{' '}
         <a
           href="https://nextjs.org/"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Next.js (opens in a new tab)"
@@ -35,7 +35,7 @@ export const Footer = () => {
         and{' '}
         <a
           href="https://tailwindcss.com/"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Tailwind CSS (opens in a new tab)"
@@ -45,7 +45,7 @@ export const Footer = () => {
         , deployed with{' '}
         <a
           href="https://github.com/features/actions"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Vercel (opens in a new tab)"
@@ -55,7 +55,7 @@ export const Footer = () => {
         on{' '}
         <a
           href="https://pages.github.com/"
-          className="hover:text-info focus-visible:text-info text-muted font-medium"
+          className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Vercel (opens in a new tab)"
