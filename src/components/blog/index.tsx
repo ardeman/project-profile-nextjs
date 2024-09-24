@@ -25,7 +25,7 @@ export const Blog = () => {
                 <p className="-mt-1 text-sm font-semibold leading-6">2020</p>
                 <h3 className="-mt-1">
                   <a
-                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                     href="https://upstatement.com/blog/integrating-algolia-search-with-wordpress-multisite/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -69,7 +69,7 @@ export const Blog = () => {
                 <p className="-mt-1 text-sm font-semibold leading-6">2019</p>
                 <h3 className="-mt-1">
                   <a
-                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                     href="https://upstatement.com/blog/building-a-headless-mobile-app-cms-from-scratch/"
                     target="_blank"
                     rel="noreferrer noopener"

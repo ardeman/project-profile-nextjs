@@ -41,7 +41,7 @@ export const Experience = () => {
                       <h3 className="font-medium leading-snug text-red-900 dark:text-slate-200">
                         <div>
                           <a
-                            className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                            className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                             href={`https://www.google.com/search?q=${position['Company Name']}`}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -82,7 +82,7 @@ export const Experience = () => {
                   >
                     <li className="mr-4">
                       <a
-                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                         href="https://developer.apple.com/documentation/musickitjs"
                         target="_blank"
                         rel="noreferrer noopener"
@@ -103,7 +103,7 @@ export const Experience = () => {
                     </li>
                     <li className="mr-4">
                       <a
-                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
+                        className="hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400 relative mt-2 inline-flex items-center text-sm font-medium text-slate-300"
                         href="https://9to5mac.com/2018/06/03/apple-music-embeddable-web-player-listen-browser/"
                         target="_blank"
                         rel="noreferrer noopener"
@@ -131,7 +131,7 @@ export const Experience = () => {
         </ol>
         <div className="mt-12">
           <a
-            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"

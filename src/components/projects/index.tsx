@@ -18,7 +18,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                     href="https://www.newline.co/courses/build-a-spotify-connected-app"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -68,7 +68,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                     href="https://spotify-profile.herokuapp.com/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -104,7 +104,7 @@ export const Projects = () => {
                   playlists and more.
                 </p>
                 <a
-                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                   href="https://github.com/bchiang7/spotify-profile"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -130,22 +130,22 @@ export const Projects = () => {
                   aria-label="Technologies used:"
                 >
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
+                    <div className="flex items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-sky-400">
                       React
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
+                    <div className="flex items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-sky-400">
                       Express
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="ttext-gray-900 flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 dark:text-teal-400">
+                    <div className="ttext-gray-900 flex items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium leading-5 dark:text-sky-400">
                       Spotify API
                     </div>
                   </li>
                   <li className="mr-1.5 mt-2">
-                    <div className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-teal-400">
+                    <div className="flex items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:text-sky-400">
                       Heroku
                     </div>
                   </li>
@@ -166,7 +166,7 @@ export const Projects = () => {
               <div className="z-10 sm:order-2 sm:col-span-6">
                 <h3>
                   <a
-                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                    className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                     href="https://halcyon-theme.netlify.app/"
                     target="_blank"
                     rel="noreferrer noopener"
@@ -199,7 +199,7 @@ export const Projects = () => {
                   iTerm, and more.
                 </p>
                 <a
-                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-teal-400 dark:focus-visible:text-teal-400"
+                  className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                   href="https://marketplace.visualstudio.com/items?itemName=brittanychiang.halcyon-vscode"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -235,11 +235,11 @@ export const Projects = () => {
             href="/archive"
           >
             <span>
-              <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-teal-400">
+              <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-sky-400">
                 View Full Project{' '}
               </span>
               <span className="whitespace-nowrap">
-                <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-teal-400">
+                <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-sky-400">
                   Archive
                 </span>
                 <svg

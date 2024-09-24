@@ -42,7 +42,7 @@ const RootLayout = ({
         className={twMerge(
           geistSans.variable,
           geistMono.variable,
-          'bg-slate-100 leading-relaxed text-stone-900 antialiased selection:bg-gray-900 selection:text-white dark:bg-slate-900 dark:text-slate-400 dark:selection:bg-teal-400 dark:selection:text-teal-900'
+          'bg-slate-100 leading-relaxed text-stone-900 antialiased selection:bg-gray-900 selection:text-white dark:bg-slate-900 dark:text-slate-400 dark:selection:bg-sky-400 dark:selection:text-sky-900'
         )}
       >
         <div
