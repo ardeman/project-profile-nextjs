@@ -11,6 +11,7 @@ import { TGithubRepo } from '@/types'
 export const ArchivePage = () => {
   const { data: projects } = useGetProjects()
   const projectData = projects?.data as TGithubRepo[]
+  const filteredProjects = projectData?.filter((project) => !!project.license)
 
   return (
     <main className="lg:py-24">
@@ -45,7 +46,7 @@ export const ArchivePage = () => {
           </tr>
         </thead>
         <tbody>
-          {projectData?.map((project) => (
+          {filteredProjects?.map((project) => (
             <tr
               className="border-b border-red-900/10 last:border-none dark:border-slate-200/10"
               key={project.id}
