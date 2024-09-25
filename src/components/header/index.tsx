@@ -55,64 +55,68 @@ export const Header = (props: TProps) => {
         <p className="mt-4 max-w-xs leading-normal">
           {profileSummary?.['Profile Summary']}
         </p>
-        <nav
-          className="nav hidden lg:block"
-          aria-label="In-page jump links"
-        >
-          <ul className="mt-16 w-max">
-            {sections.map((sectionId) => (
-              <li key={sectionId}>
-                <a
-                  className="group flex items-center py-3"
-                  href={`#${sectionId}`}
-                >
-                  <span
-                    className={twMerge(
-                      'nav-indicator mr-4 h-px w-8 bg-red-600 transition-all motion-reduce:transition-none dark:bg-slate-600',
-                      activeSection === sectionId
-                        ? 'w-16 bg-red-900 dark:bg-slate-200'
-                        : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-slate-200 dark:group-focus-visible:bg-slate-200'
-                    )}
-                  ></span>
-                  <span
-                    className={twMerge(
-                      'nav-text text-xs font-bold uppercase tracking-widest',
-                      activeSection === sectionId
-                        ? 'text-red-900 dark:text-slate-200'
-                        : 'text-red-600 group-hover:text-red-900 group-focus-visible:text-red-900 dark:text-slate-500 dark:group-hover:text-slate-200 dark:group-focus-visible:text-slate-200'
-                    )}
-                  >
-                    {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <ul
-        className="ml-1 mt-8 flex items-center"
-        aria-label="Social media"
-      >
-        {socials.map((social) => (
-          <li
-            key={social.name}
-            className="mr-5 shrink-0 text-xs"
+        {sections?.length && (
+          <nav
+            className="nav hidden lg:block"
+            aria-label="In-page jump links"
           >
-            <a
-              className="block hover:text-red-900 dark:hover:text-slate-200"
-              href={social.url}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label={`${social.name} (opens in a new tab)`}
-              title={social.name}
+            <ul className="mt-16 w-max">
+              {sections.map((sectionId) => (
+                <li key={sectionId}>
+                  <a
+                    className="group flex items-center py-3"
+                    href={`#${sectionId}`}
+                  >
+                    <span
+                      className={twMerge(
+                        'nav-indicator mr-4 h-px w-8 bg-red-600 transition-all motion-reduce:transition-none dark:bg-slate-600',
+                        activeSection === sectionId
+                          ? 'w-16 bg-red-900 dark:bg-slate-200'
+                          : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-slate-200 dark:group-focus-visible:bg-slate-200'
+                      )}
+                    ></span>
+                    <span
+                      className={twMerge(
+                        'nav-text text-xs font-bold uppercase tracking-widest',
+                        activeSection === sectionId
+                          ? 'text-red-900 dark:text-slate-200'
+                          : 'text-red-600 group-hover:text-red-900 group-focus-visible:text-red-900 dark:text-slate-500 dark:group-hover:text-slate-200 dark:group-focus-visible:text-slate-200'
+                      )}
+                    >
+                      {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </div>
+      {socials?.length && (
+        <ul
+          className="ml-1 mt-8 flex items-center"
+          aria-label="Social media"
+        >
+          {socials.map((social) => (
+            <li
+              key={social.name}
+              className="mr-5 shrink-0 text-xs"
             >
-              <span className="sr-only">{social.name}</span>
-              {social.icon}
-            </a>
-          </li>
-        ))}
-      </ul>
+              <a
+                className="block hover:text-red-900 dark:hover:text-slate-200"
+                href={social.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={`${social.name} (opens in a new tab)`}
+                title={social.name}
+              >
+                <span className="sr-only">{social.name}</span>
+                {social.icon}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </header>
   )
 }

@@ -1,6 +1,21 @@
 import axios from 'axios'
 
+import { github } from '@/data/github'
+
 export const getGithubRepoRequest = async () => {
-  const response = await axios.get('https://api.github.com/users/ardeman/repos')
-  return response.data
+  try {
+    const data = await axios.get(
+      `https://api.github.com/users/${github.username}/repos`,
+      {
+        params: {
+          sort: 'updated',
+          direction: 'desc',
+        },
+      }
+    )
+
+    return data
+  } catch (error) {
+    throw new Error('Error fetching Github repos', { cause: error })
+  }
 }

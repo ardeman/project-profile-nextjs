@@ -25,7 +25,7 @@ export const ArchivePage = () => {
       <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
         All Projects
       </h1>
-      {/* <table
+      <table
         id="content"
         className="mt-12 w-full border-collapse text-left"
       >
@@ -4180,7 +4180,7 @@ export const ArchivePage = () => {
             <td className="hidden py-4 align-top sm:table-cell"></td>
           </tr>
         </tbody>
-      </table> */}
+      </table>
     </main>
   )
 }

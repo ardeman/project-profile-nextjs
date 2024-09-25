@@ -1,16 +1,15 @@
-import { GitHubIcon, LinkedInIcon } from '@/icons'
-
 import { TSocial } from './type'
+import { FaGithub, FaLinkedin } from 'react-icons/fa6'
 
 export const socials: TSocial[] = [
   {
     name: 'GitHub',
     url: 'https://github.com/ardeman',
-    icon: <GitHubIcon className="h-6 w-6" />,
+    icon: <FaGithub className="h-6 w-6" />,
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ardeman/',
-    icon: <LinkedInIcon className="h-6 w-6" />,
+    icon: <FaLinkedin className="h-6 w-6" />,
   },
 ]

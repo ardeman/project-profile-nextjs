@@ -94,6 +94,7 @@ export type TGithubRepo = {
     url: string
     node_id: string
   } | null
+  topics: string[]
   forks: number
   open_issues: number
   watchers: number
