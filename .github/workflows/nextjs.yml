@@ -66,7 +66,8 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 8.10.5
-      - name: Setup Node
+      - name: Setup Node (if not Bun)
+        if: ${{ steps.detect-package-manager.outputs.manager != 'bun' }}
         uses: actions/setup-node@v4
         with:
           node-version: "20"
