@@ -1,4 +1,4 @@
-import { ArchivePage } from '@/components'
+import { ArchivePage } from '@/components/pages'
 
 const Archive = () => {
   return <ArchivePage />

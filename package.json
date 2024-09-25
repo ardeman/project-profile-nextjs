@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "pnpx serve@latest out",
     "lint": "next lint --fix",
-    "format": "prettier --write **/*.{js,jsx,ts,tsx}"
+    "format": "prettier --write **/*.{js,jsx,ts,tsx}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
@@ -32,6 +33,7 @@
     "eslint-plugin-testing-library": "^5.10.3",
     "eslint-plugin-unicorn": "^55.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
     "postcss": "^8",
     "prettier": "2.7.0",
     "prettier-plugin-tailwindcss": "^0.1.13",

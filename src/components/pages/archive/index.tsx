@@ -1,11 +1,12 @@
 'use client'
 
+import { FaGithub } from 'react-icons/fa6'
+import { GoArrowLeft, GoArrowUpRight } from 'react-icons/go'
+
+import { Capsule } from '@/components/base'
 import { metadata } from '@/data'
 import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
-import { FaGithub } from 'react-icons/fa6'
-import { GoArrowLeft, GoArrowUpRight } from 'react-icons/go'
-import { Capsule } from '@/components'
 
 export const ArchivePage = () => {
   const { data: projects } = useGetProjects()
@@ -14,43 +15,46 @@ export const ArchivePage = () => {
   return (
     <main className="lg:py-24">
       <a
-        className="group mb-2 inline-flex items-center font-semibold leading-tight text-sky-300"
+        className="group mb-2 inline-flex items-center font-semibold leading-tight text-gray-900 dark:text-sky-400"
         href="/"
       >
         <GoArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
         {metadata.title?.toString()}
       </a>
-      <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+      <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-slate-200">
         All Projects
       </h1>
       <table
         id="content"
         className="mt-12 w-full border-collapse text-left"
       >
-        <thead className="sticky top-0 z-10 border-b border-slate-300/10 bg-slate-900/75 px-6 py-5 backdrop-blur">
+        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 backdrop-blur dark:border-slate-200/10 dark:bg-slate-900/75">
           <tr>
-            <th className="py-4 pr-8 text-sm font-semibold text-slate-200">
+            <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-slate-200">
               Project
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-slate-200 lg:table-cell">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-slate-200">
               License
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-slate-200 lg:table-cell">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-slate-200">
               Topic
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-slate-200 sm:table-cell">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 sm:table-cell dark:text-slate-200">
               Link
             </th>
           </tr>
         </thead>
         <tbody>
           {projectData?.map((project) => (
-            <tr className="border-b border-slate-300/10 last:border-none">
-              <td className="py-4 pr-4 align-top font-semibold leading-snug text-slate-200">
+            <tr
+              className="border-b border-red-900/10 last:border-none dark:border-slate-200/10"
+              key={project.id}
+            >
+              <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-slate-200">
                 <div>
                   <div className="block sm:hidden">
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-sky-300 focus-visible:text-sky-300 sm:hidden"
+                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                       href={project.homepage || project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
@@ -81,7 +85,7 @@ export const ArchivePage = () => {
                 <ul className="translate-y-1">
                   <li className="mb-1 flex items-center">
                     <a
-                      className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-slate-400 hover:text-sky-300 focus-visible:text-sky-300"
+                      className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                       href={project.homepage || project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"

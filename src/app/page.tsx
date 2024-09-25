@@ -1,7 +1,7 @@
-import { Homepage } from '@/components'
+import { HomePage } from '@/components/pages'
 
 const Home = () => {
-  return <Homepage />
+  return <HomePage />
 }
 
 export default Home

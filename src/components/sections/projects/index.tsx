@@ -1,14 +1,15 @@
 'use client'
 
-import { useGetProjects } from '@/hooks'
-import { TGithubRepo } from '@/types'
 import {
   GoArrowRight,
   GoArrowUpRight,
   GoRepoForked,
   GoStarFill,
 } from 'react-icons/go'
-import { Capsule } from '@/components'
+
+import { Capsule, Hover, Title } from '@/components/base'
+import { useGetProjects } from '@/hooks'
+import { TGithubRepo } from '@/types'
 
 export const Projects = () => {
   const { data: projects } = useGetProjects()
@@ -24,9 +25,7 @@ export const Projects = () => {
       aria-label="Selected projects"
     >
       <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-slate-200">
-          Projects
-        </h2>
+        <Title>Projects</Title>
       </div>
       <div>
         {filteredProjects?.length && (
@@ -37,7 +36,7 @@ export const Projects = () => {
                 className="mb-12"
               >
                 <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                  <Hover />
                   {/* <div className="z-10 sm:order-2 sm:col-span-6"> */}
                   <div className="z-10 sm:order-2 sm:col-span-8">
                     <h3>
@@ -61,7 +60,7 @@ export const Projects = () => {
                     <p className="space-x-2">
                       {!!project.stargazers_count && (
                         <a
-                          className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                           href={project.html_url}
                           target="_blank"
                           rel="noreferrer noopener"
@@ -73,7 +72,7 @@ export const Projects = () => {
                       )}
                       {!!project.forks_count && (
                         <a
-                          className="relative mt-2 inline-flex items-center text-sm font-medium text-slate-300 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
                           href={project.html_url}
                           target="_blank"
                           rel="noreferrer noopener"

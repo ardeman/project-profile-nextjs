@@ -1,5 +1,6 @@
-import { TSocial } from './type'
 import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+
+import { TSocial } from './type'
 
 export const socials: TSocial[] = [
   {

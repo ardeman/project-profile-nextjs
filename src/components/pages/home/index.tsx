@@ -3,7 +3,13 @@
 import Papa from 'papaparse'
 import { useEffect } from 'react'
 
-import { About, Experience, Skills, Footer, Projects } from '@/components'
+import {
+  About,
+  Experience,
+  Skills,
+  Footer,
+  Projects,
+} from '@/components/sections'
 import { useLinkedinContext } from '@/contexts'
 import {
   useGetPositions,
@@ -13,7 +19,7 @@ import {
 } from '@/hooks'
 import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
 
-export const Homepage = () => {
+export const HomePage = () => {
   const { setProfileData, setProfileSummary, setPositions, setSkills } =
     useLinkedinContext()
   const { data: profileDataCsv } = useGetProfile()

@@ -52,7 +52,7 @@ export const Header = (props: TProps) => {
         <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-slate-200">
           {profileData?.['Headline']}
         </h2>
-        <p className="mt-4 max-w-xs leading-normal">
+        <p className="mt-4 max-w-xs text-sm leading-normal">
           {profileSummary?.['Profile Summary']}
         </p>
         {sections?.length && (

@@ -5,7 +5,8 @@ import './globals.css'
 import { useState, MouseEvent, useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Header, Pointer } from '@/components'
+import { Pointer } from '@/components/base'
+import { Header } from '@/components/sections'
 import { LinkedinProvider } from '@/contexts'
 
 import { Providers } from './providers'
