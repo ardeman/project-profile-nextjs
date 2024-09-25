@@ -1,6 +1,7 @@
 'use client'
 
 import { useLinkedinContext } from '@/contexts'
+import { Capsule } from '@/components'
 
 export const Skills = () => {
   const { skills } = useLinkedinContext()
@@ -23,16 +24,7 @@ export const Skills = () => {
         >
           {skills?.map(
             (skill) =>
-              skill.Name && (
-                <li
-                  key={skill.Name}
-                  className="mr-1.5 mt-2"
-                >
-                  <div className="flex items-center rounded-full bg-red-700/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:bg-sky-400/10 dark:text-sky-400">
-                    {skill.Name}
-                  </div>
-                </li>
-              )
+              skill.Name && <Capsule key={skill.Name}>{skill.Name}</Capsule>
           )}
         </ul>
       )}
