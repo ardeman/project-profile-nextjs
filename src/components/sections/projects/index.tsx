@@ -1,13 +1,8 @@
 'use client'
 
-import {
-  GoArrowRight,
-  GoArrowUpRight,
-  GoRepoForked,
-  GoStarFill,
-} from 'react-icons/go'
+import { GoArrowRight, GoRepoForked, GoStarFill } from 'react-icons/go'
 
-import { Capsule, Hover, Title } from '@/components/base'
+import { Capsule, Hover, Title, TitleLink } from '@/components/base'
 import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
 
@@ -40,19 +35,10 @@ export const Projects = () => {
                   {/* <div className="z-10 sm:order-2 sm:col-span-6"> */}
                   <div className="z-10 sm:order-2 sm:col-span-8">
                     <h3>
-                      <a
-                        className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                      <TitleLink
                         href={project.homepage || project.html_url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`${project.name} (opens in a new tab)`}
-                      >
-                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                        <span>
-                          {project.name}{' '}
-                          <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                        </span>
-                      </a>
+                        title={project.name}
+                      />
                     </h3>
                     <p className="mt-2 text-sm leading-normal">
                       {project.description}

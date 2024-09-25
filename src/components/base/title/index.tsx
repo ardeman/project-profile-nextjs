@@ -5,7 +5,6 @@ export const Title = (props: PropsWithChildren) => {
 
   return (
     <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-slate-200">
-      {' '}
       {children}
     </h2>
   )

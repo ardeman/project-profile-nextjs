@@ -2,7 +2,7 @@
 
 import { GoArrowUpRight } from 'react-icons/go'
 
-import { Hover, Title } from '@/components/base'
+import { Hover, Title, TitleLink } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 
 export const Experience = () => {
@@ -40,31 +40,15 @@ export const Experience = () => {
                       </header>
                       <div className="z-10 sm:col-span-6">
                         <h3 className="font-medium leading-snug text-red-900 dark:text-slate-200">
-                          <div>
-                            <a
-                              className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-                              href={`https://www.google.com/search?q=${position['Company Name']}`}
-                              target="_blank"
-                              rel="noreferrer noopener"
-                              aria-label={`${position.Title} at ${position['Company Name']} (opens in a new tab)`}
-                            >
-                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                              <span>
-                                {position.Title} ·{' '}
-                                <span className="inline-block">
-                                  {position['Company Name']}{' '}
-                                  <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                                </span>
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div
-                              className="text-red-600 dark:text-slate-500"
-                              aria-hidden="true"
-                            >
-                              {position.Location}
-                            </div>
+                          <TitleLink
+                            href={`https://www.google.com/search?q=${position['Company Name']}`}
+                            title={`${position.Title} ${position['Company Name']}`}
+                          />
+                          <div
+                            className="text-red-600 dark:text-slate-500"
+                            aria-hidden="true"
+                          >
+                            {position.Location}
                           </div>
                         </h3>
                         <p className="mt-2 text-sm leading-normal">
