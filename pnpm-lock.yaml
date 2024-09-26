@@ -11,6 +11,9 @@ dependencies:
   '@fontsource/geist-sans':
     specifier: ^5.1.0
     version: 5.1.0
+  '@fontsource/oldenburg':
+    specifier: ^5.1.0
+    version: 5.1.0
   '@tanstack/react-query':
     specifier: ^5.56.2
     version: 5.56.2(react@18.3.1)
@@ -168,6 +171,10 @@ packages:
 
   /@fontsource/geist-sans@5.1.0:
     resolution: {integrity: sha512-4AI/UxIcZiYgK6/cTo4R9oM4VHHLcFdHVv7m2+M42VyY16hhKJADrGe4HPjTxvolmce2IZX/jc6sFJ+GkLB64w==}
+    dev: false
+
+  /@fontsource/oldenburg@5.1.0:
+    resolution: {integrity: sha512-UScAfXsqBiJDQ0dnenMUH8XRvTzMq/3EAHonfEjbKzeTmL71yyQoTIbmB6ifFjeW0jY11dPBLzyXAtVd/OXUYA==}
     dev: false
 
   /@humanwhocodes/config-array@0.13.0:

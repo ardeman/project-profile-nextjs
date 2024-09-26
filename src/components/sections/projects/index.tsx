@@ -2,7 +2,7 @@
 
 import { GoArrowRight, GoRepoForked, GoStarFill } from 'react-icons/go'
 
-import { Capsule, Hover, Title, TitleLink } from '@/components/base'
+import { Capsule, Hover, Skeleton, Title, TitleLink } from '@/components/base'
 import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
 
@@ -23,7 +23,7 @@ export const Projects = () => {
         <Title>Projects</Title>
       </div>
       <div>
-        {!!filteredProjects?.length && (
+        {filteredProjects?.length ? (
           <ul className="group/list">
             {filteredProjects?.map((project) => (
               <li
@@ -83,6 +83,8 @@ export const Projects = () => {
               </li>
             ))}
           </ul>
+        ) : (
+          <Skeleton lines={10} />
         )}
         <div className="mt-12">
           <a

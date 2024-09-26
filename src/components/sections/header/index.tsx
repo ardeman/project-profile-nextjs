@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { Skeleton } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 import { metadata } from '@/data'
 
@@ -48,13 +49,18 @@ export const Header = (props: TProps) => {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
         <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-slate-200">
-          <a href="/">{metadata.title?.toString()}</a>
+          <a
+            href="/"
+            className="oldenburg-regular"
+          >
+            {metadata.title?.toString()}
+          </a>
         </h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-slate-200">
-          {profileData?.['Headline']}
+          <Skeleton>{profileData?.['Headline']}</Skeleton>
         </h2>
         <p className="mt-4 max-w-xs text-sm leading-normal">
-          {profileSummary?.['Profile Summary']}
+          <Skeleton lines={2}>{profileSummary?.['Profile Summary']}</Skeleton>
         </p>
         {!!sections?.length && (
           <nav

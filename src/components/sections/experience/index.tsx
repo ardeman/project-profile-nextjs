@@ -2,7 +2,7 @@
 
 import { GoArrowUpRight } from 'react-icons/go'
 
-import { Hover, Title, TitleLink } from '@/components/base'
+import { Hover, Skeleton, Title, TitleLink } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 
 export const Experience = () => {
@@ -18,7 +18,7 @@ export const Experience = () => {
         <Title>Experience</Title>
       </div>
       <div>
-        {!!positions?.length && (
+        {positions?.length ? (
           <ol className="group/list">
             {positions?.map(
               (position, index) =>
@@ -93,6 +93,8 @@ export const Experience = () => {
                 )
             )}
           </ol>
+        ) : (
+          <Skeleton lines={10} />
         )}
         <div className="mt-12">
           <a

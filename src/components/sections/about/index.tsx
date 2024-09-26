@@ -1,6 +1,6 @@
 'use client'
 
-import { Title } from '@/components/base'
+import { Skeleton, Title } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 
 export const About = () => {
@@ -16,7 +16,9 @@ export const About = () => {
         <Title>About</Title>
       </div>
       <div className="space-y-4">
-        <p>{profileData?.['Summary']}</p>
+        <p>
+          <Skeleton lines={8}>{profileData?.['Summary']}</Skeleton>
+        </p>
       </div>
     </section>
   )
