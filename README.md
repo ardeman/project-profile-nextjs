@@ -66,6 +66,7 @@ Start the Node.js server.
 | Color          | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
 | gray-900       | ![#111827](https://via.placeholder.com/10/111827?text=+) `#111827` |
+| red-600        | ![#dc2626](https://via.placeholder.com/10/dc2626?text=+) `#dc2626` |
 | red-700        | ![#b91c1c](https://via.placeholder.com/10/b91c1c?text=+) `#b91c1c` |
 | red-900        | ![#7f1d1d](https://via.placeholder.com/10/7f1d1d?text=+) `#7f1d1d` |
 | sky-400        | ![#38bdf8](https://via.placeholder.com/10/38bdf8?text=+) `#38bdf8` |
@@ -73,6 +74,8 @@ Start the Node.js server.
 | slate-100      | ![#f1f5f9](https://via.placeholder.com/10/f1f5f9?text=+) `#f1f5f9` |
 | slate-200      | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) `#e2e8f0` |
 | slate-400      | ![#94a3b8](https://via.placeholder.com/10/94a3b8?text=+) `#94a3b8` |
+| slate-500      | ![#64748b](https://via.placeholder.com/10/64748b?text=+) `#64748b` |
+| slate-600      | ![#475569](https://via.placeholder.com/10/475569?text=+) `#475569` |
 | slate-900      | ![#0f172a](https://via.placeholder.com/10/0f172a?text=+) `#0f172a` |
 | stone-900      | ![#1c1917](https://via.placeholder.com/10/1c1917?text=+) `#1c1917` |
 | white          | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) `#ffffff` |
