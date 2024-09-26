@@ -36,30 +36,44 @@ cd project-nextjs-profile
 pnpm install
 ```
 
-### `pnpm dev`
+To runs the app in the development mode:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+pnpm dev
+```
 
-### `pnpm prepare`
+Then, open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Install husky git hooks.
+To install husky git hooks:
 
-### `pnpm lint`
+```bash
+pnpm prepare
 
-Lint code base.
+```
 
-### `pnpm format`
+To lint code base:
 
-format code base.
+```bash
+pnpm lint
+```
 
-### `pnpm build`
+To format code base:
 
-Generates an optimized version of the application for production.
+```bash
+pnpm format
+```
 
-### `pnpm start`
+To generate an optimized version of the application for production:
 
-Start the Node.js server.
+```bash
+pnpm build
+```
+
+To tart the Node.js server:
+
+```bash
+pnpm start
+```
 
 ## 🎨 Color Reference
 
