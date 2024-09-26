@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { useLinkedinContext } from '@/contexts'
+import { metadata } from '@/data'
 
 import { socials } from './data'
 import { TProps } from './type'
@@ -47,7 +48,7 @@ export const Header = (props: TProps) => {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
         <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-slate-200">
-          <a href="/">{profileData?.['First Name']}</a>
+          <a href="/">{metadata.title?.toString()}</a>
         </h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-slate-200">
           {profileData?.['Headline']}
@@ -55,7 +56,7 @@ export const Header = (props: TProps) => {
         <p className="mt-4 max-w-xs text-sm leading-normal">
           {profileSummary?.['Profile Summary']}
         </p>
-        {sections?.length && (
+        {!!sections?.length && (
           <nav
             className="nav hidden lg:block"
             aria-label="In-page jump links"
@@ -92,7 +93,7 @@ export const Header = (props: TProps) => {
           </nav>
         )}
       </div>
-      {socials?.length && (
+      {!!socials?.length && (
         <ul
           className="ml-1 mt-8 flex items-center"
           aria-label="Social media"

@@ -23,7 +23,7 @@ export const Projects = () => {
         <Title>Projects</Title>
       </div>
       <div>
-        {filteredProjects?.length && (
+        {!!filteredProjects?.length && (
           <ul className="group/list">
             {filteredProjects?.map((project) => (
               <li

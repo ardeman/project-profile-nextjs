@@ -1,7 +1,7 @@
 'use client'
 
 import Papa from 'papaparse'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   About,
@@ -9,6 +9,7 @@ import {
   Skills,
   Footer,
   Projects,
+  Header,
 } from '@/components/sections'
 import { useLinkedinContext } from '@/contexts'
 import {
@@ -20,6 +21,7 @@ import {
 import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
 
 export const HomePage = () => {
+  const [activeSection, setActiveSection] = useState<string>('')
   const { setProfileData, setProfileSummary, setPositions, setSkills } =
     useLinkedinContext()
   const { data: profileDataCsv } = useGetProfile()
@@ -34,7 +36,7 @@ export const HomePage = () => {
         header: true,
         complete: (results) => {
           const data = results.data as TProfile[]
-          if (data.length > 0) {
+          if (data?.length) {
             setProfileData(data[0]) // Set the first row of CSV as profileData
           }
         },
@@ -49,7 +51,7 @@ export const HomePage = () => {
         header: true,
         complete: (results) => {
           const data = results.data as TProfileSummary[]
-          if (data.length > 0) {
+          if (data?.length) {
             setProfileSummary(data[0]) // Set the first row of CSV as profile summary
           }
         },
@@ -84,16 +86,23 @@ export const HomePage = () => {
   }, [skillsCsv, setSkills])
 
   return (
-    <main
-      id="content"
-      className="space-y-16 pt-24 md:space-y-24 lg:w-1/2 lg:space-y-36 lg:py-24"
-    >
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      {/* <Blog /> */}
-      <Footer />
-    </main>
+    <div className="lg:flex lg:justify-between lg:gap-4">
+      <Header
+        setActiveSection={setActiveSection}
+        activeSection={activeSection}
+      />
+
+      <main
+        id="content"
+        className="space-y-16 pt-24 md:space-y-24 lg:w-1/2 lg:space-y-36 lg:py-24"
+      >
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        {/* <Blog /> */}
+        <Footer />
+      </main>
+    </div>
   )
 }

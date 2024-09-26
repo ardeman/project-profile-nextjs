@@ -18,7 +18,7 @@ export const Experience = () => {
         <Title>Experience</Title>
       </div>
       <div>
-        {positions?.length && (
+        {!!positions?.length && (
           <ol className="group/list">
             {positions?.map(
               (position, index) =>

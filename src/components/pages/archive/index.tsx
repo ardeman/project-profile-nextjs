@@ -29,7 +29,7 @@ export const ArchivePage = () => {
         id="content"
         className="mt-12 w-full border-collapse text-left"
       >
-        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 backdrop-blur dark:border-slate-200/10 dark:bg-slate-900/75">
+        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 uppercase backdrop-blur dark:border-slate-200/10 dark:bg-slate-900/75">
           <tr>
             <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-slate-200">
               Project
