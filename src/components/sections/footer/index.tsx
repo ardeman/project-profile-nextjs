@@ -42,7 +42,7 @@ export const Footer = () => {
         >
           Tailwind CSS
         </a>
-        , deployed with{' '}
+        , deployed via{' '}
         <a
           href="https://github.com/features/actions"
           className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
