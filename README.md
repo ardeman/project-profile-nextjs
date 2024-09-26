@@ -75,6 +75,11 @@ To tart the Node.js server:
 pnpm start
 ```
 
+### Implementing Data from LinkedIn
+
+The web is using imported data from linkedin placed in: `public/linkedin/`
+You can download the data from your <https://www.linkedin.com/mypreferences/d/download-my-data>
+
 ## 🎨 Color Reference
 
 | Color          | Hex                                                                |
