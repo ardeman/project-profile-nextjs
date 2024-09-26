@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# project-nextjs-profile
 
-## Getting Started
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/src/app/apple-touch-icon.png" width="100" />
+</div>
 
-First, run the development server:
+<p align="center">
+  <a href="https://ardeman.com/" target="_blank">Ardeman</a>'s personal website built with <a href="https://nextjs.org/" target="_blank">Next.js</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, deployed with <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a> on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/ardeman/project-nextjs-profile/actions/workflows/nextjs.yml" target="_blank">
+    <img src="https://github.com/ardeman/project-nextjs-profile/actions/workflows/nextjs.yml/badge.svg?branch=main" alt="Deploy Next.js site to Pages" />
+  </a>
+</p>
+
+![demo-dark](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/profile/demo-dark.png)
+![demo-light](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/profile/demo-light.png)
+
+## 🍴 Forking this repo
+
+You can fork this repo. Please give me proper credit by linking back to [ardeman.com](https://ardeman.com/). Thanks!
+
+## 🎛️ Installation & Set Up
+
+Prerequisites:
+
+- Node 20+
+- pnpm 8.10.5+
+
+To set up the app execute the following commands.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ardeman/project-nextjs-profile.git
+cd project-nextjs-profile
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### `pnpm dev`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### `pnpm prepare`
 
-## Learn More
+Install husky git hooks.
 
-To learn more about Next.js, take a look at the following resources:
+### `pnpm lint`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Lint code base.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### `pnpm format`
 
-## Deploy on Vercel
+format code base.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `pnpm build`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Generates an optimized version of the application for production.
+
+### `pnpm start`
+
+Start the Node.js server.
+
+## 🎨 Color Reference
+
+| Color          | Hex                                                                |
+| -------------- | ------------------------------------------------------------------ |
+| gray-900       | ![#111827](https://via.placeholder.com/10/111827?text=+) `#111827` |
+| red-700        | ![#b91c1c](https://via.placeholder.com/10/b91c1c?text=+) `#b91c1c` |
+| red-900        | ![#7f1d1d](https://via.placeholder.com/10/7f1d1d?text=+) `#7f1d1d` |
+| sky-400        | ![#38bdf8](https://via.placeholder.com/10/38bdf8?text=+) `#38bdf8` |
+| sky-900        | ![#0c4a6e](https://via.placeholder.com/10/0c4a6e?text=+) `#0c4a6e` |
+| slate-100      | ![#f1f5f9](https://via.placeholder.com/10/f1f5f9?text=+) `#f1f5f9` |
+| slate-200      | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) `#e2e8f0` |
+| slate-400      | ![#94a3b8](https://via.placeholder.com/10/94a3b8?text=+) `#94a3b8` |
+| slate-900      | ![#0f172a](https://via.placeholder.com/10/0f172a?text=+) `#0f172a` |
+| stone-900      | ![#1c1917](https://via.placeholder.com/10/1c1917?text=+) `#1c1917` |
+| white          | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) `#ffffff` |
