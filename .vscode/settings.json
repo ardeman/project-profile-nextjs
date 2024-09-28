@@ -14,10 +14,5 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
-  "editor.renderWhitespace": "all",
-  "markdownlint.config": {
-    "MD033": {
-      "allowed_elements": ["div", "img", "p", "a"]
-    }
-  }
+  "editor.renderWhitespace": "all"
 }

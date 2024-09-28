@@ -1,8 +1,10 @@
-# project-nextjs-profile
-
 <div align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/src/app/apple-touch-icon.png" width="100" />
 </div>
+
+<h1 align="center">
+  project-nextjs-profile
+</h1>
 
 <p align="center">
   <a href="https://ardeman.com/" target="_blank">Ardeman</a>'s personal website built with <a href="https://nextjs.org/" target="_blank">Next.js</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, deployed via <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a> on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
