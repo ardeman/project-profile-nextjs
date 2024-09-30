@@ -16,6 +16,6 @@ elif [ -f yarn.lock ]; then
 elif [ -f package-lock.json ]; then
   npm run lint-staged
 else
-  echo "No lockfile found. Please run 'bun install', 'pnpm install' or 'yarn install' to generate a lockfile."
+  echo "No lockfile found. Please run 'bun install', 'pnpm install', 'yarn install' or 'npm install' to generate a lockfile."
   exit 1
 fi
