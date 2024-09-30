@@ -12,14 +12,14 @@
   </a>
 </p>
 
-<div style="display: flex; justify-content: center; align-items: center">
+<p align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/favicon-32x32.png" width="32" />
   <img alt="Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/dark.png" width="600" />
-</div>
-<div style="display: flex; justify-content: center; align-items: center">
+</p>
+<p align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/light/favicon-32x32.png" width="32" />
   <img alt="Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/light.png" width="600" />
-</div>
+</p>
 
 ## 🍴 Forking This Repo
 
