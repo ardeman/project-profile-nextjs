@@ -1,5 +1,6 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/src/app/apple-touch-icon.png" width="100" />
+  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/apple-touch-icon.png" width="100" />
+  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/light/apple-touch-icon.png" width="100" />
 </div>
 
 <h1 align="center">
@@ -16,8 +17,8 @@
   </a>
 </p>
 
-![Dark Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/profile/demo-dark.png)
-![Light Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/profile/demo-light.png)
+![Dark Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/dark.png)
+![Light Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/light.png)
 
 ## 🍴 Forking This Repo
 
