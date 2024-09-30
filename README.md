@@ -1,7 +1,3 @@
-<div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/apple-touch-icon.png" width="100" />
-</div>
-
 <h1 align="center">
   project-nextjs-profile
 </h1>
