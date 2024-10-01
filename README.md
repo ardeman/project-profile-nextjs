@@ -13,16 +13,14 @@
 </p>
 
 <p align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/favicon-32x32.png" width="32" />
+  <img alt="Dark Mode Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/favicon-32x32.png" width="32" /><br />
+  <img alt="Dark Mode Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/dark.png" />
 </p>
-
-![Dark Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/dark.png)
 
 <p align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/light/favicon-32x32.png" width="32" />
+  <img alt="Light Mode Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/light/favicon-32x32.png" width="32" /><br />
+  <img alt="Light Mode Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/light.png" />
 </p>
-
-![Light Mode Demo](https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/light.png)
 
 ## 🍴 Forking This Repo
 
