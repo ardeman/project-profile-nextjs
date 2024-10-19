@@ -23,7 +23,7 @@ export const Providers = (props: PropsWithChildren) => {
       onMouseMove={handleMouseMove}
     >
       <Pointer position={position} />
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="mx-auto min-h-dvh max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <QueryClientProvider client={queryClient}>
           <LinkedinProvider>{children}</LinkedinProvider>
         </QueryClientProvider>
