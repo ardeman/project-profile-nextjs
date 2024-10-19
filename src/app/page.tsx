@@ -5,5 +5,3 @@ const Home = () => {
 }
 
 export default Home
-
-export { metadata } from '@/constants'

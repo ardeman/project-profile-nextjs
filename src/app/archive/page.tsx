@@ -5,5 +5,3 @@ const Archive = () => {
 }
 
 export default Archive
-
-export { metadata } from '@/constants'
