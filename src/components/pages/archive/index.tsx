@@ -4,7 +4,7 @@ import { FaGithub } from 'react-icons/fa6'
 import { GoArrowLeft, GoArrowUpRight } from 'react-icons/go'
 
 import { Capsule, Skeleton } from '@/components/base'
-import { metadata } from '@/data'
+import { metadata } from '@/constants'
 import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
 

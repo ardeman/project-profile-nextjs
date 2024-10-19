@@ -1,10 +1,11 @@
 {
   "plugins": ["unused-imports"],
   "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:unicorn/recommended",
-    "next/core-web-vitals",
     "prettier"
   ],
   "rules": {
@@ -13,14 +14,17 @@
       "error",
       {
         "patterns": [
-          "components/*/*",
-          "features/*/*",
-          "hooks/*",
-          "layouts/*/*",
-          "types/*",
-          "utils/*"
+          "@/components/*/*",
+          "@/config/*",
+          "@/constants/*",
+          "@/context/*",
+          "@/hooks/*",
+          "@/lib/*",
+          "@/types/*",
+          "@/utils/*",
+          "../*"
         ],
-        "paths": ["react-i18next"]
+        "paths": ["react-i18next", "next/router"]
       }
     ],
     "linebreak-style": ["error", "unix"],

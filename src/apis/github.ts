@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { github } from '@/data/github'
+import { github } from '@/constants'
 
 export const getGithubRepoRequest = async () => {
   try {

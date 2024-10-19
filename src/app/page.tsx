@@ -6,4 +6,4 @@ const Home = () => {
 
 export default Home
 
-export { metadata } from '@/data'
+export { metadata } from '@/constants'

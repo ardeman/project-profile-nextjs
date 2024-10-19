@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { Skeleton } from '@/components/base'
+import { metadata } from '@/constants'
 import { useLinkedinContext } from '@/contexts'
-import { metadata } from '@/data'
 
 import { socials } from './data'
 import { TProps } from './type'
