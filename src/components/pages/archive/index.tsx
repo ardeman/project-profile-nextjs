@@ -105,24 +105,36 @@ export const ArchivePage = () => {
                 </td>
                 <td className="hidden py-4 align-top sm:table-cell">
                   <ul className="translate-y-1">
-                    <li className="mb-1 flex items-center">
-                      <a
-                        className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-                        href={project.homepage || project.html_url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`${project.name} (opens in a new tab)`}
-                      >
-                        <span>
-                          {project.homepage || project.html_url}{' '}
-                          {project.homepage ? (
+                    {project.homepage && (
+                      <li className="mb-1 flex items-center">
+                        <a
+                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          href={project.homepage}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`Homepage ${project.name} (opens in a new tab)`}
+                        >
+                          <span>
                             <GoArrowUpRight className="ml-0.5 inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                          ) : (
+                          </span>
+                        </a>
+                      </li>
+                    )}
+                    {project.html_url && (
+                      <li className="mb-1 flex items-center">
+                        <a
+                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          href={project.html_url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`GitHub ${project.name} (opens in a new tab)`}
+                        >
+                          <span>
                             <FaGithub className="ml-0.5 inline-block h-3.5 w-3.5 shrink-0" />
-                          )}
-                        </span>
-                      </a>
-                    </li>
+                          </span>
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </td>
               </tr>
