@@ -115,6 +115,7 @@ export const ArchivePage = () => {
                           aria-label={`Homepage ${project.name} (opens in a new tab)`}
                         >
                           <span>
+                            {project.homepage}{' '}
                             <GoArrowUpRight className="ml-0.5 inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
                           </span>
                         </a>
@@ -130,6 +131,7 @@ export const ArchivePage = () => {
                           aria-label={`GitHub ${project.name} (opens in a new tab)`}
                         >
                           <span>
+                            {project.html_url}{' '}
                             <FaGithub className="ml-0.5 inline-block h-3.5 w-3.5 shrink-0" />
                           </span>
                         </a>
