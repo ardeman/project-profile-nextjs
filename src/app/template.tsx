@@ -6,7 +6,7 @@ import { MouseEvent, PropsWithChildren, useState } from 'react'
 import { Pointer } from '@/components/base'
 import { LinkedinProvider } from '@/contexts'
 
-export const Providers = (props: PropsWithChildren) => {
+const Template = (props: PropsWithChildren) => {
   const { children } = props
   const [queryClient] = useState(() => new QueryClient())
   const [position, setPosition] = useState<{ x: number; y: number }>({
@@ -31,3 +31,5 @@ export const Providers = (props: PropsWithChildren) => {
     </div>
   )
 }
+
+export default Template
