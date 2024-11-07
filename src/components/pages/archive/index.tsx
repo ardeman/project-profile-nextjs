@@ -73,26 +73,27 @@ export const ArchivePage = () => {
                 key={project.id}
               >
                 <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-slate-200">
-                  <div>
-                    <div className="block sm:hidden">
-                      <a
-                        className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-                        href={project.homepage || project.html_url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        aria-label={`${project.name} (opens in a new tab)`}
-                      >
-                        <span>
-                          {project.name}{' '}
-                          <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                        </span>
-                      </a>
-                    </div>
-                    <div className="hidden sm:block">{project.name}</div>
+                  <div className="hidden sm:block">{project.name}</div>
+                  <div className="grid sm:hidden">
+                    <a
+                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                      href={project.homepage || project.html_url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`${project.name} (opens in a new tab)`}
+                    >
+                      <span>
+                        {project.name}{' '}
+                        <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
+                      </span>
+                    </a>
+                    <span className="text-xs text-gray-500">
+                      {project.license?.name}
+                    </span>
                   </div>
                 </td>
                 <td className="hidden py-4 pr-4 align-top text-sm lg:table-cell">
-                  <div className="translate-y-px whitespace-nowrap">
+                  <div className="translate-y-px whitespace-pre-wrap">
                     {project.license?.name}
                   </div>
                 </td>

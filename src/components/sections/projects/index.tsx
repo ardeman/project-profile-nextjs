@@ -43,32 +43,29 @@ export const Projects = () => {
                     <p className="mt-2 text-sm leading-normal">
                       {project.description}
                     </p>
-                    <p className="space-x-2">
+                    <a
+                      className="relative mt-2 flex items-center gap-x-2 text-sm font-medium  text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                      href={project.html_url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`GitHub ${project.name} (opens in a new tab)`}
+                    >
                       {!!project.stargazers_count && (
-                        <a
-                          className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-                          href={project.html_url}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label={`${project.stargazers_count} stars on GitHub (opens in a new tab)`}
-                        >
+                        <span className="inline-flex items-center">
                           <GoStarFill className="mr-1 h-3 w-3" />
                           <span>{project.stargazers_count}</span>
-                        </a>
+                        </span>
                       )}
                       {!!project.forks_count && (
-                        <a
-                          className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
-                          href={project.html_url}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label={`${project.forks_count} forks on GitHub (opens in a new tab)`}
-                        >
+                        <span className="inline-flex items-center">
                           <GoRepoForked className="mr-1 h-3 w-3" />
                           <span>{project.forks_count}</span>
-                        </a>
+                        </span>
                       )}
-                    </p>
+                      {project.license?.spdx_id && (
+                        <span>{project.license.spdx_id}</span>
+                      )}
+                    </a>
                     <ul
                       className="mt-2 flex flex-wrap"
                       aria-label="Topic:"
