@@ -42,7 +42,7 @@ export const Experience = () => {
                         <h3 className="font-medium leading-snug text-red-900 dark:text-slate-200">
                           <TitleLink
                             href={`https://www.google.com/search?q=${position['Company Name']}`}
-                            title={`${position.Title} ${position['Company Name']}`}
+                            title={`${position.Title} - ${position['Company Name']}`}
                           />
                           <div
                             className="text-red-600 dark:text-slate-500"
