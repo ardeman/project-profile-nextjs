@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton, Title } from '@/components/base'
+import { Title } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 
 export const About = () => {
@@ -16,9 +16,12 @@ export const About = () => {
         <Title>About</Title>
       </div>
       <div className="space-y-4">
-        <p>
-          <Skeleton lines={8}>{profileData?.['Summary']}</Skeleton>
-        </p>
+        {profileData?.['Summary']
+          ?.replace(/\\n/g, '\n') // convert escaped \n to real newlines
+          .split('\n') // split into paragraphs
+          .map((paragraph, idx) => (
+            <p key={idx}>{paragraph.trim()}</p>
+          ))}
       </div>
     </section>
   )
