@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Skeleton } from '@/components/base'
+import { Skeleton, ThemeToggle } from '@/components/base'
 import { metadata } from '@/constants'
 import { useLinkedinContext } from '@/contexts'
 
@@ -48,7 +48,7 @@ export const Header = (props: TProps) => {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-slate-200">
+        <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-zinc-200">
           <a
             href="/"
             className="oldenburg-regular"
@@ -56,7 +56,7 @@ export const Header = (props: TProps) => {
             {metadata.title?.toString()}
           </a>
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-slate-200">
+        <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-zinc-200">
           <Skeleton>{profileData?.['Headline']}</Skeleton>
         </h2>
         <p className="mt-4 max-w-xs text-sm leading-normal">
@@ -78,16 +78,16 @@ export const Header = (props: TProps) => {
                       className={twMerge(
                         'nav-indicator mr-4 h-px w-8 bg-red-600 transition-all motion-reduce:transition-none dark:bg-slate-600',
                         activeSection === sectionId
-                          ? 'w-16 bg-red-900 dark:bg-slate-200'
-                          : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-slate-200 dark:group-focus-visible:bg-slate-200'
+                          ? 'w-16 bg-red-900 dark:bg-zinc-200'
+                          : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-zinc-200 dark:group-focus-visible:bg-zinc-200'
                       )}
                     ></span>
                     <span
                       className={twMerge(
                         'nav-text text-xs font-bold uppercase tracking-widest',
                         activeSection === sectionId
-                          ? 'text-red-900 dark:text-slate-200'
-                          : 'text-red-600 group-hover:text-red-900 group-focus-visible:text-red-900 dark:text-slate-500 dark:group-hover:text-slate-200 dark:group-focus-visible:text-slate-200'
+                          ? 'text-red-900 dark:text-zinc-200'
+                          : 'text-red-600 group-hover:text-red-900 group-focus-visible:text-red-900 dark:text-slate-500 dark:group-hover:text-zinc-200 dark:group-focus-visible:text-zinc-200'
                       )}
                     >
                       {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}
@@ -99,31 +99,34 @@ export const Header = (props: TProps) => {
           </nav>
         )}
       </div>
-      {!!socials?.length && (
-        <ul
-          className="ml-1 mt-8 flex items-center"
-          aria-label="Social media"
-        >
-          {socials.map((social) => (
-            <li
-              key={social.name}
-              className="mr-5 shrink-0 text-xs"
-            >
-              <a
-                className="block hover:text-red-900 dark:hover:text-slate-200"
-                href={social.url}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={`${social.name} (opens in a new tab)`}
-                title={social.name}
+      <div className="mt-8 flex justify-start gap-5">
+        {!!socials?.length && (
+          <ul
+            className="flex items-center space-x-5"
+            aria-label="Social media"
+          >
+            {socials.map((social) => (
+              <li
+                key={social.name}
+                className="shrink-0 text-xs"
               >
-                <span className="sr-only">{social.name}</span>
-                {social.icon}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+                <a
+                  className="block hover:text-red-900 dark:hover:text-zinc-200"
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`${social.name} (opens in a new tab)`}
+                  title={social.name}
+                >
+                  <span className="sr-only">{social.name}</span>
+                  {social.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+        <ThemeToggle />
+      </div>
     </header>
   )
 }

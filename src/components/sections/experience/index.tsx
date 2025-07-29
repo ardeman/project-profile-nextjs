@@ -14,7 +14,7 @@ export const Experience = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Work experience"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-purple-950/75">
         <Title>Experience</Title>
       </div>
       <div>
@@ -39,7 +39,7 @@ export const Experience = () => {
                         <div>{position['Finished On'] || 'Present'}</div>
                       </header>
                       <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-red-900 dark:text-slate-200">
+                        <h3 className="font-medium leading-snug text-red-900 dark:text-zinc-200">
                           <TitleLink
                             href={`https://www.google.com/search?q=${position['Company Name']}`}
                             title={`${position.Title} - ${position['Company Name']}`}
@@ -67,7 +67,7 @@ export const Experience = () => {
                       >
                         <li className="mr-4">
                           <a
-                            className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 dark:text-slate-200 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                            className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 dark:text-zinc-200 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                             href="https://developer.apple.com/documentation/musickitjs"
                             target="_blank"
                             rel="noreferrer noopener"
@@ -98,7 +98,7 @@ export const Experience = () => {
         )}
         <div className="mt-12">
           <a
-            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+            className="group/link inline-flex items-baseline text-base font-semibold leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-zinc-200 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
             href="/documents/resume-2025.pdf"
             target="_blank"
             rel="noreferrer noopener"

@@ -1,10 +1,31 @@
 'use client'
 
+import { gemoji } from 'gemoji'
 import { GoArrowRight, GoRepoForked, GoStarFill } from 'react-icons/go'
 
 import { Capsule, Hover, Skeleton, Title, TitleLink } from '@/components/base'
 import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
+
+/**
+ * Converts GitHub emoji codes (like :zap:) to actual emoji characters
+ * @param text - The text containing GitHub emoji codes
+ * @returns The text with emoji codes replaced by actual emojis
+ */
+const convertGitHubEmoji = (text: string): string => {
+  if (!text) return text
+
+  // Replace all emoji codes with actual emojis
+  let result = text
+  for (const emoji of gemoji) {
+    for (const name of emoji.names) {
+      const code = `:${name}:`
+      result = result.replaceAll(new RegExp(code, 'g'), emoji.emoji)
+    }
+  }
+
+  return result
+}
 
 export const Projects = () => {
   const { data: projects } = useGetProjects()
@@ -19,7 +40,7 @@ export const Projects = () => {
       className="scroll-mt-16 lg:scroll-mt-24"
       aria-label="Selected projects"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-slate-900/75">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-purple-950/75">
         <Title>Projects</Title>
       </div>
       <div>
@@ -41,10 +62,10 @@ export const Projects = () => {
                       />
                     </h3>
                     <p className="mt-2 text-sm leading-normal">
-                      {project.description}
+                      {convertGitHubEmoji(project.description)}
                     </p>
                     <a
-                      className="relative mt-2 flex items-center gap-x-2 text-sm font-medium  text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                      className="relative mt-2 flex items-center gap-x-2 text-sm font-medium  text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-zinc-200 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                       href={project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
@@ -75,7 +96,7 @@ export const Projects = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* <div className="h-12 w-24 rounded border-2 border-red-900/10 text-transparent transition group-hover:border-red-900/30 sm:order-1 sm:col-span-2 sm:translate-y-1 dark:border-slate-200/10 dark:group-hover:border-slate-200/30"></div> */}
+                  {/* <div className="h-12 w-24 rounded border-2 border-red-900/10 text-transparent transition group-hover:border-red-900/30 sm:order-1 sm:col-span-2 sm:translate-y-1 dark:border-zinc-200/10 dark:group-hover:border-zinc-200/30"></div> */}
                 </div>
               </li>
             ))}
@@ -85,16 +106,16 @@ export const Projects = () => {
         )}
         <div className="mt-12">
           <a
-            className="group inline-flex items-center font-semibold leading-tight text-red-900 dark:text-slate-200"
+            className="group inline-flex items-center font-semibold leading-tight text-red-900 dark:text-zinc-200"
             aria-label="View Full Project Archive"
             href="/archive"
           >
             <span>
-              <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-sky-400">
+              <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-fuchsia-400">
                 View Full Project{' '}
               </span>
               <span className="whitespace-nowrap">
-                <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-sky-400">
+                <span className="border-b border-transparent pb-px transition group-hover:border-gray-900 motion-reduce:transition-none dark:group-hover:border-fuchsia-400">
                   Archive
                 </span>
                 <GoArrowRight className="ml-1 inline-block h-4 w-4 shrink-0 -translate-y-px transition-transform group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none" />

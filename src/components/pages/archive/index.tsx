@@ -16,31 +16,31 @@ export const ArchivePage = () => {
   return (
     <main className="lg:py-24">
       <a
-        className="oldenburg-regular group mb-2 inline-flex items-center font-semibold leading-tight text-gray-900 dark:text-sky-400"
+        className="oldenburg-regular group mb-2 inline-flex items-center font-semibold leading-tight text-gray-900 dark:text-fuchsia-400"
         href="/"
       >
         <GoArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
         {metadata.title?.toString()}
       </a>
-      <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-slate-200">
+      <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-zinc-200">
         All Projects
       </h1>
       <table
         id="content"
         className="mt-12 w-full border-collapse text-left"
       >
-        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 uppercase backdrop-blur dark:border-slate-200/10 dark:bg-slate-900/75">
+        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 uppercase backdrop-blur dark:border-zinc-200/10 dark:bg-purple-950/75">
           <tr>
-            <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-slate-200">
+            <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-zinc-200">
               Project
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-slate-200">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-zinc-200">
               License
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-slate-200">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-zinc-200">
               Topic
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 sm:table-cell dark:text-slate-200">
+            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 sm:table-cell dark:text-zinc-200">
               Link
             </th>
           </tr>
@@ -49,10 +49,10 @@ export const ArchivePage = () => {
           {isLoading ? (
             Array.from({ length: 8 }).map((_, index) => (
               <tr
-                className="border-b border-red-900/10 last:border-none dark:border-slate-200/10"
+                className="border-b border-red-900/10 last:border-none dark:border-zinc-200/10"
                 key={index}
               >
-                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-slate-200">
+                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-zinc-200">
                   <Skeleton />
                 </td>
                 <td className="hidden py-4 pr-4 align-top text-sm lg:table-cell">
@@ -69,14 +69,14 @@ export const ArchivePage = () => {
           ) : filteredProjects?.length ? (
             filteredProjects.map((project) => (
               <tr
-                className="border-b border-red-900/10 last:border-none dark:border-slate-200/10"
+                className="border-b border-red-900/10 last:border-none dark:border-zinc-200/10"
                 key={project.id}
               >
-                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-slate-200">
+                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-zinc-200">
                   <div className="hidden sm:block">{project.name}</div>
                   <div className="grid sm:hidden">
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-slate-200 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-zinc-200 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                       href={project.homepage || project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
@@ -109,7 +109,7 @@ export const ArchivePage = () => {
                     {project.homepage && (
                       <li className="mb-1 flex items-center">
                         <a
-                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                           href={project.homepage}
                           target="_blank"
                           rel="noreferrer noopener"
@@ -125,7 +125,7 @@ export const ArchivePage = () => {
                     {project.html_url && (
                       <li className="mb-1 flex items-center">
                         <a
-                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-sky-400 dark:focus-visible:text-sky-400"
+                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                           href={project.html_url}
                           target="_blank"
                           rel="noreferrer noopener"
@@ -145,7 +145,7 @@ export const ArchivePage = () => {
           ) : (
             <tr>
               <td
-                className="py-4 pr-4 align-top text-red-900 dark:text-slate-200"
+                className="py-4 pr-4 align-top text-red-900 dark:text-zinc-200"
                 colSpan={4}
               >
                 No projects found.
