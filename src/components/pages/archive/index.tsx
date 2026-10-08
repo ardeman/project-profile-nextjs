@@ -1,178 +1,158 @@
 'use client'
 
-import { FaGithub } from 'react-icons/fa6'
 import { GoArrowLeft, GoArrowUpRight } from 'react-icons/go'
 
-import { Capsule, Skeleton } from '@/components/base'
-import { metadata } from '@/constants'
+import { Capsule } from '@/components/base'
+import { featuredProjects } from '@/data/featured-projects'
 import { useGetProjects } from '@/hooks'
-import { TGithubRepo } from '@/types'
+
+const getTitle = (name: string) =>
+  featuredProjects.find((project) => project.name === name)?.title ||
+  name.replace(/^(project|exercise)[_-]/, '').replaceAll(/[_-]/g, ' ')
 
 export const ArchivePage = () => {
-  const {
-    data: projects,
-    isLoading,
-    isError,
-    isFetching,
-    refetch,
-  } = useGetProjects()
-  const projectData = projects as TGithubRepo[]
-  const filteredProjects = projectData?.filter(
+  const { data: projects, isError, isFetching, refetch } = useGetProjects()
+  const filteredProjects = projects?.filter(
     (project) =>
       !project.fork && !project.archived && project.name !== 'ardeman'
   )
-
   return (
     <main
       id="content"
       tabIndex={-1}
-      className="lg:py-24"
+      className="lg:py-20"
     >
       <a
-        className="oldenburg-regular group mb-2 inline-flex items-center font-semibold leading-tight text-gray-900 dark:text-fuchsia-400"
         href="/"
+        className="text-link"
       >
-        <GoArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
-        {metadata.title?.toString()}
+        <GoArrowLeft aria-hidden="true" />
+        Back to portfolio
       </a>
-      <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-zinc-200">
-        All Projects
+      <p className="text-muted mb-3 mt-10 font-mono text-xs uppercase tracking-[0.18em]">
+        The collection
+      </p>
+      <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+        Project archive
       </h1>
-      {isError && (
-        <p
-          role="status"
-          className="mt-6 text-sm"
-        >
-          Live project updates are unavailable. Showing saved projects.{' '}
-          <button
-            type="button"
-            disabled={isFetching}
-            onClick={() => void refetch()}
-            className="font-semibold underline"
-          >
-            {isFetching ? 'Retrying…' : 'Retry'}
-          </button>
-        </p>
-      )}
-      <table className="mt-12 w-full border-collapse text-left">
-        <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 uppercase backdrop-blur dark:border-zinc-200/10 dark:bg-purple-950/75">
+      <p className="text-muted mt-4 max-w-xl text-base leading-7">
+        Applications, experiments, and useful things I have built along the way.
+      </p>
+      <table className="mt-10 w-full border-collapse text-left">
+        <caption className="sr-only">
+          Projects, their technologies, licenses, and links
+        </caption>
+        <thead className="border-line text-muted border-b font-mono text-[11px] uppercase tracking-wider">
           <tr>
-            <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-zinc-200">
+            <th
+              scope="col"
+              className="py-4 pr-4 font-normal"
+            >
               Project
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-zinc-200">
+            <th
+              scope="col"
+              className="hidden py-4 pr-4 font-normal md:table-cell"
+            >
+              Built with
+            </th>
+            <th
+              scope="col"
+              className="hidden py-4 pr-4 font-normal lg:table-cell"
+            >
               License
             </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 lg:table-cell dark:text-zinc-200">
-              Topic
-            </th>
-            <th className="hidden py-4 pr-8 text-sm font-semibold text-red-900 sm:table-cell dark:text-zinc-200">
-              Link
+            <th
+              scope="col"
+              className="py-4 font-normal"
+            >
+              Explore
             </th>
           </tr>
         </thead>
         <tbody>
-          {isLoading ? (
-            Array.from({ length: 8 }).map((_, index) => (
-              <tr
-                className="border-b border-red-900/10 last:border-none dark:border-zinc-200/10"
-                key={index}
-              >
-                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-zinc-200">
-                  <Skeleton />
-                </td>
-                <td className="hidden py-4 pr-4 align-top text-sm lg:table-cell">
-                  <Skeleton />
-                </td>
-                <td className="hidden py-4 pr-4 align-top lg:table-cell">
-                  <Skeleton />
-                </td>
-                <td className="hidden py-4 align-top sm:table-cell">
-                  <Skeleton />
-                </td>
-              </tr>
-            ))
-          ) : filteredProjects?.length ? (
-            filteredProjects.map((project) => (
-              <tr
-                className="border-b border-red-900/10 last:border-none dark:border-zinc-200/10"
-                key={project.id}
-              >
-                <td className="py-4 pr-4 align-top font-semibold leading-snug text-red-900 dark:text-zinc-200">
-                  <div className="hidden sm:block">{project.name}</div>
-                  <div className="grid sm:hidden">
+          {filteredProjects?.length ? (
+            filteredProjects.map((project) => {
+              const title = getTitle(project.name)
+              return (
+                <tr
+                  key={project.id}
+                  className="border-line/70 border-b last:border-none"
+                >
+                  <th
+                    scope="row"
+                    className="py-5 pr-4 align-top font-medium"
+                  >
                     <a
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 sm:hidden dark:text-zinc-200 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
                       href={project.homepage || project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      aria-label={`${project.name} (opens in a new tab)`}
+                      className="text-ink hover:text-accent capitalize transition-colors"
+                      aria-label={`${title} (opens in a new tab)`}
                     >
-                      <span>
-                        {project.name}{' '}
-                        <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                      </span>
+                      {title}
                     </a>
-                    <span className="text-xs text-gray-500">
-                      {project.license?.name}
-                    </span>
-                  </div>
-                </td>
-                <td className="hidden py-4 pr-4 align-top text-sm lg:table-cell">
-                  <div className="translate-y-px whitespace-pre-wrap">
-                    {project.license?.name}
-                  </div>
-                </td>
-                <td className="hidden py-4 pr-4 align-top lg:table-cell">
-                  <ul className="flex -translate-y-1.5 flex-wrap">
-                    {project.topics.map((topic) => (
-                      <Capsule key={topic}>{topic}</Capsule>
-                    ))}
-                  </ul>
-                </td>
-                <td className="hidden py-4 align-top sm:table-cell">
-                  <ul className="translate-y-1">
-                    {project.homepage && (
-                      <li className="mb-1 flex items-center">
+                    {project.description && (
+                      <p className="text-muted mt-1 hidden max-w-md text-sm font-normal leading-6 sm:block">
+                        {project.description}
+                      </p>
+                    )}
+                    {project.language && (
+                      <p className="text-muted mt-2 font-mono text-[11px] font-normal md:hidden">
+                        {project.language}
+                      </p>
+                    )}
+                  </th>
+                  <td className="hidden py-5 pr-4 align-top md:table-cell">
+                    <ul className="flex flex-wrap">
+                      {[
+                        ...(project.language ? [project.language] : []),
+                        ...project.topics.slice(0, 2),
+                      ].map((topic) => (
+                        <Capsule key={topic}>{topic}</Capsule>
+                      ))}
+                    </ul>
+                  </td>
+                  <td className="text-muted hidden py-5 pr-4 align-top font-mono text-xs lg:table-cell">
+                    {project.license?.spdx_id &&
+                    project.license.spdx_id !== 'NOASSERTION'
+                      ? project.license.spdx_id
+                      : '—'}
+                  </td>
+                  <td className="py-3 align-top">
+                    <div className="flex flex-col items-start">
+                      {project.homepage && (
                         <a
-                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
-                          href={project.homepage || undefined}
+                          href={project.homepage}
                           target="_blank"
                           rel="noreferrer noopener"
-                          aria-label={`Homepage ${project.name} (opens in a new tab)`}
+                          className="text-link"
+                          aria-label={`${title} website (opens in a new tab)`}
                         >
-                          <span>
-                            {project.homepage || undefined}{' '}
-                            <GoArrowUpRight className="ml-0.5 inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
-                          </span>
+                          Website
+                          <GoArrowUpRight aria-hidden="true" />
                         </a>
-                      </li>
-                    )}
-                    {project.html_url && (
-                      <li className="mb-1 flex items-center">
-                        <a
-                          className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
-                          href={project.html_url}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label={`GitHub ${project.name} (opens in a new tab)`}
-                        >
-                          <span>
-                            {project.html_url}{' '}
-                            <FaGithub className="ml-0.5 inline-block h-3.5 w-3.5 shrink-0" />
-                          </span>
-                        </a>
-                      </li>
-                    )}
-                  </ul>
-                </td>
-              </tr>
-            ))
+                      )}
+                      <a
+                        href={project.html_url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="text-link"
+                        aria-label={`${title} source code (opens in a new tab)`}
+                      >
+                        Source
+                        <GoArrowUpRight aria-hidden="true" />
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              )
+            })
           ) : (
             <tr>
               <td
-                className="py-4 pr-4 align-top text-red-900 dark:text-zinc-200"
                 colSpan={4}
+                className="text-muted py-8"
               >
                 No projects found.
               </td>
@@ -180,6 +160,22 @@ export const ArchivePage = () => {
           )}
         </tbody>
       </table>
+      {isError && (
+        <p
+          role="status"
+          className="text-muted mt-6 text-xs"
+        >
+          Showing saved projects.{' '}
+          <button
+            type="button"
+            disabled={isFetching}
+            onClick={() => void refetch()}
+            className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
+          >
+            {isFetching ? 'Retrying…' : 'Refresh'}
+          </button>
+        </p>
+      )}
     </main>
   )
 }

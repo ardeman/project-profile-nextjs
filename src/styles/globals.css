@@ -17,3 +17,8 @@
     transition: none !important;
   }
 }
+
+#projects article > a:focus-visible {
+  outline-color: rgb(var(--accent));
+  outline-offset: -3px;
+}

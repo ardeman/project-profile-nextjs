@@ -7,6 +7,7 @@ import {
   Experience,
   Footer,
   Header,
+  MobileNavigation,
   Projects,
   Skills,
 } from '@/components/sections'
@@ -15,21 +16,23 @@ export const HomePage = () => {
   const [activeSection, setActiveSection] = useState<string>('about')
 
   return (
-    <div className="lg:flex lg:justify-between lg:gap-4">
+    <div className="lg:flex lg:justify-between lg:gap-16 xl:gap-24">
       <Header
         setActiveSection={setActiveSection}
         activeSection={activeSection}
       />
 
+      <MobileNavigation activeSection={activeSection} />
+
       <main
         id="content"
         tabIndex={-1}
-        className="space-y-16 pt-24 md:space-y-24 lg:w-1/2 lg:space-y-36 lg:py-24"
+        className="min-w-0 space-y-14 pt-14 md:space-y-16 lg:flex-1 lg:space-y-20 lg:py-20"
       >
         <About />
-        <Skills />
-        <Experience />
         <Projects />
+        <Experience />
+        <Skills />
         <Footer />
       </main>
     </div>

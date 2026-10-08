@@ -51,13 +51,13 @@ export const ThemeToggle = () => {
         ref={trigger}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="block rounded p-2 hover:text-red-900 dark:hover:text-zinc-200"
+        className="icon-button"
         aria-label="Choose color theme"
         aria-expanded={isOpen}
         aria-controls={id}
         title={`Current theme: ${theme}`}
       >
-        <Icon className="h-6 w-6" />
+        <Icon className="h-5 w-5" />
       </button>
       {isOpen && (
         <div
@@ -65,7 +65,7 @@ export const ThemeToggle = () => {
           id={id}
           role="group"
           aria-label="Color theme"
-          className="absolute bottom-full right-0 z-50 mb-2 min-w-[140px] rounded-lg border border-red-200 bg-white p-1 shadow-lg dark:border-slate-700 dark:bg-slate-800"
+          className="border-line bg-surface absolute bottom-full right-0 z-50 mb-2 flex min-w-[140px] flex-col gap-1 rounded-xl border p-2 shadow-lg"
         >
           {options.map(({ value, label, Icon: OptionIcon }) => (
             <button
@@ -77,10 +77,10 @@ export const ThemeToggle = () => {
                 setIsOpen(false)
                 trigger.current?.focus()
               }}
-              className={`flex w-full items-center gap-2 rounded px-3 py-2 text-sm ${
+              className={`focus-visible:outline-accent flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-sm focus-visible:outline-offset-[-2px] ${
                 theme === value
-                  ? 'bg-red-100 text-red-900 dark:bg-slate-700 dark:text-zinc-200'
-                  : 'text-slate-700 hover:bg-red-50 dark:text-slate-300 dark:hover:bg-slate-700'
+                  ? 'bg-accent-soft text-accent'
+                  : 'text-muted hover:bg-accent-soft hover:text-ink'
               }`}
             >
               <OptionIcon className="h-4 w-4" />

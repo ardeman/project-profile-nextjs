@@ -14,7 +14,7 @@ export const Pointer = () => {
       cancelAnimationFrame(frame)
       frame = requestAnimationFrame(() => {
         if (!pointer.current) return
-        pointer.current.style.background = `radial-gradient(600px at ${event.clientX}px ${event.clientY}px, var(--pointer), transparent 80%)`
+        pointer.current.style.background = `radial-gradient(420px at ${event.clientX}px ${event.clientY}px, var(--pointer), transparent 80%)`
         pointer.current.style.opacity = '1'
       })
     }

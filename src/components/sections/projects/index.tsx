@@ -13,105 +13,97 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="scroll-mt-16 lg:scroll-mt-24"
+      className="scroll-mt-24 lg:scroll-mt-20"
       aria-label="Selected projects"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 dark:bg-purple-950/75">
-        <Title>Projects</Title>
+      <div className="section-heading">
+        <Title>Selected work</Title>
       </div>
-      <p className="mb-6 text-sm">
-        Selected work across web applications and playful learning.
-      </p>
-      {isError && (
-        <p
-          role="status"
-          className="mb-6 rounded-lg border border-slate-400/30 p-3 text-sm"
-        >
-          Live project updates are unavailable. Showing saved projects.{' '}
-          <button
-            type="button"
-            disabled={isFetching}
-            onClick={() => void refetch()}
-            className="font-semibold underline"
-          >
-            {isFetching ? 'Retrying…' : 'Retry'}
-          </button>
-        </p>
-      )}
-      <ul className="space-y-10">
-        {featuredProjects.map((feature) => {
+      <ul className="space-y-8">
+        {featuredProjects.map((feature, index) => {
           const project =
             projects?.find((item) => item.name === feature.name) ||
             snapshot.find((item) => item.name === feature.name)
           if (!project) return null
           return (
             <li key={feature.name}>
-              <article className="overflow-hidden rounded-xl border border-red-900/10 bg-white/40 dark:border-slate-400/20 dark:bg-white/[0.025]">
+              <article className="border-line bg-surface overflow-hidden rounded-2xl border shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
                 <a
                   href={project.homepage || project.html_url}
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${feature.title} (opens in a new tab)`}
-                  className="block"
+                  className="border-line bg-accent-soft/40 group block overflow-hidden border-b"
                 >
                   <Image
                     src={feature.image}
                     alt={feature.alt}
                     width={1200}
                     height={750}
-                    sizes="(min-width: 1024px) 512px, 100vw"
-                    className="aspect-[8/5] w-full bg-slate-200 object-contain dark:bg-slate-900"
+                    sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
+                    className="aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90"
                   />
                 </a>
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold text-red-900 dark:text-zinc-200">
+                <div className="p-5 sm:p-6">
+                  <p className="text-muted mb-2 font-mono text-[10px] uppercase tracking-[0.18em]">
+                    0{index + 1} / {feature.category}
+                  </p>
+                  <h3 className="text-ink text-2xl font-semibold tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="mt-2 text-sm">{feature.problem}</p>
-                  <dl className="mt-4 space-y-3 text-sm">
-                    <div>
-                      <dt className="font-semibold text-red-900 dark:text-zinc-200">
-                        What I built
-                      </dt>
-                      <dd>{feature.contribution}</dd>
-                    </div>
-                    <div>
-                      <dt className="font-semibold text-red-900 dark:text-zinc-200">
-                        Outcome
-                      </dt>
-                      <dd>{feature.result}</dd>
-                    </div>
-                  </dl>
+                  <p className="text-muted mt-2 text-sm leading-6">
+                    {feature.summary}
+                  </p>
                   <ul
-                    className="mt-4 flex flex-wrap"
-                    aria-label="Technologies and topics"
+                    className="mt-3 flex flex-wrap"
+                    aria-label="Technologies used"
                   >
-                    {[
-                      ...(project.language ? [project.language] : []),
-                      ...project.topics.slice(0, 4),
-                    ].map((topic) => (
-                      <Capsule key={topic}>{topic}</Capsule>
+                    {feature.technologies.map((technology) => (
+                      <Capsule key={technology}>{technology}</Capsule>
                     ))}
                   </ul>
-                  <div className="mt-4 flex gap-5 text-sm font-semibold text-red-900 dark:text-fuchsia-300">
+                  <details className="border-line text-muted mt-4 border-t pt-4 text-sm leading-6">
+                    <summary className="text-ink hover:text-accent w-fit cursor-pointer font-medium transition-colors">
+                      Read more
+                      <span className="sr-only"> about {feature.title}</span>
+                    </summary>
+                    <dl className="mt-4 space-y-3">
+                      <div>
+                        <dt className="text-ink font-medium">The idea</dt>
+                        <dd>{feature.problem}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-ink font-medium">What I built</dt>
+                        <dd>{feature.contribution}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-ink font-medium">The experience</dt>
+                        <dd>{feature.result}</dd>
+                      </div>
+                    </dl>
+                  </details>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-5">
                     {project.homepage && (
                       <a
                         href={project.homepage}
                         target="_blank"
                         rel="noreferrer noopener"
+                        className="text-link"
                         aria-label={`${feature.linkLabel} for ${feature.title} (opens in a new tab)`}
                       >
-                        {feature.linkLabel}{' '}
-                        <GoArrowUpRight className="inline" />
+                        {feature.linkLabel}
+                        <GoArrowUpRight aria-hidden="true" />
                       </a>
                     )}
                     <a
                       href={project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
+                      className="text-link"
                       aria-label={`${feature.title} source code (opens in a new tab)`}
                     >
-                      Source code <GoArrowUpRight className="inline" />
+                      Source code
+                      <GoArrowUpRight aria-hidden="true" />
                     </a>
                   </div>
                 </div>
@@ -120,12 +112,31 @@ export const Projects = () => {
           )
         })}
       </ul>
-      <a
-        href="/archive"
-        className="mt-8 inline-flex items-center gap-2 font-semibold text-red-900 dark:text-zinc-200"
-      >
-        View full project archive <GoArrowRight />
-      </a>
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+        <a
+          href="/archive"
+          className="text-link"
+        >
+          Explore the project archive
+          <GoArrowRight aria-hidden="true" />
+        </a>
+        {isError && (
+          <p
+            role="status"
+            className="text-muted text-xs"
+          >
+            Showing saved projects.{' '}
+            <button
+              type="button"
+              disabled={isFetching}
+              onClick={() => void refetch()}
+              className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
+            >
+              {isFetching ? 'Retrying…' : 'Refresh'}
+            </button>
+          </p>
+        )}
+      </div>
     </section>
   )
 }

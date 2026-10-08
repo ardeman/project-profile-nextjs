@@ -1,20 +1,44 @@
 'use client'
 
 import { useEffect } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 import { ThemeToggle } from '@/components/base'
-import { metadata } from '@/constants'
 import { useLinkedinContext } from '@/contexts'
 
 import { socials } from './data'
 import { TProps } from './type'
 
-export const Header = (props: TProps) => {
-  const { setActiveSection, activeSection } = props
-  const sections = ['about', 'skills', 'experience', 'projects']
-  const { profileData, profileSummary } = useLinkedinContext()
+const sections = ['about', 'projects', 'experience', 'skills']
 
+export const MobileNavigation = ({
+  activeSection,
+}: Pick<TProps, 'activeSection'>) => (
+  <nav
+    aria-label="Mobile section navigation"
+    className="border-line bg-canvas/95 sticky top-0 z-40 -mx-6 mt-8 border-b px-6 backdrop-blur md:-mx-12 md:px-12 lg:hidden"
+  >
+    <ul className="flex justify-between gap-2">
+      {sections.map((section) => (
+        <li key={section}>
+          <a
+            href={`#${section}`}
+            aria-current={activeSection === section ? 'location' : undefined}
+            className={`block border-b-2 py-4 font-mono text-[10px] font-medium uppercase tracking-wider transition-colors sm:text-xs ${
+              activeSection === section
+                ? 'border-accent text-accent'
+                : 'text-muted hover:text-accent border-transparent'
+            }`}
+          >
+            {section}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)
+
+export const Header = ({ setActiveSection, activeSection }: TProps) => {
+  const { profileData, profileSummary } = useLinkedinContext()
   useEffect(() => {
     let frame = 0
     const update = () => {
@@ -24,9 +48,10 @@ export const Header = (props: TProps) => {
         const elements = Array.from(
           document.querySelectorAll<HTMLElement>('section[id]')
         )
+        const offset = window.innerWidth >= 1024 ? 160 : 110
         const active =
           elements.findLast(
-            (section) => section.getBoundingClientRect().top <= 160
+            (section) => section.getBoundingClientRect().top <= offset
           ) || elements[0]
         if (active) setActiveSection(active.id)
       })
@@ -40,110 +65,98 @@ export const Header = (props: TProps) => {
       window.removeEventListener('resize', update)
     }
   }, [setActiveSection])
-
   return (
-    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+    <header className="lg:sticky lg:top-0 lg:flex lg:h-dvh lg:w-[34%] lg:shrink-0 lg:flex-col lg:justify-between lg:gap-8 lg:overflow-y-auto lg:py-16 xl:w-[36%] xl:py-20">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-zinc-200">
-          <a
-            href="/"
-            className="oldenburg-regular"
-          >
-            {metadata.title?.toString()}
-          </a>
+        <p className="text-muted mb-5 font-mono text-[11px] uppercase tracking-[0.2em]">
+          A personal collection of work
+        </p>
+        <h1 className="oldenburg-regular text-ink text-5xl tracking-tight sm:text-6xl">
+          <a href="/">Ardeman</a>
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-zinc-200">
+        <p className="text-ink mt-4 text-xl font-medium tracking-tight">
           {profileData.Headline}
-        </h2>
-        <p className="mt-4 max-w-xs text-sm leading-normal">
+        </p>
+        <p className="text-muted mt-5 max-w-sm text-base leading-7">
           {profileSummary['Profile Summary']}
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-7 flex flex-wrap gap-3">
           <a
             href="https://www.linkedin.com/in/ardeman/"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Contact me on LinkedIn (opens in a new tab)"
-            className="rounded-lg bg-red-900 px-4 py-2 text-sm font-semibold text-white dark:bg-fuchsia-300 dark:text-purple-950"
+            aria-label="Message on LinkedIn (opens in a new tab)"
+            className="button-primary"
           >
-            Contact me
+            Message on LinkedIn
           </a>
           <a
             href="/documents/resume-2025.pdf"
             target="_blank"
             rel="noreferrer noopener"
             aria-label="View résumé (opens in a new tab)"
-            className="rounded-lg border border-red-900/30 px-4 py-2 text-sm font-semibold text-red-900 dark:border-slate-400/50 dark:text-zinc-200"
+            className="button-secondary"
           >
             View résumé
           </a>
         </div>
-        {sections.length > 0 && (
-          <nav
-            className="nav mt-8 lg:mt-16"
-            aria-label="In-page jump links"
-          >
-            <ul className="flex flex-wrap gap-x-5 lg:block lg:w-max">
-              {sections.map((sectionId) => (
-                <li key={sectionId}>
-                  <a
-                    className="group flex items-center py-3"
-                    href={`#${sectionId}`}
-                    aria-current={
-                      activeSection === sectionId ? 'location' : undefined
-                    }
-                  >
-                    <span
-                      className={twMerge(
-                        'nav-indicator mr-4 hidden h-px w-8 bg-red-600 transition-all motion-reduce:transition-none lg:block dark:bg-slate-600',
-                        activeSection === sectionId
-                          ? 'w-16 bg-red-900 dark:bg-zinc-200'
-                          : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-zinc-200 dark:group-focus-visible:bg-zinc-200'
-                      )}
-                    ></span>
-                    <span
-                      className={twMerge(
-                        'nav-text text-xs font-bold uppercase tracking-widest',
-                        activeSection === sectionId
-                          ? 'text-red-900 dark:text-zinc-200'
-                          : 'text-red-600 group-hover:text-red-900 group-focus-visible:text-red-900 dark:text-slate-500 dark:group-hover:text-zinc-200 dark:group-focus-visible:text-zinc-200'
-                      )}
-                    >
-                      {sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
-      </div>
-      <div className="mt-8 flex justify-start gap-5">
-        {!!socials?.length && (
-          <ul
-            className="flex items-center space-x-5"
-            aria-label="Social media"
-          >
-            {socials.map((social) => (
-              <li
-                key={social.name}
-                className="shrink-0 text-xs"
-              >
+        <nav
+          className="mt-12 hidden lg:block"
+          aria-label="In-page jump links"
+        >
+          <ul className="space-y-1">
+            {sections.map((section) => (
+              <li key={section}>
                 <a
-                  className="block hover:text-red-900 dark:hover:text-zinc-200"
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={`${social.name} (opens in a new tab)`}
-                  title={social.name}
+                  href={`#${section}`}
+                  aria-current={
+                    activeSection === section ? 'location' : undefined
+                  }
+                  className={`group flex w-fit items-center gap-4 py-2.5 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
+                    activeSection === section
+                      ? 'text-accent'
+                      : 'text-muted hover:text-accent'
+                  }`}
                 >
-                  <span className="sr-only">{social.name}</span>
-                  {social.icon}
+                  <span
+                    aria-hidden="true"
+                    className={`h-px bg-current transition-all duration-200 ${
+                      activeSection === section
+                        ? 'w-10'
+                        : 'w-5 group-hover:w-10 group-focus-visible:w-10'
+                    }`}
+                  />
+                  {section}
                 </a>
               </li>
             ))}
           </ul>
-        )}
+        </nav>
+      </div>
+      <div className="mt-7 flex items-center gap-1">
+        <ul
+          className="flex gap-1"
+          aria-label="Social media"
+        >
+          {socials.map((social) => (
+            <li key={social.name}>
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="icon-button"
+                aria-label={`${social.name} (opens in a new tab)`}
+                title={social.name}
+              >
+                {social.icon}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <span
+          className="bg-line mx-3 h-5 w-px"
+          aria-hidden="true"
+        />
         <ThemeToggle />
       </div>
     </header>

@@ -1,13 +1,9 @@
 import { PropsWithChildren } from 'react'
 
-export const Capsule = (props: PropsWithChildren) => {
-  const { children } = props
-
-  return (
-    <li className="mr-1.5 mt-2">
-      <div className="flex items-center rounded-full bg-red-700/10 px-3 py-1 text-xs font-medium leading-5 text-gray-900 dark:bg-fuchsia-400/10 dark:text-fuchsia-400">
-        {children}
-      </div>
-    </li>
-  )
-}
+export const Capsule = ({ children }: PropsWithChildren) => (
+  <li className="mr-1.5 mt-1.5">
+    <span className="border-line/70 bg-accent-soft/40 text-muted inline-flex items-center rounded-md border px-2.5 py-1 font-mono text-[11px] font-normal leading-4">
+      {children}
+    </span>
+  </li>
+)

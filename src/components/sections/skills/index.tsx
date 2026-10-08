@@ -26,10 +26,10 @@ export const Skills = () => {
   return (
     <section
       id="skills"
-      className="scroll-mt-16 lg:scroll-mt-24"
+      className="scroll-mt-24 lg:scroll-mt-20"
       aria-label="Skill Set"
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-100/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0 dark:bg-purple-950/75">
+      <div className="section-heading">
         <Title>Skills</Title>
       </div>
 
@@ -46,10 +46,10 @@ export const Skills = () => {
               type="button"
               aria-pressed={isActive}
               onClick={() => setActiveCategory(category.id)}
-              className={`rounded-full px-3 py-1 text-xs transition-all ${
+              className={`min-h-11 rounded-lg border px-3 py-2 text-sm transition-colors ${
                 isActive
-                  ? 'bg-red-900 font-semibold text-white shadow-sm dark:bg-fuchsia-400 dark:text-purple-950'
-                  : 'bg-red-900/5 font-medium text-slate-700 hover:bg-red-900/10 dark:bg-zinc-800/60 dark:text-slate-300 dark:hover:bg-zinc-800'
+                  ? 'border-accent/20 bg-accent-soft text-accent font-medium'
+                  : 'text-muted hover:border-line hover:bg-accent-soft border-transparent font-medium'
               }`}
             >
               {category.label}

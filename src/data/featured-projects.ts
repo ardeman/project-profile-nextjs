@@ -2,7 +2,11 @@ export const featuredProjects = [
   {
     name: 'project_cobalagi_flutter',
     title: 'Coba Lagi',
-    linkLabel: 'Project website',
+    linkLabel: 'View project',
+    category: 'Playful learning',
+    summary:
+      'A coding adventure for children, with picture blocks and spoken instructions.',
+    technologies: ['Flutter', 'Dart', 'Android'],
     image: '/images/projects/cobalagi.png',
     alt: 'Coba Lagi coding game with a path, character, and visual instruction blocks',
     problem:
@@ -15,7 +19,10 @@ export const featuredProjects = [
   {
     name: 'project-catatsaja-reactrouter',
     title: 'Catat Saja',
-    linkLabel: 'Live demo',
+    linkLabel: 'View project',
+    category: 'Everyday tools',
+    summary: 'Tasks, notes, and personal finances, organized in one place.',
+    technologies: ['React Router', 'TypeScript', 'Firebase'],
     image: '/images/projects/catatsaja.png',
     alt: 'Catat Saja productivity application sign-in screen',
     problem:
@@ -27,7 +34,11 @@ export const featuredProjects = [
   {
     name: 'project-profile-nextjs',
     title: 'Personal portfolio',
-    linkLabel: 'Live demo',
+    linkLabel: 'View project',
+    category: 'Personal website',
+    summary:
+      'A quiet home for selected work, professional experience, and ideas.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     image: '/images/projects/portfolio.png',
     alt: 'Ardeman personal portfolio showing the introduction and selected work',
     problem: 'Make professional experience and selected work easy to explore.',

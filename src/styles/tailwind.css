@@ -3,21 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --pointer: rgb(from theme(colors.amber.800) r g b / 0.15);
+  --canvas: 247 245 242;
+  --surface: 255 255 255;
+  --ink: 42 35 51;
+  --muted: 109 100 119;
+  --line: 226 221 231;
+  --accent: 111 58 187;
+  --accent-soft: 238 230 248;
+  --on-accent: 255 255 255;
+  --pointer: rgba(111, 58, 187, 0.045);
 }
-
-html.light {
-  --pointer: rgb(from theme(colors.amber.800) r g b / 0.15);
-}
-
 html.dark {
-  --pointer: rgb(from theme(colors.purple.500) r g b / 0.15);
+  --canvas: 26 18 37;
+  --surface: 36 26 50;
+  --ink: 241 236 246;
+  --muted: 177 166 189;
+  --line: 68 54 79;
+  --accent: 206 176 255;
+  --accent-soft: 53 36 67;
+  --on-accent: 26 18 37;
+  --pointer: rgba(206, 176, 255, 0.055);
 }
-
 html {
   scroll-behavior: smooth;
 }
 
+@layer components {
+  .section-heading {
+    @apply mb-6 flex items-center gap-4;
+  }
+  .section-heading::after {
+    content: '';
+    @apply bg-line h-px flex-1;
+  }
+  .button-primary {
+    @apply bg-accent text-on-accent inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 hover:opacity-90 active:translate-y-px;
+  }
+  .button-secondary {
+    @apply border-line bg-surface/50 text-ink hover:border-accent/40 hover:bg-accent-soft inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition duration-200 active:translate-y-px;
+  }
+  .text-link {
+    @apply text-accent inline-flex min-h-11 items-center gap-2 text-sm font-medium underline-offset-4 transition-colors hover:underline;
+  }
+  .icon-button {
+    @apply text-muted hover:bg-accent-soft hover:text-accent inline-flex h-11 w-11 items-center justify-center rounded-xl transition-colors;
+  }
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

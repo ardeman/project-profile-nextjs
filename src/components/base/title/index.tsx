@@ -1,11 +1,7 @@
 import { PropsWithChildren } from 'react'
 
-export const Title = (props: PropsWithChildren) => {
-  const { children } = props
-
-  return (
-    <h2 className="text-sm font-bold uppercase tracking-widest text-red-900 lg:sr-only dark:text-zinc-200">
-      {children}
-    </h2>
-  )
-}
+export const Title = ({ children }: PropsWithChildren) => (
+  <h2 className="text-muted shrink-0 font-mono text-xs font-medium uppercase tracking-[0.18em]">
+    {children}
+  </h2>
+)

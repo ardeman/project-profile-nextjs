@@ -6,11 +6,11 @@ export const socials: TSocial[] = [
   {
     name: 'GitHub',
     url: 'https://github.com/ardeman',
-    icon: <FaGithub className="h-6 w-6" />,
+    icon: <FaGithub className="h-5 w-5" />,
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ardeman/',
-    icon: <FaLinkedin className="h-6 w-6" />,
+    icon: <FaLinkedin className="h-5 w-5" />,
   },
 ]

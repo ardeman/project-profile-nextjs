@@ -7,7 +7,7 @@ export const TitleLink = (props: TProps) => {
 
   return (
     <a
-      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-zinc-200 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
+      className="group/link text-ink hover:text-accent inline-flex items-baseline text-base font-medium leading-snug transition-colors"
       href={href}
       target="_blank"
       rel="noreferrer noopener"

@@ -14,7 +14,7 @@ export const Skeleton = (props: PropsWithChildren<TProps>) => {
       {Array.from({ length: lines }).map((_, index) => (
         <span
           key={index}
-          className={`inline-block animate-pulse rounded-full bg-gray-300 dark:bg-slate-700 ${
+          className={`bg-line inline-block animate-pulse rounded-full ${
             index === lines - 1 ? 'w-3/4' : 'w-full'
           } ${index > 0 ? 'mt-2 block' : ''}`}
           style={{

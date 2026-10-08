@@ -11,7 +11,7 @@ const Template = ({ children }: PropsWithChildren) => {
   return (
     <div className="relative">
       <Pointer />
-      <div className="mx-auto min-h-dvh max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <div className="mx-auto min-h-dvh max-w-screen-xl px-6 pb-12 pt-10 md:px-12 md:pt-16 lg:px-20 lg:py-0">
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>{children}</ThemeProvider>
         </QueryClientProvider>
