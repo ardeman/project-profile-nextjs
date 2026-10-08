@@ -1,9 +1,14 @@
 'use client'
 
-import { GoArrowUpRight } from 'react-icons/go'
+import { GoArrowUpRight, GoLocation } from 'react-icons/go'
 
-import { Hover, Skeleton, Title, TitleLink } from '@/components/base'
+import { Capsule, Hover, Skeleton, Title, TitleLink } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
+import {
+  calculateDuration,
+  getPositionSkills,
+  parseDescriptionBullets,
+} from '@/utils'
 
 export const Experience = () => {
   const { positions } = useLinkedinContext()
@@ -20,78 +25,103 @@ export const Experience = () => {
       <div>
         {positions?.length ? (
           <ol className="group/list">
-            {positions?.map(
-              (position, index) =>
-                position['Company Name'] && (
-                  <li
-                    className="mb-12"
-                    key={index}
-                  >
-                    <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <Hover />
-                      <header
-                        className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-red-600 sm:col-span-2 dark:text-slate-500"
-                        aria-label={`${position['Started On']} — ${
-                          position['Finished On'] || 'Present'
-                        }`}
-                      >
-                        <div>{position['Started On']}</div>
-                        <div>{position['Finished On'] || 'Present'}</div>
-                      </header>
-                      <div className="z-10 sm:col-span-6">
-                        <h3 className="font-medium leading-snug text-red-900 dark:text-zinc-200">
-                          <TitleLink
-                            href={`https://www.google.com/search?q=${position['Company Name']}`}
-                            title={`${position.Title} - ${position['Company Name']}`}
-                          />
+            {positions?.map((position, index) => {
+              if (!position['Company Name']) return null
+
+              const isCurrent = !position['Finished On']
+              const duration = calculateDuration(
+                position['Started On'],
+                position['Finished On']
+              )
+              const bullets = parseDescriptionBullets(position.Description)
+              const skills = getPositionSkills(
+                position['Company Name'],
+                position.Description
+              )
+
+              return (
+                <li
+                  className="mb-12"
+                  key={index}
+                >
+                  <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                    <Hover />
+                    <header
+                      className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-red-600 sm:col-span-2 dark:text-slate-500"
+                      aria-label={`${position['Started On']} — ${
+                        position['Finished On'] || 'Present'
+                      }`}
+                    >
+                      <div className="flex flex-col gap-0.5">
+                        <span className="text-slate-900 dark:text-slate-200">
+                          {position['Started On']} —{' '}
+                          {position['Finished On'] || 'Present'}
+                        </span>
+                        {duration && (
+                          <span className="text-[11px] font-normal normal-case text-slate-500 dark:text-slate-400">
+                            {duration}
+                          </span>
+                        )}
+                        {isCurrent && (
+                          <div className="mt-1">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case text-emerald-600 dark:border-emerald-400/20 dark:text-emerald-400">
+                              <span className="relative flex h-1.5 w-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                              </span>
+                              Current
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </header>
+                    <div className="z-10 sm:col-span-6">
+                      <h3 className="font-medium leading-snug text-red-900 dark:text-zinc-200">
+                        <TitleLink
+                          href={`https://www.google.com/search?q=${encodeURIComponent(
+                            position['Company Name']
+                          )}`}
+                          title={`${position.Title} · ${position['Company Name']}`}
+                        />
+                        {position.Location && (
                           <div
-                            className="text-red-600 dark:text-slate-500"
+                            className="mt-1 flex items-center gap-1 text-xs font-normal text-red-600/80 dark:text-slate-400"
                             aria-hidden="true"
                           >
-                            {position.Location}
+                            <GoLocation className="h-3 w-3 shrink-0" />
+                            <span>{position.Location}</span>
                           </div>
-                        </h3>
-                        <p className="mt-2 text-sm leading-normal">
-                          {position.Description?.split(/(?<=\.)\s+(?=-)/)?.map(
-                            (sentence, index) => (
-                              <span key={index}>
-                                {index > 0 && <br />}
-                                {sentence.trim()}
-                              </span>
-                            )
-                          )}
-                        </p>
-                        {/* <ul
-                        className="mt-2 flex flex-wrap"
-                        aria-label="Related links"
-                      >
-                        <li className="mr-4">
-                          <a
-                            className="relative mt-2 inline-flex items-center text-sm font-medium text-red-900 dark:text-zinc-200 hover:text-gray-900 focus-visible:text-gray-900 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
-                            href="https://developer.apple.com/documentation/musickitjs"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            aria-label="MusicKit.js (opens in a new tab)"
+                        )}
+                      </h3>
+                      <ul className="mt-2 space-y-1.5 text-sm leading-normal text-slate-700 dark:text-slate-300">
+                        {bullets.map((bullet, bulletIndex) => (
+                          <li
+                            key={bulletIndex}
+                            className="flex items-start gap-2"
                           >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                              className="mr-1 h-3 w-3"
+                            <span
+                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-red-600 dark:bg-fuchsia-400"
                               aria-hidden="true"
-                            >
-                              <path d="M12.232 4.232a2.5 2.5 0 013.536 3.536l-1.225 1.224a.75.75 0 001.061 1.06l1.224-1.224a4 4 0 00-5.656-5.656l-3 3a4 4 0 00.225 5.865.75.75 0 00.977-1.138 2.5 2.5 0 01-.142-3.667l3-3z"></path>
-                              <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z"></path>
-                            </svg>
-                            <span>MusicKit.js</span>
-                          </a>
-                        </li>
-                      </ul> */}
-                      </div>
+                            />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {skills.length > 0 && (
+                        <ul
+                          className="mt-3 flex flex-wrap"
+                          aria-label="Technologies used"
+                        >
+                          {skills.map((skill) => (
+                            <Capsule key={skill}>{skill}</Capsule>
+                          ))}
+                        </ul>
+                      )}
                     </div>
-                  </li>
-                )
-            )}
+                  </div>
+                </li>
+              )
+            })}
           </ol>
         ) : (
           <Skeleton lines={10} />
