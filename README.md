@@ -65,33 +65,33 @@ Feel free to fork this repository. If you do, please give proper credit by linki
 
 - **Install Husky Git Hooks**:
 
-   ```bash
-   pnpm prepare
-   ```
+  ```bash
+  pnpm prepare
+  ```
 
 - **Lint the code**:
 
-   ```bash
-   pnpm lint
-   ```
+  ```bash
+  pnpm lint
+  ```
 
 - **Format the code**:
 
-   ```bash
-   pnpm format
-   ```
+  ```bash
+  pnpm format
+  ```
 
 - **Build for production**:
 
-   ```bash
-   pnpm build
-   ```
+  ```bash
+  pnpm build
+  ```
 
 - **Start the production server**:
 
-   ```bash
-   pnpm start
-   ```
+  ```bash
+  pnpm start
+  ```
 
 ### Using LinkedIn Data
 
@@ -99,19 +99,44 @@ This project uses LinkedIn data, which should be placed in the `public/linkedin/
 
 ## 🎨 Color Palette
 
-| Color Name     | Hex Code                                                           |
-| -------------- | ------------------------------------------------------------------ |
-| Gray 900       | ![#111827](https://via.placeholder.com/10/111827?text=+) `#111827` |
-| Red 600        | ![#dc2626](https://via.placeholder.com/10/dc2626?text=+) `#dc2626` |
-| Red 700        | ![#b91c1c](https://via.placeholder.com/10/b91c1c?text=+) `#b91c1c` |
-| Red 900        | ![#7f1d1d](https://via.placeholder.com/10/7f1d1d?text=+) `#7f1d1d` |
-| Sky 400        | ![#38bdf8](https://via.placeholder.com/10/38bdf8?text=+) `#38bdf8` |
-| Sky 900        | ![#0c4a6e](https://via.placeholder.com/10/0c4a6e?text=+) `#0c4a6e` |
-| Slate 100      | ![#f1f5f9](https://via.placeholder.com/10/f1f5f9?text=+) `#f1f5f9` |
-| Slate 200      | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) `#e2e8f0` |
-| Slate 400      | ![#94a3b8](https://via.placeholder.com/10/94a3b8?text=+) `#94a3b8` |
-| Slate 500      | ![#64748b](https://via.placeholder.com/10/64748b?text=+) `#64748b` |
-| Slate 600      | ![#475569](https://via.placeholder.com/10/475569?text=+) `#475569` |
-| Slate 900      | ![#0f172a](https://via.placeholder.com/10/0f172a?text=+) `#0f172a` |
-| Stone 900      | ![#1c1917](https://via.placeholder.com/10/1c1917?text=+) `#1c1917` |
-| White          | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) `#ffffff` |
+| Color Name | Hex Code                                                           |
+| ---------- | ------------------------------------------------------------------ |
+| Gray 900   | ![#111827](https://via.placeholder.com/10/111827?text=+) `#111827` |
+| Red 600    | ![#dc2626](https://via.placeholder.com/10/dc2626?text=+) `#dc2626` |
+| Red 700    | ![#b91c1c](https://via.placeholder.com/10/b91c1c?text=+) `#b91c1c` |
+| Red 900    | ![#7f1d1d](https://via.placeholder.com/10/7f1d1d?text=+) `#7f1d1d` |
+| Sky 400    | ![#38bdf8](https://via.placeholder.com/10/38bdf8?text=+) `#38bdf8` |
+| Sky 900    | ![#0c4a6e](https://via.placeholder.com/10/0c4a6e?text=+) `#0c4a6e` |
+| Slate 100  | ![#f1f5f9](https://via.placeholder.com/10/f1f5f9?text=+) `#f1f5f9` |
+| Slate 200  | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) `#e2e8f0` |
+| Slate 400  | ![#94a3b8](https://via.placeholder.com/10/94a3b8?text=+) `#94a3b8` |
+| Slate 500  | ![#64748b](https://via.placeholder.com/10/64748b?text=+) `#64748b` |
+| Slate 600  | ![#475569](https://via.placeholder.com/10/475569?text=+) `#475569` |
+| Slate 900  | ![#0f172a](https://via.placeholder.com/10/0f172a?text=+) `#0f172a` |
+| Stone 900  | ![#1c1917](https://via.placeholder.com/10/1c1917?text=+) `#1c1917` |
+| White      | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) `#ffffff` |
+
+## Portfolio content
+
+Profile, summary, experience, and skills are parsed from `public/linkedin/*.csv`
+when building the static site. Edit these files and rebuild to update the profile.
+Invalid CSV data fails the build rather than leaving visitors with a loading screen.
+
+The homepage selection and case-study copy live in
+`src/data/featured-projects.ts`. Keep claims grounded in the actual project;
+add measured results only when available. Screenshots live in
+`public/images/projects/` and should be refreshed when their interfaces change.
+
+GitHub metadata is saved in `src/data/projects.json`, then refreshed in the browser.
+The saved projects remain available when GitHub is unavailable. To refresh the
+snapshot before a release, run:
+
+```shell
+pnpm refresh:projects
+pnpm build
+```
+
+The contact button currently links to LinkedIn. Update it in the header if you
+want to use a public email address instead. The résumé link still uses the existing
+`public/documents/resume-2025.pdf`; replace the PDF and update both résumé links
+when a newer version is available.

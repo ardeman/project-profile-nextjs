@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Skeleton, ThemeToggle } from '@/components/base'
+import { ThemeToggle } from '@/components/base'
 import { metadata } from '@/constants'
 import { useLinkedinContext } from '@/contexts'
 
@@ -12,38 +12,34 @@ import { TProps } from './type'
 
 export const Header = (props: TProps) => {
   const { setActiveSection, activeSection } = props
-  const [sections, setSections] = useState<string[]>([])
+  const sections = ['about', 'skills', 'experience', 'projects']
   const { profileData, profileSummary } = useLinkedinContext()
 
   useEffect(() => {
-    const sectionElements = document.querySelectorAll('section[id]')
-    // eslint-disable-next-line unicorn/prefer-spread
-    const sectionIds = Array.from(sectionElements).map(
-      (section) => section.getAttribute('id') || ''
-    )
-    setSections(sectionIds)
-  }, [])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      for (const sectionId of sections) {
-        const section = document.querySelector(`#${sectionId}`)
-        if (section) {
-          const { top, bottom } = section.getBoundingClientRect()
-          const isActive = top <= 96 && bottom >= 0
-          if (isActive) {
-            setActiveSection(sectionId)
-          }
-        }
-      }
+    let frame = 0
+    const update = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        // eslint-disable-next-line unicorn/prefer-spread
+        const elements = Array.from(
+          document.querySelectorAll<HTMLElement>('section[id]')
+        )
+        const active =
+          elements.findLast(
+            (section) => section.getBoundingClientRect().top <= 160
+          ) || elements[0]
+        if (active) setActiveSection(active.id)
+      })
     }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Call it once to initialize
-
-    return () => window.removeEventListener('scroll', handleScroll)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sections])
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [setActiveSection])
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
@@ -57,26 +53,49 @@ export const Header = (props: TProps) => {
           </a>
         </h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight text-red-900 sm:text-xl dark:text-zinc-200">
-          <Skeleton>{profileData?.['Headline']}</Skeleton>
+          {profileData.Headline}
         </h2>
         <p className="mt-4 max-w-xs text-sm leading-normal">
-          <Skeleton lines={2}>{profileSummary?.['Profile Summary']}</Skeleton>
+          {profileSummary['Profile Summary']}
         </p>
-        {!!sections?.length && (
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href="https://www.linkedin.com/in/ardeman/"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Contact me on LinkedIn (opens in a new tab)"
+            className="rounded-lg bg-red-900 px-4 py-2 text-sm font-semibold text-white dark:bg-fuchsia-300 dark:text-purple-950"
+          >
+            Contact me
+          </a>
+          <a
+            href="/documents/resume-2025.pdf"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="View résumé (opens in a new tab)"
+            className="rounded-lg border border-red-900/30 px-4 py-2 text-sm font-semibold text-red-900 dark:border-slate-400/50 dark:text-zinc-200"
+          >
+            View résumé
+          </a>
+        </div>
+        {sections.length > 0 && (
           <nav
-            className="nav hidden lg:block"
+            className="nav mt-8 lg:mt-16"
             aria-label="In-page jump links"
           >
-            <ul className="mt-16 w-max">
+            <ul className="flex flex-wrap gap-x-5 lg:block lg:w-max">
               {sections.map((sectionId) => (
                 <li key={sectionId}>
                   <a
                     className="group flex items-center py-3"
                     href={`#${sectionId}`}
+                    aria-current={
+                      activeSection === sectionId ? 'location' : undefined
+                    }
                   >
                     <span
                       className={twMerge(
-                        'nav-indicator mr-4 h-px w-8 bg-red-600 transition-all motion-reduce:transition-none dark:bg-slate-600',
+                        'nav-indicator mr-4 hidden h-px w-8 bg-red-600 transition-all motion-reduce:transition-none lg:block dark:bg-slate-600',
                         activeSection === sectionId
                           ? 'w-16 bg-red-900 dark:bg-zinc-200'
                           : 'group-hover:w-16 group-hover:bg-red-900 group-focus-visible:w-16 group-focus-visible:bg-red-900 dark:group-hover:bg-zinc-200 dark:group-focus-visible:bg-zinc-200'

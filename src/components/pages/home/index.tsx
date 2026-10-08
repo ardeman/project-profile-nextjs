@@ -12,7 +12,7 @@ import {
 } from '@/components/sections'
 
 export const HomePage = () => {
-  const [activeSection, setActiveSection] = useState<string>('')
+  const [activeSection, setActiveSection] = useState<string>('about')
 
   return (
     <div className="lg:flex lg:justify-between lg:gap-4">
@@ -23,6 +23,7 @@ export const HomePage = () => {
 
       <main
         id="content"
+        tabIndex={-1}
         className="space-y-16 pt-24 md:space-y-24 lg:w-1/2 lg:space-y-36 lg:py-24"
       >
         <About />

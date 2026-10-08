@@ -48,7 +48,7 @@ export const Footer = () => {
           className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
           target="_blank"
           rel="noreferrer noopener"
-          aria-label="Vercel (opens in a new tab)"
+          aria-label="GitHub Actions (opens in a new tab)"
         >
           GitHub Actions
         </a>{' '}
@@ -58,7 +58,7 @@ export const Footer = () => {
           className="font-medium text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
           target="_blank"
           rel="noreferrer noopener"
-          aria-label="Vercel (opens in a new tab)"
+          aria-label="GitHub Pages (opens in a new tab)"
         >
           GitHub Pages
         </a>

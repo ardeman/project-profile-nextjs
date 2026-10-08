@@ -9,12 +9,25 @@ import { useGetProjects } from '@/hooks'
 import { TGithubRepo } from '@/types'
 
 export const ArchivePage = () => {
-  const { data: projects, isLoading } = useGetProjects()
-  const projectData = projects?.data as TGithubRepo[]
-  const filteredProjects = projectData?.filter((project) => !!project.license)
+  const {
+    data: projects,
+    isLoading,
+    isError,
+    isFetching,
+    refetch,
+  } = useGetProjects()
+  const projectData = projects as TGithubRepo[]
+  const filteredProjects = projectData?.filter(
+    (project) =>
+      !project.fork && !project.archived && project.name !== 'ardeman'
+  )
 
   return (
-    <main className="lg:py-24">
+    <main
+      id="content"
+      tabIndex={-1}
+      className="lg:py-24"
+    >
       <a
         className="oldenburg-regular group mb-2 inline-flex items-center font-semibold leading-tight text-gray-900 dark:text-fuchsia-400"
         href="/"
@@ -25,10 +38,23 @@ export const ArchivePage = () => {
       <h1 className="text-4xl font-bold tracking-tight text-red-900 sm:text-5xl dark:text-zinc-200">
         All Projects
       </h1>
-      <table
-        id="content"
-        className="mt-12 w-full border-collapse text-left"
-      >
+      {isError && (
+        <p
+          role="status"
+          className="mt-6 text-sm"
+        >
+          Live project updates are unavailable. Showing saved projects.{' '}
+          <button
+            type="button"
+            disabled={isFetching}
+            onClick={() => void refetch()}
+            className="font-semibold underline"
+          >
+            {isFetching ? 'Retrying…' : 'Retry'}
+          </button>
+        </p>
+      )}
+      <table className="mt-12 w-full border-collapse text-left">
         <thead className="sticky top-0 z-10 border-b border-red-900/10 bg-slate-100/75 px-6 py-5 uppercase backdrop-blur dark:border-zinc-200/10 dark:bg-purple-950/75">
           <tr>
             <th className="py-4 pr-8 text-sm font-semibold text-red-900 dark:text-zinc-200">
@@ -110,13 +136,13 @@ export const ArchivePage = () => {
                       <li className="mb-1 flex items-center">
                         <a
                           className="group/link inline-flex items-baseline text-sm font-medium leading-tight text-red-900 hover:text-gray-900 focus-visible:text-gray-900 dark:text-slate-400 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400"
-                          href={project.homepage}
+                          href={project.homepage || undefined}
                           target="_blank"
                           rel="noreferrer noopener"
                           aria-label={`Homepage ${project.name} (opens in a new tab)`}
                         >
                           <span>
-                            {project.homepage}{' '}
+                            {project.homepage || undefined}{' '}
                             <GoArrowUpRight className="ml-0.5 inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
                           </span>
                         </a>

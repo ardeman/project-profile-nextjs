@@ -2,7 +2,7 @@
 
 import { GoArrowUpRight, GoLocation } from 'react-icons/go'
 
-import { Capsule, Hover, Skeleton, Title, TitleLink } from '@/components/base'
+import { Capsule, Hover, Title, TitleLink } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 import {
   calculateDuration,
@@ -66,7 +66,7 @@ export const Experience = () => {
                           <div className="mt-1">
                             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case text-emerald-600 dark:border-emerald-400/20 dark:text-emerald-400">
                               <span className="relative flex h-1.5 w-1.5">
-                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:animate-none"></span>
                                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                               </span>
                               Current
@@ -84,29 +84,38 @@ export const Experience = () => {
                           title={`${position.Title} · ${position['Company Name']}`}
                         />
                         {position.Location && (
-                          <div
-                            className="mt-1 flex items-center gap-1 text-xs font-normal text-red-600/80 dark:text-slate-400"
-                            aria-hidden="true"
-                          >
-                            <GoLocation className="h-3 w-3 shrink-0" />
+                          <div className="mt-1 flex items-center gap-1 text-xs font-normal text-red-600/80 dark:text-slate-400">
+                            <GoLocation
+                              aria-hidden="true"
+                              className="h-3 w-3 shrink-0"
+                            />
                             <span>{position.Location}</span>
                           </div>
                         )}
                       </h3>
                       <ul className="mt-2 space-y-1.5 text-sm leading-normal text-slate-700 dark:text-slate-300">
-                        {bullets.map((bullet, bulletIndex) => (
+                        {bullets.slice(0, 2).map((bullet, bulletIndex) => (
                           <li
                             key={bulletIndex}
                             className="flex items-start gap-2"
                           >
-                            <span
-                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-red-600 dark:bg-fuchsia-400"
-                              aria-hidden="true"
-                            />
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-red-600 dark:bg-fuchsia-400" />
                             <span>{bullet}</span>
                           </li>
                         ))}
                       </ul>
+                      {bullets.length > 2 && (
+                        <details className="mt-3 text-sm">
+                          <summary className="cursor-pointer font-medium text-red-900 dark:text-zinc-200">
+                            More about this role
+                          </summary>
+                          <ul className="mt-2 list-disc space-y-2 pl-4">
+                            {bullets.slice(2).map((bullet) => (
+                              <li key={bullet}>{bullet}</li>
+                            ))}
+                          </ul>
+                        </details>
+                      )}
                       {skills.length > 0 && (
                         <ul
                           className="mt-3 flex flex-wrap"
@@ -124,7 +133,7 @@ export const Experience = () => {
             })}
           </ol>
         ) : (
-          <Skeleton lines={10} />
+          <p>No work experience has been added yet.</p>
         )}
         <div className="mt-12">
           <a

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Capsule, Skeleton, Title } from '@/components/base'
+import { Capsule, Title } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 import { getSkillCategories, getSkillIcon, SkillCategory } from '@/utils'
 
@@ -35,7 +35,7 @@ export const Skills = () => {
 
       <div
         className="mb-3 flex flex-wrap gap-2"
-        role="tablist"
+        role="group"
         aria-label="Skill categories"
       >
         {CATEGORIES.map((category) => {
@@ -44,8 +44,7 @@ export const Skills = () => {
             <button
               key={category.id}
               type="button"
-              role="tab"
-              aria-selected={isActive}
+              aria-pressed={isActive}
               onClick={() => setActiveCategory(category.id)}
               className={`rounded-full px-3 py-1 text-xs transition-all ${
                 isActive
@@ -77,7 +76,12 @@ export const Skills = () => {
           })}
         </ul>
       ) : (
-        <Skeleton lines={2} />
+        <p
+          role="status"
+          className="text-sm"
+        >
+          No skills in this category yet.
+        </p>
       )}
     </section>
   )
