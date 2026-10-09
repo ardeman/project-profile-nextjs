@@ -41,18 +41,23 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
   const { profileData, profileSummary } = useLinkedinContext()
   useEffect(() => {
     let frame = 0
+    const elements = sections
+      .map((id) => document.querySelector<HTMLElement>(`#${id}`))
+      .filter((element): element is HTMLElement => element !== null)
     const update = () => {
-      cancelAnimationFrame(frame)
+      if (frame) return
       frame = requestAnimationFrame(() => {
-        // eslint-disable-next-line unicorn/prefer-spread
-        const elements = Array.from(
-          document.querySelectorAll<HTMLElement>('section[id]')
-        )
+        frame = 0
         const offset = window.innerWidth >= 1024 ? 160 : 110
+        const atBottom =
+          Math.ceil(window.scrollY + window.innerHeight) >=
+          document.documentElement.scrollHeight
         const active =
-          elements.findLast(
-            (section) => section.getBoundingClientRect().top <= offset
-          ) || elements[0]
+          (atBottom
+            ? elements.at(-1)
+            : elements.findLast(
+                (section) => section.getBoundingClientRect().top <= offset
+              )) || elements[0]
         if (active) setActiveSection(active.id)
       })
     }

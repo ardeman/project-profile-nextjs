@@ -77,7 +77,7 @@ export const Projects = () => {
                         <dd>{feature.contribution}</dd>
                       </div>
                       <div>
-                        <dt className="text-ink font-medium">The experience</dt>
+                        <dt className="text-ink font-medium">How it works</dt>
                         <dd>{feature.result}</dd>
                       </div>
                     </dl>
@@ -132,7 +132,7 @@ export const Projects = () => {
               onClick={() => void refetch()}
               className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
             >
-              {isFetching ? 'Retrying…' : 'Refresh'}
+              {isFetching ? 'Refreshing…' : 'Refresh'}
             </button>
           </p>
         )}

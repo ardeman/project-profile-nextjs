@@ -3,8 +3,13 @@ import path from 'node:path'
 
 import Papa from 'papaparse'
 
-import { LinkedinData } from '@/contexts'
-import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
+import {
+  LinkedinData,
+  TPositions,
+  TProfile,
+  TProfileSummary,
+  TSkills,
+} from '@/types'
 
 const readRows = async <T>(filename: string): Promise<T[]> => {
   const csv = await readFile(
@@ -15,6 +20,7 @@ const readRows = async <T>(filename: string): Promise<T[]> => {
     header: true,
     delimiter: ',',
     skipEmptyLines: true,
+    transform: (value) => value.trim(),
   })
   if (result.errors.length > 0)
     throw new Error(`Invalid profile data: ${filename}`)
@@ -32,9 +38,22 @@ export const getProfile = async (): Promise<LinkedinData> => {
     throw new Error('Profile headline and summary are required')
   }
   return {
-    profileData: profiles[0],
-    profileSummary: summaries[0],
-    positions: positions.filter((position) => position['Company Name']),
-    skills: skills.filter((skill) => skill.Name),
+    profileData: {
+      'First Name': profiles[0]['First Name'],
+      Headline: profiles[0].Headline,
+      Summary: profiles[0].Summary,
+    },
+    profileSummary: { 'Profile Summary': summaries[0]['Profile Summary'] },
+    positions: positions
+      .filter((position) => position['Company Name'])
+      .map((position) => ({
+        'Company Name': position['Company Name'],
+        Title: position.Title,
+        Description: position.Description,
+        Location: position.Location,
+        'Started On': position['Started On'],
+        'Finished On': position['Finished On'],
+      })),
+    skills: skills.filter((skill) => skill.Name).map(({ Name }) => ({ Name })),
   }
 }

@@ -15,13 +15,7 @@ import {
 
 export type SkillCategory = 'all' | 'frontend' | 'languages' | 'backend'
 
-export interface SkillItem {
-  name: string
-  category: SkillCategory[]
-  icon?: ReactNode
-}
-
-export const SKILL_METADATA: Record<
+const SKILL_METADATA: Record<
   string,
   { categories: SkillCategory[]; icon: ReactNode }
 > = {

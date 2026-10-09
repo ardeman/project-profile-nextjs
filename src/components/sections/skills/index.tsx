@@ -7,10 +7,10 @@ import { useLinkedinContext } from '@/contexts'
 import { getSkillCategories, getSkillIcon, SkillCategory } from '@/utils'
 
 const CATEGORIES: { id: SkillCategory; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'frontend', label: 'Frontend' },
+  { id: 'all', label: 'All skills' },
+  { id: 'frontend', label: 'Front-end' },
   { id: 'languages', label: 'Languages' },
-  { id: 'backend', label: 'Backend & DB' },
+  { id: 'backend', label: 'Back-end & databases' },
 ]
 
 export const Skills = () => {
@@ -27,7 +27,7 @@ export const Skills = () => {
     <section
       id="skills"
       className="scroll-mt-24 lg:scroll-mt-20"
-      aria-label="Skill Set"
+      aria-label="Skills"
     >
       <div className="section-heading">
         <Title>Skills</Title>

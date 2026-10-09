@@ -13,7 +13,8 @@ repositories. Both pages support light, dark, and system themes.
 ## Getting started
 
 Use Node.js 20 (`.nvmrc`) and pnpm 8.10.5 (`package.json`). The deployment workflow
-uses the same versions. No environment variables or GitHub token are required.
+uses the same versions. No environment variables or GitHub token are required
+for the website or manual LinkedIn synchronization workflow.
 
 ```sh
 git clone https://github.com/ardeman/project-profile-nextjs.git
@@ -44,6 +45,8 @@ format staged files; it does not run a production build.
 | Build the static website into `out/`  | `pnpm build`                        |
 | Preview the static export             | `pnpm start`                        |
 | Refresh the saved GitHub project data | `pnpm refresh:projects`             |
+| Prepare LinkedIn profile text         | `pnpm export:linkedin`              |
+| Test LinkedIn draft generation        | `pnpm test:linkedin`                |
 | Enable local Git hooks                | `pnpm prepare`                      |
 
 `pnpm start` serves `out/` with `serve`; it requires a completed build and can
@@ -62,8 +65,9 @@ pnpm build
 ```
 
 All three must pass. The build parses the profile CSV files and verifies that
-both routes can be exported. The repository does not currently contain a unit
-or browser test suite; these commands do not replace checking the UI.
+both routes can be exported. Run `pnpm test:linkedin` when changing the LinkedIn
+generator or its workflow. These Node tests cover draft generation; the application
+has no automated browser suite, so these commands do not replace checking the UI.
 
 For documentation-only changes, check Markdown formatting and local links. A
 build is also needed if you changed a documented command or its implementation.
@@ -107,18 +111,18 @@ src/
   contexts/             Build-provided profile data and client theme state
   lib/                  Server-side profile CSV parsing
   data/                 Curated project copy and saved GitHub metadata
-  apis/                 Browser GitHub requests and legacy CSV request helper
-  hooks/                Project query and legacy CSV query hooks
+  apis/                 Bounded, cancellable browser GitHub requests
+  hooks/                Project query with saved-data fallback
   constants/            Page metadata, viewport colors, GitHub username
   styles/               Theme tokens, shared styles, and local font imports
   types/                Shared profile and project types
-  utils/                Experience dates, skill categories/icons, language colors
+  utils/                Experience dates and skill categories/icons
 public/
   linkedin/             Public profile content in CSV files
   documents/            Résumé PDF
   images/               Project screenshots, sharing card, and favicons
-scripts/                GitHub snapshot refresh script
-.github/workflows/      GitHub Pages build and deployment
+scripts/                GitHub snapshot refresh and LinkedIn draft generator/tests
+.github/workflows/      GitHub Pages deployment and LinkedIn draft preparation
 .husky/                 Pre-commit hook
 ```
 
@@ -151,6 +155,53 @@ in the header and page metadata. If changing identity, update those together.
 Everything under `public/`, including CSV files and the résumé, is publicly
 accessible after deployment. Keep only information intended for publication.
 
+### LinkedIn update drafts
+
+The repository is the source for curated profile wording. The
+[LinkedIn workflow](.github/workflows/linkedin-update.yml) prepares a fresh draft
+when `public/linkedin/*.csv` changes are pushed to `main`. Changes to the generator,
+its tests, workflow, or package files also trigger it. Unrelated website edits do
+not trigger a draft. It can also run manually from **Actions → Prepare LinkedIn
+profile update → Run workflow** after the workflow is pushed to GitHub.
+
+Open a successful run and download the `linkedin-profile-update` artifact from
+the run summary. Extract the files and follow `manual-sync-checklist.txt` while
+editing your LinkedIn profile. Each artifact belongs to its run's source commit
+and is retained for 30 days; use the latest successful run.
+
+| File                        | Use                                                   |
+| --------------------------- | ----------------------------------------------------- |
+| `linkedin-profile.txt`      | Review the full profile draft                         |
+| `headline.txt`              | Copy the headline without extra labels                |
+| `about.txt`                 | Copy About with paragraph breaks                      |
+| `experience.txt`            | Match roles and copy their details and descriptions   |
+| `skills.txt`                | Compare and add skills individually                   |
+| `introduction.txt`          | Optional portfolio introduction                       |
+| `manual-sync-checklist.txt` | Track each section, role, completion date, and commit |
+
+Update matching experience entries rather than creating duplicates. Verify saved
+changes on your profile and record completion in the checklist. The generator
+does not read LinkedIn, so review any extra roles or skills manually before
+removing them. Checklists start unchecked on every export; completing one does
+not notify GitHub. Keep your completed copy locally.
+
+To generate the same draft locally:
+
+```sh
+pnpm export:linkedin
+```
+
+The output folder is `build/linkedin-update/`, ignored by Git and
+kept outside the public website. CSV errors fail generation before replacing an
+existing draft. Literal `\n` About separators become paragraphs, experience
+descriptions become separate bullets, and blank end dates become `Present`.
+
+This prepares text; it does not publish profile edits to LinkedIn. LinkedIn's
+[profile-edit APIs require approved access](https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-edit-api/certifications).
+The workflow needs no LinkedIn token, password, or browser session. Profile data
+is already public in this repository; drafts include only the selected fields,
+not extra CSV columns such as addresses.
+
 ### Selected projects and the archive
 
 - Edit `src/data/featured-projects.ts` to choose homepage projects and update their
@@ -162,8 +213,9 @@ accessible after deployment. Keep only information intended for publication.
   repository. Featured projects use their configured order.
 
 GitHub metadata is committed in `src/data/projects.json`. The browser renders
-that snapshot first, then requests current public metadata with pagination,
-a timeout, and one retry. A failed refresh keeps the saved data. The featured
+that snapshot first, then requests current public metadata with at most ten
+pages, a ten-second overall timeout, cancellation, and one retry. A failed refresh
+keeps the saved data. The featured
 list also falls back to its saved entry if a live result omits that repository.
 
 To refresh the snapshot before a release:
@@ -173,8 +225,9 @@ pnpm refresh:projects
 pnpm build
 ```
 
-The refresh script requires network access and leaves the saved file unchanged
-if a request fails. Review the resulting diff before committing. When changing
+The refresh script requires network access, limits requests to ten pages and
+fifteen seconds overall, and leaves the saved file unchanged if a request fails.
+Review the resulting diff before committing. When changing
 the GitHub account, update both `src/constants/github.ts` and the username in
 `scripts/refresh-projects.mjs`, then regenerate the snapshot.
 

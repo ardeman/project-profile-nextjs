@@ -73,12 +73,11 @@ export const calculateDuration = (
 export const parseDescriptionBullets = (description?: string): string[] => {
   if (!description) return []
 
-  const bullets = description
+  return description
+    .replaceAll(String.raw`\n`, '\n')
     .split(/(?:^|\s+)-\s+/)
     .map((item) => item.trim())
     .filter(Boolean)
-
-  return bullets.length > 0 ? bullets : [description.trim()]
 }
 
 /**

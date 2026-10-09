@@ -1,10 +1,11 @@
 import { writeFile } from 'node:fs/promises'
 
 const projects = []
-for (let page = 1; ; page++) {
+const signal = AbortSignal.timeout(15_000)
+for (let page = 1; page <= 10; page++) {
   const response = await fetch(
     `https://api.github.com/users/ardeman/repos?per_page=100&sort=updated&page=${page}`,
-    { signal: AbortSignal.timeout(15000) }
+    { signal }
   )
   if (!response.ok)
     throw new Error(
@@ -15,6 +16,10 @@ for (let page = 1; ; page++) {
     throw new TypeError('Invalid GitHub response')
   projects.push(...repositories)
   if (repositories.length < 100) break
+  if (page === 10)
+    throw new Error(
+      'GitHub pagination limit exceeded; saved snapshot was not changed'
+    )
 }
 const fields = [
   'id',

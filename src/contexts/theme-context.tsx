@@ -1,12 +1,11 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 type Theme = 'light' | 'dark' | 'system'
 type ThemeContextType = {
   theme: Theme
   setTheme: (theme: Theme) => void
-  resolvedTheme: 'light' | 'dark'
 }
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 const isTheme = (value: string | null): value is Theme =>
@@ -14,7 +13,6 @@ const isTheme = (value: string | null): value is Theme =>
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('system')
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     try {
@@ -34,7 +32,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       document.documentElement.classList.toggle('dark', resolved === 'dark')
       document.documentElement.classList.toggle('light', resolved === 'light')
       document.documentElement.style.colorScheme = resolved
-      setResolvedTheme(resolved)
     }
     apply()
     try {
@@ -42,14 +39,13 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     } catch {
       /* Theme still works without persistence. */
     }
-    media.addEventListener('change', apply)
-    return () => media.removeEventListener('change', apply)
+    if (theme === 'system') {
+      media.addEventListener('change', apply)
+      return () => media.removeEventListener('change', apply)
+    }
   }, [theme, mounted])
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  const value = useMemo(() => ({ theme, setTheme }), [theme])
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 export const useTheme = () => {
   const context = useContext(ThemeContext)

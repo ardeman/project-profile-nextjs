@@ -164,10 +164,10 @@ export const Experience = () => {
             href="/documents/resume-2025.pdf"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="View Full Résumé (opens in a new tab)"
+            aria-label="View résumé (opens in a new tab)"
           >
             <span className="inline-block">
-              View Full Résumé{' '}
+              View résumé{' '}
               <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
             </span>
           </a>

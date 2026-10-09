@@ -33,8 +33,8 @@ This file owns conventions and architectural constraints.
   project state belongs in the TanStack Query hook. Do not duplicate fetched
   profile state or add another state library for a local interaction.
 - Keep server filesystem access in `src/lib/` and server routes. Profile data
-  is read at build time and passed into the client provider. Existing CSV query
-  hooks are legacy helpers, not the homepage content pipeline.
+  is read at build time and passed into the client provider. Serialize only the
+  profile fields the UI uses; do not restore browser CSV-fetching hooks.
 - Browser APIs belong in effects or event handlers. Initial rendering must work
   during static export; avoid reading localStorage, matchMedia, or window at
   module scope or during the initial render.
@@ -78,6 +78,10 @@ This file owns conventions and architectural constraints.
   the task calls for changing them.
 - Never commit secrets or private profile data. Files in `public/` are published
   directly; `.env` values and GitHub tokens do not belong in browser code.
+- The LinkedIn workflow prepares reviewable text only; see
+  [README → LinkedIn update drafts](README.md#linkedin-update-drafts). Keep its
+  output outside `public/`. Do not introduce account credentials or browser
+  automation as a substitute for approved profile-edit API access.
 - Do not hand-edit generated output in `.next/`, `out/`, `node_modules/`,
   `next-env.d.ts`, or TypeScript build-info files. Use an isolated checkout if a
   development server and validation build would share generated output.
@@ -106,3 +110,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Share semantic CSS theme tokens across both themes and bundle fonts locally for consistent styling without a font service.
 - 2026-10-09: Apply the theme before painting, then manage it through React context so saved/system preferences work without an initial background flash.
 - 2026-10-09: Use native disclosures for project details and earlier experience so those interactions also work without JavaScript.
+- 2026-10-09: Generate LinkedIn profile drafts on curated CSV changes so wording can be reused without requiring restricted profile-edit API access.

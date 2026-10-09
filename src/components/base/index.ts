@@ -1,7 +1,5 @@
 export * from './capsule'
-export * from './hover'
 export * from './pointer'
 export * from './title'
 export * from './title-link'
-export * from './skeleton'
 export * from './theme-toggle'

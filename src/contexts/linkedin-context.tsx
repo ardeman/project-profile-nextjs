@@ -2,14 +2,7 @@
 
 import { createContext, useContext } from 'react'
 
-import { TPositions, TProfile, TProfileSummary, TSkills } from '@/types'
-
-export type LinkedinData = {
-  profileData: TProfile
-  profileSummary: TProfileSummary
-  positions: TPositions[]
-  skills: TSkills[]
-}
+import { LinkedinData } from '@/types'
 
 const LinkedinContext = createContext<LinkedinData | undefined>(undefined)
 

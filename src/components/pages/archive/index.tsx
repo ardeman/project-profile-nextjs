@@ -36,7 +36,7 @@ export const ArchivePage = () => {
         Project archive
       </h1>
       <p className="text-muted mt-4 max-w-xl text-base leading-7">
-        Applications, experiments, and useful things I have built along the way.
+        Web applications, coding experiments, and tools I have built.
       </p>
       <table className="mt-10 w-full border-collapse text-left">
         <caption className="sr-only">
@@ -172,7 +172,7 @@ export const ArchivePage = () => {
             onClick={() => void refetch()}
             className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
           >
-            {isFetching ? 'Retrying…' : 'Refresh'}
+            {isFetching ? 'Refreshing…' : 'Refresh'}
           </button>
         </p>
       )}

@@ -9,17 +9,23 @@ export const Pointer = () => {
       '(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
     )
     let frame = 0
+    let x = 0
+    let y = 0
     const move = (event: PointerEvent) => {
       if (!media.matches || event.pointerType !== 'mouse') return
-      cancelAnimationFrame(frame)
+      x = event.clientX
+      y = event.clientY
+      if (frame) return
       frame = requestAnimationFrame(() => {
+        frame = 0
         if (!pointer.current) return
-        pointer.current.style.background = `radial-gradient(420px at ${event.clientX}px ${event.clientY}px, var(--pointer), transparent 80%)`
+        pointer.current.style.background = `radial-gradient(420px at ${x}px ${y}px, var(--pointer), transparent 80%)`
         pointer.current.style.opacity = '1'
       })
     }
     const hide = () => {
       cancelAnimationFrame(frame)
+      frame = 0
       if (pointer.current) pointer.current.style.opacity = '0'
     }
     window.addEventListener('pointermove', move, { passive: true })

@@ -1,0 +1,63 @@
+name: Prepare LinkedIn profile update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/linkedin/*.csv'
+      - 'scripts/generate-linkedin-update*.mjs'
+      - '.github/workflows/linkedin-update.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8.10.5
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Test draft generation
+        run: pnpm test:linkedin
+      - name: Generate draft
+        run: pnpm export:linkedin
+      - name: Upload LinkedIn draft
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-profile-update
+          path: build/linkedin-update/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Explain next steps
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## LinkedIn profile draft ready
+
+          Open `manual-sync-checklist.txt` from the downloadable artifact below.
+          Review `linkedin-profile.txt`, then use `headline.txt`, `about.txt`,
+          `experience.txt`, and `skills.txt` to update your LinkedIn profile.
+          Match existing roles before adding any to avoid duplicate experience.
+          `introduction.txt` is optional portfolio copy.
+
+          This workflow prepares text only; it does not edit your LinkedIn account.
+          The artifact is retained for 30 days.
+          EOF
+          printf '\n[Download the draft](%s)\n\nSource commit: `%s`.\n' "$ARTIFACT_URL" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
