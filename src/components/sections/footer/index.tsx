@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="border-line text-muted border-t pt-6 text-xs leading-6">
       <p>
-        Built by Ardeman with{' '}
+        Built with{' '}
         <a
           href="https://nextjs.org/"
           className="text-ink hover:text-accent focus-visible:text-accent font-medium"
