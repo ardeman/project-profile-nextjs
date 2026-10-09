@@ -299,7 +299,9 @@ not extra CSV columns such as addresses.
   titles, descriptions, technologies, image paths, and link labels. Each `name`
   must match a repository in the saved GitHub data.
 - Save authentic screenshots in `public/images/projects/` and update their alt
-  text in the featured project data. The UI uses an 8:5 image frame.
+  text in the featured project data. The UI uses an 8:5 image frame. Add an
+  optional `darkImage` with the same framing to follow the portfolio’s resolved
+  theme; projects without it use their default `image` in both themes.
 - The archive excludes forks, archived repositories, and the GitHub profile
   repository. Featured projects use their configured order.
 

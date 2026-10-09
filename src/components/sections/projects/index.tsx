@@ -27,13 +27,13 @@ export const Projects = () => {
           if (!project) return null
           return (
             <li key={feature.name}>
-              <article className="border-line bg-surface overflow-hidden rounded-2xl border shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
+              <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
                 <a
                   href={project.homepage || project.html_url}
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${feature.title} (opens in a new tab)`}
-                  className="border-line bg-accent-soft/40 group block overflow-hidden border-b"
+                  className="group block overflow-hidden border-b border-line bg-accent-soft/40"
                 >
                   <Image
                     src={feature.image}
@@ -41,17 +41,27 @@ export const Projects = () => {
                     width={1200}
                     height={750}
                     sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
-                    className="aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90"
+                    className={`aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 ${feature.darkImage ? 'dark:hidden' : ''}`}
                   />
+                  {feature.darkImage && (
+                    <Image
+                      src={feature.darkImage}
+                      alt={feature.alt}
+                      width={1200}
+                      height={750}
+                      sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
+                      className="hidden aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 dark:block"
+                    />
+                  )}
                 </a>
                 <div className="p-5 sm:p-6">
-                  <p className="text-muted mb-2 font-mono text-[10px] uppercase tracking-[0.18em]">
+                  <p className="mb-2 font-mono text-[10px] tracking-[0.18em] text-muted uppercase">
                     0{index + 1} / {feature.category}
                   </p>
-                  <h3 className="text-ink text-2xl font-semibold tracking-tight">
+                  <h3 className="text-2xl font-semibold tracking-tight text-ink">
                     {feature.title}
                   </h3>
-                  <p className="text-muted mt-2 text-sm leading-6">
+                  <p className="mt-2 text-sm leading-6 text-muted">
                     {feature.summary}
                   </p>
                   <ul
@@ -62,22 +72,22 @@ export const Projects = () => {
                       <Capsule key={technology}>{technology}</Capsule>
                     ))}
                   </ul>
-                  <details className="border-line text-muted mt-4 border-t pt-4 text-sm leading-6">
-                    <summary className="text-ink hover:text-accent w-fit cursor-pointer font-medium transition-colors">
+                  <details className="mt-4 border-t border-line pt-4 text-sm leading-6 text-muted">
+                    <summary className="w-fit cursor-pointer font-medium text-ink transition-colors hover:text-accent">
                       Read more
                       <span className="sr-only"> about {feature.title}</span>
                     </summary>
                     <dl className="mt-4 space-y-3">
                       <div>
-                        <dt className="text-ink font-medium">The idea</dt>
+                        <dt className="font-medium text-ink">The idea</dt>
                         <dd>{feature.problem}</dd>
                       </div>
                       <div>
-                        <dt className="text-ink font-medium">What I built</dt>
+                        <dt className="font-medium text-ink">What I built</dt>
                         <dd>{feature.contribution}</dd>
                       </div>
                       <div>
-                        <dt className="text-ink font-medium">How it works</dt>
+                        <dt className="font-medium text-ink">How it works</dt>
                         <dd>{feature.result}</dd>
                       </div>
                     </dl>
@@ -123,14 +133,14 @@ export const Projects = () => {
         {isError && (
           <p
             role="status"
-            className="text-muted text-xs"
+            className="text-xs text-muted"
           >
             Showing saved projects.{' '}
             <button
               type="button"
               disabled={isFetching}
               onClick={() => void refetch()}
-              className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
+              className="min-h-11 px-1 underline underline-offset-4 hover:text-accent"
             >
               {isFetching ? 'Refreshing…' : 'Refresh'}
             </button>
