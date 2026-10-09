@@ -39,6 +39,7 @@ export const featuredProjects = [
     summary: 'Selected projects and professional experience in one place.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     image: '/images/projects/portfolio.png',
+    darkImage: '/images/projects/portfolio-dark.png',
     alt: 'Ardeman personal portfolio showing the introduction and selected work',
     problem: 'Make professional experience and selected work easy to explore.',
     contribution:
