@@ -19,8 +19,9 @@ export const Skills = () => {
 
   const filteredSkills = skills?.filter((skill) => {
     if (!skill.Name) return false
-    if (activeCategory === 'all') return true
-    return getSkillCategories(skill.Name).includes(activeCategory)
+    return activeCategory === 'all'
+      ? true
+      : getSkillCategories(skill.Name).includes(activeCategory)
   })
 
   return (
@@ -48,8 +49,8 @@ export const Skills = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`min-h-11 rounded-lg border px-3 py-2 text-sm transition-colors ${
                 isActive
-                  ? 'border-accent/20 bg-accent-soft text-accent font-medium'
-                  : 'text-muted hover:border-line hover:bg-accent-soft border-transparent font-medium'
+                  ? 'border-accent/20 bg-accent-soft font-medium text-accent'
+                  : 'border-transparent font-medium text-muted hover:border-line hover:bg-accent-soft'
               }`}
             >
               {category.label}

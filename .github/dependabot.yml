@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      framework:
+        patterns:
+          - next
+          - eslint-config-next
+          - react
+          - react-dom
+          - '@types/react'
+          - '@types/react-dom'
+      tailwind:
+        patterns:
+          - tailwindcss
+          - '@tailwindcss/*'
+          - prettier-plugin-tailwindcss
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

@@ -1,0 +1,8 @@
+allowBuilds:
+  unrs-resolver: true
+# These plugins still declare ESLint 9 peers. ESLint 10 is validated by lint:check.
+peerDependencyRules:
+  allowedVersions:
+    'eslint-plugin-import>eslint': '^10.12.0'
+    'eslint-plugin-jsx-a11y>eslint': '^10.12.0'
+    'eslint-plugin-react>eslint': '^10.12.0'

@@ -15,9 +15,9 @@ export const About = () => {
       <div className="section-heading">
         <Title>About</Title>
       </div>
-      <div className="text-muted space-y-4 text-base leading-7">
+      <div className="space-y-4 text-base leading-7 text-muted">
         {profileData?.['Summary']
-          ?.replace(/\\n/g, '\n') // convert escaped \n to real newlines
+          ?.replaceAll(String.raw`\n`, '\n') // convert escaped \n to real newlines
           .split('\n') // split into paragraphs
           .map((paragraph, idx) => (
             <p key={idx}>{paragraph.trim()}</p>

@@ -11,114 +11,113 @@ import {
   parseDescriptionBullets,
 } from '@/utils'
 
-export const Experience = () => {
-  const { positions } = useLinkedinContext()
+const renderPosition = (position: TPositions, index: number) => {
+  if (!position['Company Name']) return null
 
-  const renderPosition = (position: TPositions, index: number) => {
-    if (!position['Company Name']) return null
+  const isCurrent = !position['Finished On']
+  const duration = calculateDuration(
+    position['Started On'],
+    position['Finished On'],
+  )
+  const bullets = parseDescriptionBullets(position.Description)
+  const skills = getPositionSkills(
+    position['Company Name'],
+    position.Description,
+  )
 
-    const isCurrent = !position['Finished On']
-    const duration = calculateDuration(
-      position['Started On'],
-      position['Finished On']
-    )
-    const bullets = parseDescriptionBullets(position.Description)
-    const skills = getPositionSkills(
-      position['Company Name'],
-      position.Description
-    )
-
-    return (
-      <li
-        className="border-line border-b pb-8 last:border-none last:pb-0"
-        key={index}
-      >
-        <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
-          <header
-            className="text-muted z-10 mb-2 mt-1 font-mono text-[11px] font-medium uppercase tracking-wide sm:col-span-2"
-            aria-label={`${position['Started On']} — ${
-              position['Finished On'] || 'Present'
-            }`}
-          >
-            <div className="flex flex-col gap-0.5">
-              <span className="text-ink">
-                {position['Started On']} —{' '}
-                {position['Finished On'] || 'Present'}
+  return (
+    <li
+      className="border-b border-line pb-8 last:border-none last:pb-0"
+      key={index}
+    >
+      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
+        <header
+          className="z-10 mt-1 mb-2 font-mono text-[11px] font-medium tracking-wide text-muted uppercase sm:col-span-2"
+          aria-label={`${position['Started On']} — ${
+            position['Finished On'] || 'Present'
+          }`}
+        >
+          <div className="flex flex-col gap-0.5">
+            <span className="text-ink">
+              {position['Started On']} — {position['Finished On'] || 'Present'}
+            </span>
+            {duration && (
+              <span className="text-[11px] font-normal text-muted normal-case">
+                {duration}
               </span>
-              {duration && (
-                <span className="text-muted text-[11px] font-normal normal-case">
-                  {duration}
-                </span>
-              )}
-              {isCurrent && (
-                <div className="mt-1">
-                  <span className="bg-accent-soft text-accent inline-flex items-center gap-1.5 rounded-md px-2 py-1 font-mono text-[10px] font-medium normal-case">
-                    <span
-                      className="bg-accent h-1 w-1 rounded-full"
-                      aria-hidden="true"
-                    />
-                    Current
-                  </span>
-                </div>
-              )}
-            </div>
-          </header>
-          <div className="z-10 sm:col-span-6">
-            <h3 className="text-ink font-medium leading-snug">
-              <TitleLink
-                href={`https://www.google.com/search?q=${encodeURIComponent(
-                  position['Company Name']
-                )}`}
-                title={`${position.Title} · ${position['Company Name']}`}
-              />
-              {position.Location && (
-                <div className="text-muted mt-1 flex items-center gap-1 text-xs font-normal">
-                  <GoLocation
-                    aria-hidden="true"
-                    className="h-3 w-3 shrink-0"
-                  />
-                  <span>{position.Location}</span>
-                </div>
-              )}
-            </h3>
-            <ul className="text-muted mt-3 space-y-2 text-sm leading-6">
-              {bullets.slice(0, 2).map((bullet, bulletIndex) => (
-                <li
-                  key={bulletIndex}
-                  className="flex items-start gap-2"
-                >
-                  <span className="bg-accent mt-2 h-1 w-1 shrink-0 rounded-full" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-            {bullets.length > 2 && (
-              <details className="mt-3 text-sm">
-                <summary className="text-ink cursor-pointer font-medium">
-                  More about this role
-                </summary>
-                <ul className="mt-2 list-disc space-y-2 pl-4">
-                  {bullets.slice(2).map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </details>
             )}
-            {skills.length > 0 && (
-              <ul
-                className="mt-3 flex flex-wrap"
-                aria-label="Technologies used"
-              >
-                {skills.map((skill) => (
-                  <Capsule key={skill}>{skill}</Capsule>
-                ))}
-              </ul>
+            {isCurrent && (
+              <div className="mt-1">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-accent-soft px-2 py-1 font-mono text-[10px] font-medium text-accent normal-case">
+                  <span
+                    className="h-1 w-1 rounded-full bg-accent"
+                    aria-hidden="true"
+                  />
+                  Current
+                </span>
+              </div>
             )}
           </div>
+        </header>
+        <div className="z-10 sm:col-span-6">
+          <h3 className="leading-snug font-medium text-ink">
+            <TitleLink
+              href={`https://www.google.com/search?q=${encodeURIComponent(
+                position['Company Name'],
+              )}`}
+              title={`${position.Title} · ${position['Company Name']}`}
+            />
+            {position.Location && (
+              <div className="mt-1 flex items-center gap-1 text-xs font-normal text-muted">
+                <GoLocation
+                  aria-hidden="true"
+                  className="h-3 w-3 shrink-0"
+                />
+                <span>{position.Location}</span>
+              </div>
+            )}
+          </h3>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+            {bullets.slice(0, 2).map((bullet, bulletIndex) => (
+              <li
+                key={bulletIndex}
+                className="flex items-start gap-2"
+              >
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+          {bullets.length > 2 && (
+            <details className="mt-3 text-sm">
+              <summary className="cursor-pointer font-medium text-ink">
+                More about this role
+              </summary>
+              <ul className="mt-2 list-disc space-y-2 pl-4">
+                {bullets.slice(2).map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </details>
+          )}
+          {skills.length > 0 && (
+            <ul
+              className="mt-3 flex flex-wrap"
+              aria-label="Technologies used"
+            >
+              {skills.map((skill) => (
+                <Capsule key={skill}>{skill}</Capsule>
+              ))}
+            </ul>
+          )}
         </div>
-      </li>
-    )
-  }
+      </div>
+    </li>
+  )
+}
+
+export const Experience = () => {
+  const { positions } = useLinkedinContext()
 
   return (
     <section
@@ -138,10 +137,10 @@ export const Experience = () => {
                 .map((position, index) => renderPosition(position, index))}
             </ol>
             {positions.length > 3 && (
-              <details className="border-line mt-8 rounded-xl border p-5">
-                <summary className="text-ink hover:text-accent cursor-pointer text-sm font-medium transition-colors">
+              <details className="mt-8 rounded-xl border border-line p-5">
+                <summary className="cursor-pointer text-sm font-medium text-ink transition-colors hover:text-accent">
                   Earlier experience{' '}
-                  <span className="text-muted ml-2 font-mono text-xs font-normal">
+                  <span className="ml-2 font-mono text-xs font-normal text-muted">
                     {positions.length - 3} roles
                   </span>
                 </summary>
@@ -149,7 +148,7 @@ export const Experience = () => {
                   {positions
                     .slice(3)
                     .map((position, index) =>
-                      renderPosition(position, index + 3)
+                      renderPosition(position, index + 3),
                     )}
                 </ol>
               </details>
@@ -168,7 +167,7 @@ export const Experience = () => {
           >
             <span className="inline-block">
               View résumé{' '}
-              <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" />
+              <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
             </span>
           </a>
         </div>

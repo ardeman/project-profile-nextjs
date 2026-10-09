@@ -19,5 +19,6 @@ export const metadata: Metadata = {
       'Web applications, coding experiments, and open-source projects by Ardeman.',
   },
 }
-const Archive = () => <ArchivePage />
-export default Archive
+export default function Archive() {
+  return <ArchivePage />
+}

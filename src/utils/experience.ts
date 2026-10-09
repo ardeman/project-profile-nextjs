@@ -14,8 +14,8 @@ const MONTH_MAP: Record<string, number> = {
 }
 
 /**
- * Parses dates formatted like "May 2023" or returns the current date for "Present" / empty.
- */
+Parses dates formatted like "May 2023" or returns the current date for "Present" / empty.
+*/
 const parseDate = (dateString?: string): Date => {
   if (!dateString || dateString.toLowerCase() === 'present') {
     return new Date()
@@ -25,7 +25,7 @@ const parseDate = (dateString?: string): Date => {
   if (parts.length === 2) {
     const monthKey = parts[0].toLowerCase().slice(0, 3)
     const month = MONTH_MAP[monthKey] ?? 0
-    const year = Number.parseInt(parts[1], 10)
+    const year = Math.trunc(Number(parts[1]))
     if (!Number.isNaN(year)) {
       return new Date(year, month, 1)
     }
@@ -35,11 +35,11 @@ const parseDate = (dateString?: string): Date => {
 }
 
 /**
- * Calculates human-readable duration between two dates (e.g., "1 yr 5 mos", "8 mos").
- */
+Calculates human-readable duration between two dates (e.g., "1 yr 5 mos", "8 mos").
+*/
 export const calculateDuration = (
   startedOn?: string,
-  finishedOn?: string
+  finishedOn?: string,
 ): string => {
   if (!startedOn) return ''
 
@@ -68,21 +68,21 @@ export const calculateDuration = (
 }
 
 /**
- * Splits raw description text into individual bullet strings without leading dashes.
- */
+Splits raw description text into individual bullet strings without leading dashes.
+*/
 export const parseDescriptionBullets = (description?: string): string[] => {
-  if (!description) return []
-
   return description
-    .replaceAll(String.raw`\n`, '\n')
-    .split(/(?:^|\s+)-\s+/)
-    .map((item) => item.trim())
-    .filter(Boolean)
+    ? description
+        .replaceAll(String.raw`\n`, '\n')
+        .split(/(?:^|\s+)-\s+/)
+        .map((item) => item.trim())
+        .filter(Boolean)
+    : []
 }
 
 /**
- * Known tech keywords to scan for in case a position is dynamically added.
- */
+Known tech keywords to scan for in case a position is dynamically added.
+*/
 const KNOWN_TECHNOLOGIES = [
   'Next.js',
   'React.js',
@@ -112,8 +112,8 @@ const KNOWN_TECHNOLOGIES = [
 ]
 
 /**
- * Curated technology skills per company for rich presentation, with automatic fallback extraction.
- */
+Curated technology skills per company for rich presentation, with automatic fallback extraction.
+*/
 const COMPANY_SKILLS_MAP: Record<string, string[]> = {
   'PT. Griya Mitra Digital': [
     'Next.js',
@@ -149,11 +149,11 @@ const COMPANY_SKILLS_MAP: Record<string, string[]> = {
 }
 
 /**
- * Gets technologies associated with a position based on company name or description extraction.
- */
+Gets technologies associated with a position based on company name or description extraction.
+*/
 export const getPositionSkills = (
   companyName: string,
-  description?: string
+  description?: string,
 ): string[] => {
   const predefined = COMPANY_SKILLS_MAP[companyName]
   if (predefined) return predefined
@@ -163,17 +163,19 @@ export const getPositionSkills = (
   const found: string[] = []
   for (const tech of KNOWN_TECHNOLOGIES) {
     const escaped = tech.replaceAll(/[$()*+.?[\\\]^{|}]/g, String.raw`\$&`)
-    const regex = new RegExp(`\\b${escaped}\\b`, 'i')
-    if (regex.test(description)) {
-      let normalized = tech
-      if (tech === 'Tailwind') normalized = 'Tailwind CSS'
-      if (tech === 'Wordpress') normalized = 'WordPress'
-      if (tech === 'React.js' || tech === 'React') normalized = 'React'
-      if (tech === 'Angular.js' || tech === 'Angular') normalized = 'Angular'
-      if (!found.includes(normalized)) {
-        found.push(normalized)
-      }
-    }
+    const regex = new RegExp(String.raw`\b${escaped}\b`, 'i')
+    if (!regex.test(description)) continue
+    const normalized =
+      tech === 'Tailwind'
+        ? 'Tailwind CSS'
+        : tech === 'Wordpress'
+          ? 'WordPress'
+          : tech === 'React.js' || tech === 'React'
+            ? 'React'
+            : tech === 'Angular.js' || tech === 'Angular'
+              ? 'Angular'
+              : tech
+    if (!found.includes(normalized)) found.push(normalized)
   }
 
   return found

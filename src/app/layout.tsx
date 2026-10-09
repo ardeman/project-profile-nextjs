@@ -12,10 +12,10 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
       {/* eslint-disable-next-line react/no-danger */}
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
     </head>
-    <body className="bg-canvas text-ink selection:bg-accent-soft selection:text-ink font-sans leading-relaxed antialiased">
+    <body className="bg-canvas font-sans leading-relaxed text-ink antialiased selection:bg-accent-soft selection:text-ink">
       <a
         href="#content"
-        className="focus:bg-surface focus:text-ink sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:p-3"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-sm focus:bg-surface focus:p-3 focus:text-ink"
       >
         Skip to content
       </a>

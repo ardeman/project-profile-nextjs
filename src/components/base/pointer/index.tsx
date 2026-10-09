@@ -5,8 +5,8 @@ import { useEffect, useRef } from 'react'
 export const Pointer = () => {
   const pointer = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const media = window.matchMedia(
-      '(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+    const media = matchMedia(
+      '(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
     )
     let frame = 0
     let x = 0
@@ -28,12 +28,12 @@ export const Pointer = () => {
       frame = 0
       if (pointer.current) pointer.current.style.opacity = '0'
     }
-    window.addEventListener('pointermove', move, { passive: true })
+    addEventListener('pointermove', move, { passive: true })
     document.documentElement.addEventListener('pointerleave', hide)
     media.addEventListener('change', hide)
     return () => {
       cancelAnimationFrame(frame)
-      window.removeEventListener('pointermove', move)
+      removeEventListener('pointermove', move)
       document.documentElement.removeEventListener('pointerleave', hide)
       media.removeEventListener('change', hide)
     }
@@ -42,7 +42,7 @@ export const Pointer = () => {
     <div
       ref={pointer}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-30 hidden opacity-0 motion-reduce:!hidden lg:block"
+      className="pointer-events-none fixed inset-0 z-30 hidden opacity-0 motion-reduce:hidden! lg:block"
     />
   )
 }

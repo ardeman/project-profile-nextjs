@@ -22,7 +22,7 @@ This file owns conventions and architectural constraints.
 ## Conventions
 
 - Use Conventional Commit subjects as described in [README → Commits](README.md#commits).
-- Follow `.eslintrc.json` and `.prettierrc`. Fix lint findings rather than adding
+- Follow `eslint.config.mjs` and `.prettierrc`. Fix lint findings rather than adding
   suppressions; if a suppression is necessary, explain the reason next to it.
 - Use TypeScript and kebab-case filenames. Follow the existing section/component
   folders and named exports; framework route files keep their default exports.
@@ -123,3 +123,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Generate LinkedIn profile drafts on curated CSV changes so wording can be reused without requiring restricted profile-edit API access.
 - 2026-10-09: Generate the résumé from curated CSVs and preserved education/contact details before each static build so the website and downloadable PDF share current content.
 - 2026-10-09: Trigger GitHub profile synchronization on portfolio main pushes using an Actions-only dispatch token; the destination workflow commits with its own scoped Actions token.
+- 2026-10-09: Update to Next.js 16/React 19, Node 24 LTS, pnpm 12, ESLint flat configuration, and Tailwind 4 CSS themes to remove outdated tooling and apply security fixes while retaining static export.

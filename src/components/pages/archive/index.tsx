@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { GoArrowLeft, GoArrowUpRight } from 'react-icons/go'
 
 import { Capsule } from '@/components/base'
@@ -14,7 +15,7 @@ export const ArchivePage = () => {
   const { data: projects, isError, isFetching, refetch } = useGetProjects()
   const filteredProjects = projects?.filter(
     (project) =>
-      !project.fork && !project.archived && project.name !== 'ardeman'
+      !project.fork && !project.archived && project.name !== 'ardeman',
   )
   return (
     <main
@@ -22,27 +23,27 @@ export const ArchivePage = () => {
       tabIndex={-1}
       className="lg:py-20"
     >
-      <a
+      <Link
         href="/"
         className="text-link"
       >
         <GoArrowLeft aria-hidden="true" />
         Back to portfolio
-      </a>
-      <p className="text-muted mb-3 mt-10 font-mono text-xs uppercase tracking-[0.18em]">
+      </Link>
+      <p className="mt-10 mb-3 font-mono text-xs tracking-[0.18em] text-muted uppercase">
         The collection
       </p>
       <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
         Project archive
       </h1>
-      <p className="text-muted mt-4 max-w-xl text-base leading-7">
+      <p className="mt-4 max-w-xl text-base leading-7 text-muted">
         Web applications, coding experiments, and tools I have built.
       </p>
       <table className="mt-10 w-full border-collapse text-left">
         <caption className="sr-only">
           Projects, their technologies, licenses, and links
         </caption>
-        <thead className="border-line text-muted border-b font-mono text-[11px] uppercase tracking-wider">
+        <thead className="border-b border-line font-mono text-[11px] tracking-wider text-muted uppercase">
           <tr>
             <th
               scope="col"
@@ -77,7 +78,7 @@ export const ArchivePage = () => {
               return (
                 <tr
                   key={project.id}
-                  className="border-line/70 border-b last:border-none"
+                  className="border-b border-line/70 last:border-none"
                 >
                   <th
                     scope="row"
@@ -87,18 +88,18 @@ export const ArchivePage = () => {
                       href={project.homepage || project.html_url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="text-ink hover:text-accent capitalize transition-colors"
+                      className="text-ink capitalize transition-colors hover:text-accent"
                       aria-label={`${title} (opens in a new tab)`}
                     >
                       {title}
                     </a>
                     {project.description && (
-                      <p className="text-muted mt-1 hidden max-w-md text-sm font-normal leading-6 sm:block">
+                      <p className="mt-1 hidden max-w-md text-sm leading-6 font-normal text-muted sm:block">
                         {project.description}
                       </p>
                     )}
                     {project.language && (
-                      <p className="text-muted mt-2 font-mono text-[11px] font-normal md:hidden">
+                      <p className="mt-2 font-mono text-[11px] font-normal text-muted md:hidden">
                         {project.language}
                       </p>
                     )}
@@ -113,7 +114,7 @@ export const ArchivePage = () => {
                       ))}
                     </ul>
                   </td>
-                  <td className="text-muted hidden py-5 pr-4 align-top font-mono text-xs lg:table-cell">
+                  <td className="hidden py-5 pr-4 align-top font-mono text-xs text-muted lg:table-cell">
                     {project.license?.spdx_id &&
                     project.license.spdx_id !== 'NOASSERTION'
                       ? project.license.spdx_id
@@ -152,7 +153,7 @@ export const ArchivePage = () => {
             <tr>
               <td
                 colSpan={4}
-                className="text-muted py-8"
+                className="py-8 text-muted"
               >
                 No projects found.
               </td>
@@ -163,14 +164,14 @@ export const ArchivePage = () => {
       {isError && (
         <p
           role="status"
-          className="text-muted mt-6 text-xs"
+          className="mt-6 text-xs text-muted"
         >
           Showing saved projects.{' '}
           <button
             type="button"
             disabled={isFetching}
             onClick={() => void refetch()}
-            className="hover:text-accent min-h-11 px-1 underline underline-offset-4"
+            className="min-h-11 px-1 underline underline-offset-4 hover:text-accent"
           >
             {isFetching ? 'Refreshing…' : 'Refresh'}
           </button>

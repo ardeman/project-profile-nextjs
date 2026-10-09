@@ -12,7 +12,7 @@ repositories. Both pages support light, dark, and system themes.
 
 ## Getting started
 
-Use Node.js 20 (`.nvmrc`) and pnpm 8.10.5 (`package.json`). The deployment workflow
+Use Node.js 24.19.0 LTS (`.nvmrc`) and pnpm 12.10.1 (`package.json`). The deployment workflow
 uses the same versions. No environment variables or GitHub token are required
 for the website or manual LinkedIn synchronization workflow.
 
@@ -36,7 +36,7 @@ format staged files; it does not run a production build.
 | ------------------------------------- | --------------------------------------------- |
 | Install locked dependencies           | `pnpm install --frozen-lockfile`              |
 | Run the development server            | `pnpm dev`                                    |
-| Check lint without changing files     | `pnpm exec next lint`                         |
+| Check lint without changing files     | `pnpm lint:check`                             |
 | Fix lint findings                     | `pnpm lint`                                   |
 | Check TypeScript                      | `pnpm exec tsc --noEmit`                      |
 | Format JavaScript and TypeScript      | `pnpm format`                                 |
@@ -63,12 +63,16 @@ preview utility may both try port 3000.
 For application, styling, configuration, or content changes, run:
 
 ```sh
-pnpm exec next lint
+pnpm lint:check
 pnpm exec tsc --noEmit
 pnpm build
 ```
 
-All three must pass. The build parses the profile CSV files and verifies that
+All three must pass. Next.js 16 does not run ESLint during builds, so the
+separate lint check is required. The generated development route validator is
+excluded from TypeScript checking because Next.js 16.4 emits unused
+API-route imports for this static site; production route validation and strict
+source checks remain enabled. The build parses the profile CSV files and verifies that
 both routes can be exported. Run `pnpm test:linkedin` when changing the LinkedIn
 generator or its workflow. Run `pnpm test:resume` when changing the résumé
 generator, shared CSV helpers, or build integration. Run `pnpm test:github-profile`
@@ -95,6 +99,35 @@ including a desktop window about 600px tall.
   visible, with a small refresh control. Check a successful refresh too.
 - Disable JavaScript: introduction, About, projects, and experience should still
   render, and native details controls should still open.
+
+### Dependency maintenance
+
+Run `pnpm outdated` to check newer releases and `pnpm audit` to check the entire
+locked dependency tree for known advisories. These require npm registry access.
+An audit with no findings only covers advisories known at the time of the check.
+Dependabot checks npm packages and GitHub Actions weekly and opens reviewable
+update pull requests; updates still need the checks and browser review above.
+
+Keep Next.js and `eslint-config-next` aligned, and React and React DOM aligned.
+Node type definitions follow the Node 24 runtime. TypeScript stays on the newest
+6.0 patch supported by `@typescript-eslint/parser`; TypeScript 7 is outside its
+current peer range. Upgrade that range only after parser support is available.
+ESLint 10 is the current non-deprecated release. Three Next.js lint plugins still
+advertise ESLint 9 peers; narrowly scoped exceptions in `pnpm-workspace.yaml`
+allow ESLint 10, verified by the lint check. Remove the exceptions when their
+upstream peer ranges support ESLint 10.
+
+One development-only advisory remains in `braces@3.0.3`, through Next.js’s ESLint
+plugin and `fast-glob`: [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
+No patched release was published as of 2026-10-09. It processes repository glob
+patterns during linting, not public input in the exported site. Keep it visible
+in `pnpm audit` and update when an upstream fix is available.
+
+ESLint uses `eslint.config.mjs`; shared import restrictions and naming rules
+remain there. Tailwind uses `@tailwindcss/postcss` and CSS theme configuration. Development
+and builds explicitly retain webpack, avoiding Turbopack worker-port restrictions
+in sandboxed environments.
+Tailwind 4 requires Safari 16.4+, Chrome 111+, and Firefox 128+.
 
 ### Commits
 
@@ -333,7 +366,7 @@ The editorial design uses Oldenburg for the name, Geist Sans for body text, and
 Geist Mono for dates, labels, and technology tags. Fonts are bundled locally.
 
 Theme colors live in `src/styles/tailwind.css` and are exposed through
-`tailwind.config.ts`: `canvas`, `surface`, `ink`, `muted`, `line`, `accent`,
+Tailwind CSS 4’s `@theme inline` in that file: `canvas`, `surface`, `ink`, `muted`, `line`, `accent`,
 `accent-soft`, and `on-accent`. Update these tokens to change the palette.
 Shared button, icon, heading, and link styles live alongside them. Global focus
 and reduced-motion rules live in `src/styles/globals.css`.

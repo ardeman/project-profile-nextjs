@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react'
+import { JSX, Dispatch, SetStateAction } from 'react'
 
 export type TProps = {
   setActiveSection: Dispatch<SetStateAction<string>>

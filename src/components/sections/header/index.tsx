@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect } from 'react'
 
 import { ThemeToggle } from '@/components/base'
@@ -15,7 +16,7 @@ export const MobileNavigation = ({
 }: Pick<TProps, 'activeSection'>) => (
   <nav
     aria-label="Mobile section navigation"
-    className="border-line bg-canvas/95 sticky top-0 z-40 -mx-6 mt-8 border-b px-6 backdrop-blur md:-mx-12 md:px-12 lg:hidden"
+    className="sticky top-0 z-40 -mx-6 mt-8 border-b border-line bg-canvas/95 px-6 backdrop-blur-sm md:-mx-12 md:px-12 lg:hidden"
   >
     <ul className="flex justify-between gap-2">
       {sections.map((section) => (
@@ -23,10 +24,10 @@ export const MobileNavigation = ({
           <a
             href={`#${section}`}
             aria-current={activeSection === section ? 'location' : undefined}
-            className={`block border-b-2 py-4 font-mono text-[10px] font-medium uppercase tracking-wider transition-colors sm:text-xs ${
+            className={`block border-b-2 py-4 font-mono text-[10px] font-medium tracking-wider uppercase transition-colors sm:text-xs ${
               activeSection === section
                 ? 'border-accent text-accent'
-                : 'text-muted hover:text-accent border-transparent'
+                : 'border-transparent text-muted hover:text-accent'
             }`}
           >
             {section}
@@ -49,14 +50,14 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
       frame = requestAnimationFrame(() => {
         frame = 0
         const offset = window.innerWidth >= 1024 ? 160 : 110
-        const atBottom =
+        const isAtBottom =
           Math.ceil(window.scrollY + window.innerHeight) >=
           document.documentElement.scrollHeight
         const active =
-          (atBottom
+          (isAtBottom
             ? elements.at(-1)
             : elements.findLast(
-                (section) => section.getBoundingClientRect().top <= offset
+                (section) => section.getBoundingClientRect().top <= offset,
               )) || elements[0]
         if (active) setActiveSection(active.id)
       })
@@ -73,16 +74,16 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:h-dvh lg:w-[34%] lg:shrink-0 lg:flex-col lg:justify-between lg:gap-8 lg:overflow-y-auto lg:py-16 xl:w-[36%] xl:py-20">
       <div>
-        <p className="text-muted mb-5 font-mono text-[11px] uppercase tracking-[0.2em]">
+        <p className="mb-5 font-mono text-[11px] tracking-[0.2em] text-muted uppercase">
           Building useful things for the web
         </p>
-        <h1 className="oldenburg-regular text-ink text-5xl tracking-tight sm:text-6xl">
-          <a href="/">Ardeman</a>
+        <h1 className="oldenburg-regular text-5xl tracking-tight text-ink sm:text-6xl">
+          <Link href="/">Ardeman</Link>
         </h1>
-        <p className="text-ink mt-4 text-xl font-medium tracking-tight">
+        <p className="mt-4 text-xl font-medium tracking-tight text-ink">
           {profileData.Headline}
         </p>
-        <p className="text-muted mt-5 max-w-sm text-base leading-7">
+        <p className="mt-5 max-w-sm text-base leading-7 text-muted">
           {profileSummary['Profile Summary']}
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
@@ -117,7 +118,7 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
                   aria-current={
                     activeSection === section ? 'location' : undefined
                   }
-                  className={`group flex w-fit items-center gap-4 py-2.5 font-mono text-xs uppercase tracking-[0.15em] transition-colors ${
+                  className={`group flex w-fit items-center gap-4 py-2.5 font-mono text-xs tracking-[0.15em] uppercase transition-colors ${
                     activeSection === section
                       ? 'text-accent'
                       : 'text-muted hover:text-accent'
@@ -159,7 +160,7 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
           ))}
         </ul>
         <span
-          className="bg-line mx-3 h-5 w-px"
+          className="mx-3 h-5 w-px bg-line"
           aria-hidden="true"
         />
         <ThemeToggle />

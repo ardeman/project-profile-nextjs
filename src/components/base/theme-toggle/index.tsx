@@ -40,11 +40,13 @@ export const ThemeToggle = () => {
           setIsOpen(false)
       }}
       onKeyDown={(event) => {
-        if (event.key === 'Escape' && isOpen) {
-          event.preventDefault()
-          setIsOpen(false)
-          trigger.current?.focus()
+        if (!isOpen || event.key !== 'Escape') {
+          return
         }
+
+        event.preventDefault()
+        setIsOpen(false)
+        trigger.current?.focus()
       }}
     >
       <button
@@ -65,7 +67,7 @@ export const ThemeToggle = () => {
           id={id}
           role="group"
           aria-label="Color theme"
-          className="border-line bg-surface absolute bottom-full right-0 z-50 mb-2 flex min-w-[140px] flex-col gap-1 rounded-xl border p-2 shadow-lg"
+          className="absolute right-0 bottom-full z-50 mb-2 flex min-w-[140px] flex-col gap-1 rounded-xl border border-line bg-surface p-2 shadow-lg"
         >
           {options.map(({ value, label, Icon: OptionIcon }) => (
             <button
@@ -77,7 +79,7 @@ export const ThemeToggle = () => {
                 setIsOpen(false)
                 trigger.current?.focus()
               }}
-              className={`focus-visible:outline-accent flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-sm focus-visible:outline-offset-[-2px] ${
+              className={`flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-sm focus-visible:outline-offset-[-2px] focus-visible:outline-accent ${
                 theme === value
                   ? 'bg-accent-soft text-accent'
                   : 'text-muted hover:bg-accent-soft hover:text-ink'

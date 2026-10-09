@@ -5,7 +5,7 @@ import {
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
-  SiNuxtdotjs,
+  SiNuxt,
   SiReact,
   SiSass,
   SiTailwindcss,
@@ -33,7 +33,7 @@ const SKILL_METADATA: Record<
   },
   Nuxt: {
     categories: ['frontend'],
-    icon: <SiNuxtdotjs className="h-3.5 w-3.5 text-[#00DC82]" />,
+    icon: <SiNuxt className="h-3.5 w-3.5 text-[#00DC82]" />,
   },
   JavaScript: {
     categories: ['frontend', 'languages'],
