@@ -59,12 +59,15 @@ test('preserves handwritten content, updates CSV copy and is idempotent', async 
     assert.match(updated, /Build interfaces\.\n\nLead teams\./)
     assert.match(updated, /May 2023 – Present · Jakarta/)
     assert.match(updated, /- Build back-office tools\.\n- Review code\./)
-    assert.match(updated, /React\.js · SQL/)
+    assert.match(updated, /<code>React\.js<\/code> · <code>SQL<\/code>/)
     assert.doesNotMatch(updated, /PRIVATE|old intro|old details/)
     assert.equal(await syncGithubProfile(target, root), false)
     await writeFile(path.join(input, 'Skills.csv'), 'Name\nTypeScript\n')
     assert.equal(await syncGithubProfile(target, root), true)
-    assert.doesNotMatch(await readFile(target, 'utf8'), /React\.js · SQL/)
+    assert.doesNotMatch(
+      await readFile(target, 'utf8'),
+      /<code>React\.js<\/code> · <code>SQL<\/code>/
+    )
     const previous = await readFile(target, 'utf8')
     await writeFile(path.join(input, 'Skills.csv'), 'Wrong\nSQL\n')
     await assert.rejects(syncGithubProfile(target, root), /Skills\.csv:/)
@@ -106,6 +109,13 @@ test('escapes HTML and Markdown from profile content', () => {
   data['Profile.csv'][0].Summary =
     '<!-- portfolio-profile:intro:end --> [link](bad) **bold**'
   const sections = renderGithubProfile(data)
+  data['Skills.csv'][0].Name = '<img src=x onerror=alert(1)>`skill`'
+  const escapedSkills = renderGithubProfile(data).details
+  assert.doesNotMatch(escapedSkills, /<img/)
+  assert.match(
+    escapedSkills,
+    /<code>&lt;img src=x onerror=alert\(1\)&gt;`skill`<\/code>/
+  )
   assert.doesNotMatch(sections.intro, /<script>/)
   assert.match(sections.intro, /&lt;script&gt;name/)
   assert.doesNotMatch(sections.details, /<!--|\[link]|\*\*bold\*\*/)

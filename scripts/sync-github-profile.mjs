@@ -39,25 +39,26 @@ export function renderGithubProfile(data) {
   })
   return {
     intro: [
-      `<h1 align="center">Hi, I'm ${html(profile['First Name'])} 👋</h1>`,
-      `<p align="center">${html(profile.Headline)}</p>`,
+      `<h1 align="center">${html(profile['First Name'])}</h1>`,
+      `<p align="center"><strong>${html(profile.Headline)}</strong></p>`,
       `<p align="center">${html(
         data['Profile Summary.csv'][0]['Profile Summary']
       )}</p>`,
     ].join('\n\n'),
     details: [
-      '## 👨‍💻 About Me',
+      '## About',
       profile.Summary.replaceAll(String.raw`\n`, '\n')
         .split(/\n+/)
         .map((paragraph) => markdown(paragraph))
         .join('\n\n'),
-      '---',
-      '## 🛠️ Tech Stack',
-      data['Skills.csv'].map((skill) => markdown(skill.Name)).join(' · '),
-      '---',
-      '## 💼 Recent Roles',
+      '## Working with',
+      data['Skills.csv']
+        .map((skill) => `<code>${html(skill.Name)}</code>`)
+        .join(' · '),
+      '<details>\n<summary><strong>Recent experience</strong></summary>',
       ...roles,
-      '📄 [Résumé](https://ardeman.com/documents/resume.pdf) · [Portfolio](https://ardeman.com) · [LinkedIn](https://linkedin.com/in/ardeman)',
+      '[View my full résumé](https://ardeman.com/documents/resume.pdf)',
+      '</details>',
     ].join('\n\n'),
   }
 }

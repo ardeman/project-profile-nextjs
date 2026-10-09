@@ -192,7 +192,10 @@ is scoped to the repository running the workflow. One-time setup:
 The token only dispatches the destination workflow; that workflow uses its own
 `GITHUB_TOKEN` to commit the README. No local `.env` or browser credentials are
 needed. Never commit the token or paste it into profile data.
-The banner, badges, GitHub stats, and contact section remain manually editable.
+The navigation links, selected project table, and expandable GitHub activity
+section remain manually editable in the profile repository. Recent experience
+is expandable, and skills use compact code labels; change their presentation in
+the generator so future syncs preserve it.
 Keep generated copy between the `portfolio-profile:intro:start/end` and
 `portfolio-profile:details:start/end` HTML comment markers. Edit the CSVs to
 change that copy; the next sync replaces edits inside those sections.
