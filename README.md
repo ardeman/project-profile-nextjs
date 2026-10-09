@@ -1,142 +1,254 @@
-<h1 align="center">
-  project-nextjs-profile
-</h1>
+# Ardeman’s portfolio
 
-<p align="center">
-  <a href="https://ardeman.com/" target="_blank">Ardeman</a>'s personal website built with <a href="https://nextjs.org/" target="_blank">Next.js</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, deployed via <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a> on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-</p>
+A personal website for selected work, professional experience, and useful things
+built along the way. Built with Next.js, React, TypeScript, and Tailwind CSS, and
+published as a static site at [ardeman.com](https://ardeman.com/).
 
-<p align="center">
-  <a href="https://github.com/ardeman/project-nextjs-profile/actions/workflows/nextjs.yml" target="_blank">
-    <img src="https://github.com/ardeman/project-nextjs-profile/actions/workflows/nextjs.yml/badge.svg?branch=main" alt="Deployment Status" />
-  </a>
-</p>
+The homepage includes an introduction, selected projects, experience, and skills.
+The [project archive](https://ardeman.com/archive) lists original, active GitHub
+repositories. Both pages support light, dark, and system themes.
 
-<p align="center">
-  <img alt="Dark Mode Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/dark/favicon-32x32.png" width="32" /><br />
-  <img alt="Dark Mode Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/dark.png" />
-</p>
+![Portfolio preview](public/images/projects/portfolio.png)
 
-<p align="center">
-  <img alt="Light Mode Logo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/light/favicon-32x32.png" width="32" /><br />
-  <img alt="Light Mode Demo" src="https://raw.githubusercontent.com/ardeman/project-nextjs-profile/main/public/images/demo/light.png" />
-</p>
+## Getting started
 
-## 🍴 Forking This Repo
+Use Node.js 20 (`.nvmrc`) and pnpm 8.10.5 (`package.json`). The deployment workflow
+uses the same versions. No environment variables or GitHub token are required.
 
-Feel free to fork this repository. If you do, please give proper credit by linking back to [ardeman.com](https://ardeman.com/). Thank you!
+```sh
+git clone https://github.com/ardeman/project-profile-nextjs.git
+cd project-profile-nextjs
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-## 🎛️ Installation & Setup
+Open the local URL printed by Next.js, normally `http://localhost:3000`.
+If you use nvm, run `nvm use` before installing dependencies.
 
-### Prerequisites
+Installation runs `prepare` to enable Husky. If hooks are missing, run
+`pnpm prepare`. The pre-commit hook uses lint-staged to fix ESLint findings and
+format staged files; it does not run a production build.
 
-- Node.js v20+
-- pnpm v8.10.5+
+## Commands
 
-### Steps
+| Task                                  | Command                             |
+| ------------------------------------- | ----------------------------------- |
+| Install locked dependencies           | `pnpm install --frozen-lockfile`    |
+| Run the development server            | `pnpm dev`                          |
+| Check lint without changing files     | `pnpm exec next lint`               |
+| Fix lint findings                     | `pnpm lint`                         |
+| Check TypeScript                      | `pnpm exec tsc --noEmit`            |
+| Format JavaScript and TypeScript      | `pnpm format`                       |
+| Format root documentation             | `pnpm exec prettier --write "*.md"` |
+| Check root documentation formatting   | `pnpm exec prettier --check "*.md"` |
+| Build the static website into `out/`  | `pnpm build`                        |
+| Preview the static export             | `pnpm start`                        |
+| Refresh the saved GitHub project data | `pnpm refresh:projects`             |
+| Enable local Git hooks                | `pnpm prepare`                      |
 
-1. Clone the repository:
+`pnpm start` serves `out/` with `serve`; it requires a completed build and can
+fetch the preview utility through pnpx. It does not start a Next.js application
+server. Use the URL printed by the preview command; Next.js development and the
+preview utility may both try port 3000.
 
-   ```bash
-   git clone https://github.com/ardeman/project-nextjs-profile.git
-   ```
+### Checks
 
-2. Navigate to the project directory:
+For application, styling, configuration, or content changes, run:
 
-   ```bash
-   cd project-nextjs-profile
-   ```
+```sh
+pnpm exec next lint
+pnpm exec tsc --noEmit
+pnpm build
+```
 
-3. Install dependencies:
+All three must pass. The build parses the profile CSV files and verifies that
+both routes can be exported. The repository does not currently contain a unit
+or browser test suite; these commands do not replace checking the UI.
 
-   ```bash
-   pnpm install
-   ```
+For documentation-only changes, check Markdown formatting and local links. A
+build is also needed if you changed a documented command or its implementation.
 
-4. Start the development server:
+### Checking UI changes
 
-   ```bash
-   pnpm dev
-   ```
+Use the development server while editing and the static preview before shipping.
+Check the homepage and archive at 320px, 375px, 768px, 1024px, and 1440px widths,
+including a desktop window about 600px tall.
 
-   Then, open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+- Inspect both themes, text wrapping, screenshot framing, and horizontal overflow.
+- On mobile, check that section navigation stays visible and anchor targets land
+  below it. On desktop, check the sidebar and active section indicator.
+- Use the keyboard: skip link, navigation, buttons, skill filters, project details,
+  and earlier experience. Check visible focus, Escape in the theme picker, and
+  focus returning to its trigger.
+- Check theme persistence, system theme changes, and reduced-motion settings.
+- Block requests to `api.github.com` in browser tools: saved projects should remain
+  visible, with a small refresh control. Check a successful refresh too.
+- Disable JavaScript: introduction, About, projects, and experience should still
+  render, and native details controls should still open.
 
-### Additional Commands
+### Commits
 
-- **Install Husky Git Hooks**:
+Use Conventional Commit subjects: `type(scope): description`, with an optional
+scope and `!` for breaking changes. Examples: `docs: explain portfolio setup`,
+`fix(theme): keep option focus inside the menu`, and `style: refine project cards`.
+Common types are `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`,
+`ci`, `chore`, and `revert`. This convention is documented; the current hooks do
+not validate commit subjects.
 
-  ```bash
-  pnpm prepare
-  ```
+## Project layout
 
-- **Lint the code**:
+```text
+src/
+  app/                  Routes, root layout, providers, metadata routes
+  components/
+    base/               Reusable controls, headings, badges, cursor glow
+    pages/              Homepage and archive composition
+    sections/           Header, About, selected projects, experience, skills, footer
+  contexts/             Build-provided profile data and client theme state
+  lib/                  Server-side profile CSV parsing
+  data/                 Curated project copy and saved GitHub metadata
+  apis/                 Browser GitHub requests and legacy CSV request helper
+  hooks/                Project query and legacy CSV query hooks
+  constants/            Page metadata, viewport colors, GitHub username
+  styles/               Theme tokens, shared styles, and local font imports
+  types/                Shared profile and project types
+  utils/                Experience dates, skill categories/icons, language colors
+public/
+  linkedin/             Public profile content in CSV files
+  documents/            Résumé PDF
+  images/               Project screenshots, sharing card, and favicons
+scripts/                GitHub snapshot refresh script
+.github/workflows/      GitHub Pages build and deployment
+.husky/                 Pre-commit hook
+```
 
-  ```bash
-  pnpm lint
-  ```
+## Updating content
 
-- **Format the code**:
+### Profile and About
 
-  ```bash
-  pnpm format
-  ```
+| Content                                                      | Source                                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| Name, professional role, and About paragraphs                | `public/linkedin/Profile.csv` (`First Name`, `Headline`, `Summary`)      |
+| Short introduction below the role                            | `public/linkedin/Profile Summary.csv` (`Profile Summary`)                |
+| Experience                                                   | `public/linkedin/Positions.csv`                                          |
+| Skills                                                       | `public/linkedin/Skills.csv`                                             |
+| Eyebrow tagline, contact action, résumé link, and navigation | `src/components/sections/header/index.tsx`                               |
+| Social links                                                 | `src/components/sections/header/data.tsx`                                |
+| Browser name heading                                         | `src/components/sections/header/index.tsx` (currently literal `Ardeman`) |
+| Search description and sharing metadata                      | `src/constants/metadata.ts`                                              |
 
-- **Build for production**:
+These are curated CSV files using the LinkedIn export layout. Keep their column
+headers, quote fields containing commas, and use literal `\n` between About
+paragraphs. The single-column introduction file also needs quotes when its text
+contains commas.
 
-  ```bash
-  pnpm build
-  ```
+`src/lib/profile.ts` parses the files during rendering/building. Parse errors or
+a missing headline/introduction fail the build. In development, refresh the page
+after changing a CSV file; production content changes require a rebuild.
 
-- **Start the production server**:
+The `First Name` column is parsed, but the displayed name is currently written
+in the header and page metadata. If changing identity, update those together.
+Everything under `public/`, including CSV files and the résumé, is publicly
+accessible after deployment. Keep only information intended for publication.
 
-  ```bash
-  pnpm start
-  ```
+### Selected projects and the archive
 
-### Using LinkedIn Data
+- Edit `src/data/featured-projects.ts` to choose homepage projects and update their
+  titles, descriptions, technologies, image paths, and link labels. Each `name`
+  must match a repository in the saved GitHub data.
+- Save authentic screenshots in `public/images/projects/` and update their alt
+  text in the featured project data. The UI uses an 8:5 image frame.
+- The archive excludes forks, archived repositories, and the GitHub profile
+  repository. Featured projects use their configured order.
 
-This project uses LinkedIn data, which should be placed in the `public/linkedin/` folder. You can download your LinkedIn data from [here](https://www.linkedin.com/mypreferences/d/download-my-data).
+GitHub metadata is committed in `src/data/projects.json`. The browser renders
+that snapshot first, then requests current public metadata with pagination,
+a timeout, and one retry. A failed refresh keeps the saved data. The featured
+list also falls back to its saved entry if a live result omits that repository.
 
-## 🎨 Color Palette
+To refresh the snapshot before a release:
 
-| Color Name | Hex Code                                                           |
-| ---------- | ------------------------------------------------------------------ |
-| Gray 900   | ![#111827](https://via.placeholder.com/10/111827?text=+) `#111827` |
-| Red 600    | ![#dc2626](https://via.placeholder.com/10/dc2626?text=+) `#dc2626` |
-| Red 700    | ![#b91c1c](https://via.placeholder.com/10/b91c1c?text=+) `#b91c1c` |
-| Red 900    | ![#7f1d1d](https://via.placeholder.com/10/7f1d1d?text=+) `#7f1d1d` |
-| Sky 400    | ![#38bdf8](https://via.placeholder.com/10/38bdf8?text=+) `#38bdf8` |
-| Sky 900    | ![#0c4a6e](https://via.placeholder.com/10/0c4a6e?text=+) `#0c4a6e` |
-| Slate 100  | ![#f1f5f9](https://via.placeholder.com/10/f1f5f9?text=+) `#f1f5f9` |
-| Slate 200  | ![#e2e8f0](https://via.placeholder.com/10/e2e8f0?text=+) `#e2e8f0` |
-| Slate 400  | ![#94a3b8](https://via.placeholder.com/10/94a3b8?text=+) `#94a3b8` |
-| Slate 500  | ![#64748b](https://via.placeholder.com/10/64748b?text=+) `#64748b` |
-| Slate 600  | ![#475569](https://via.placeholder.com/10/475569?text=+) `#475569` |
-| Slate 900  | ![#0f172a](https://via.placeholder.com/10/0f172a?text=+) `#0f172a` |
-| Stone 900  | ![#1c1917](https://via.placeholder.com/10/1c1917?text=+) `#1c1917` |
-| White      | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) `#ffffff` |
-
-## Portfolio content
-
-Profile, summary, experience, and skills are parsed from `public/linkedin/*.csv`
-when building the static site. Edit these files and rebuild to update the profile.
-Invalid CSV data fails the build rather than leaving visitors with a loading screen.
-
-The homepage selection and case-study copy live in
-`src/data/featured-projects.ts`. Keep claims grounded in the actual project;
-add measured results only when available. Screenshots live in
-`public/images/projects/` and should be refreshed when their interfaces change.
-
-GitHub metadata is saved in `src/data/projects.json`, then refreshed in the browser.
-The saved projects remain available when GitHub is unavailable. To refresh the
-snapshot before a release, run:
-
-```shell
+```sh
 pnpm refresh:projects
 pnpm build
 ```
 
-The contact button currently links to LinkedIn. Update it in the header if you
-want to use a public email address instead. The résumé link still uses the existing
-`public/documents/resume-2025.pdf`; replace the PDF and update both résumé links
-when a newer version is available.
+The refresh script requires network access and leaves the saved file unchanged
+if a request fails. Review the resulting diff before committing. When changing
+the GitHub account, update both `src/constants/github.ts` and the username in
+`scripts/refresh-projects.mjs`, then regenerate the snapshot.
+
+### Résumé and sharing images
+
+The existing résumé is `public/documents/resume-2025.pdf`, linked from the header
+and experience section. Replace it and update both links when the filename
+changes. The sharing image is `public/images/social-preview.png`; update it and
+the portfolio screenshot when the introduction or visual identity changes.
+
+The committed screenshots and sharing image are bitmap assets. There is no
+committed screenshot renderer; use a browser capture or a design tool, keep the
+sharing image at 1200×630, and review the actual result.
+
+## Styling
+
+The editorial design uses Oldenburg for the name, Geist Sans for body text, and
+Geist Mono for dates, labels, and technology tags. Fonts are bundled locally.
+
+Theme colors live in `src/styles/tailwind.css` and are exposed through
+`tailwind.config.ts`: `canvas`, `surface`, `ink`, `muted`, `line`, `accent`,
+`accent-soft`, and `on-accent`. Update these tokens to change the palette.
+Shared button, icon, heading, and link styles live alongside them. Global focus
+and reduced-motion rules live in `src/styles/globals.css`.
+
+The root layout applies the saved theme before painting. The theme context then
+manages persistence and system changes. Keep both paths consistent, including
+when localStorage is unavailable. Viewport/browser theme colors live separately
+in `src/constants/viewport.ts`.
+
+## Deployment
+
+[`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml) builds and deploys
+`out/` to GitHub Pages on every push to `main`. It also supports a manual run.
+A push to `main` is therefore a publication action, including documentation-only
+pushes. The workflow does not refresh the saved GitHub data automatically.
+
+GitHub Pages must be configured to use GitHub Actions. The public URL is
+`https://ardeman.com/`. This project uses `output: 'export'`, an empty `basePath`,
+and unoptimized images. A deployment under a repository subpath needs a separate
+review of absolute asset URLs and navigation links.
+
+Before publishing, run [Checks](#checks), inspect the [UI](#checking-ui-changes),
+and review the content changes. After the workflow finishes, check the homepage,
+archive, résumé, images, and sharing metadata on the published site.
+
+## Troubleshooting
+
+- **Missing generated manifests or changing build output:** development and
+  production commands share `.next/`. Run them sequentially, or validate in a
+  separate checkout. Avoid clearing the output of an active development server.
+- **Profile build error:** check CSV quoting and headers, plus the required
+  headline and introduction. About paragraph separators are literal `\n`.
+- **Saved project data looks old:** run `pnpm refresh:projects`. GitHub access is
+  optional for viewing saved content, but required for refreshing it.
+- **A plain file server returns 404 for `/archive`:** use `pnpm start` to preview
+  extensionless routes. A basic server may only serve `archive.html` directly.
+
+## Documentation map
+
+Each topic has one home. Update the owning file instead of copying instructions.
+
+| File                                           | Audience                   | Owns                                                                |
+| ---------------------------------------------- | -------------------------- | ------------------------------------------------------------------- |
+| [README.md](README.md)                         | Humans and AI agents       | Overview, setup, commands, layout, content, styling, deployment     |
+| [AGENTS.md](AGENTS.md)                         | AI agents and contributors | Conventions, guardrails, definition of done, architecture decisions |
+| [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md) | Claude Code and Gemini CLI | Only an import of `AGENTS.md`                                       |
+| [LICENSE](LICENSE)                             | Everyone                   | MIT license terms                                                   |
+
+## License and credit
+
+The code is available under the [MIT license](LICENSE). Keep its copyright and
+license notice when reusing it. If you fork this portfolio, please credit
+[ardeman.com](https://ardeman.com/). The original layout was inspired by
+[Brittany Chiang’s portfolio](https://brittanychiang.com/); the site footer keeps
+that credit. Replace personal content, résumé, and project images for your own
+portfolio.
