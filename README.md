@@ -47,6 +47,8 @@ format staged files; it does not run a production build.
 | Refresh the saved GitHub project data | `pnpm refresh:projects`             |
 | Prepare LinkedIn profile text         | `pnpm export:linkedin`              |
 | Test LinkedIn draft generation        | `pnpm test:linkedin`                |
+| Generate the current résumé PDF       | `pnpm export:resume`                |
+| Test résumé generation                | `pnpm test:resume`                  |
 | Enable local Git hooks                | `pnpm prepare`                      |
 
 `pnpm start` serves `out/` with `serve`; it requires a completed build and can
@@ -66,7 +68,8 @@ pnpm build
 
 All three must pass. The build parses the profile CSV files and verifies that
 both routes can be exported. Run `pnpm test:linkedin` when changing the LinkedIn
-generator or its workflow. These Node tests cover draft generation; the application
+generator or its workflow. Run `pnpm test:resume` when changing the résumé
+generator, shared CSV helpers, or build integration. These Node tests cover exports; the application
 has no automated browser suite, so these commands do not replace checking the UI.
 
 For documentation-only changes, check Markdown formatting and local links. A
@@ -110,7 +113,7 @@ src/
     sections/           Header, About, selected projects, experience, skills, footer
   contexts/             Build-provided profile data and client theme state
   lib/                  Server-side profile CSV parsing
-  data/                 Curated project copy and saved GitHub metadata
+  data/                 Curated project copy, saved GitHub metadata, résumé details
   apis/                 Bounded, cancellable browser GitHub requests
   hooks/                Project query with saved-data fallback
   constants/            Page metadata, viewport colors, GitHub username
@@ -119,10 +122,10 @@ src/
   utils/                Experience dates and skill categories/icons
 public/
   linkedin/             Public profile content in CSV files
-  documents/            Résumé PDF
+  documents/            Generated current résumé PDF
   images/               Project screenshots, sharing card, and favicons
-scripts/                GitHub snapshot refresh and LinkedIn draft generator/tests
-.github/workflows/      GitHub Pages deployment and LinkedIn draft preparation
+scripts/                GitHub refresh, shared CSV helpers, LinkedIn/PDF exports and tests
+.github/workflows/      GitHub Pages deployment, résumé artifact, LinkedIn drafts
 .husky/                 Pre-commit hook
 ```
 
@@ -160,7 +163,7 @@ accessible after deployment. Keep only information intended for publication.
 The repository is the source for curated profile wording. The
 [LinkedIn workflow](.github/workflows/linkedin-update.yml) prepares a fresh draft
 when `public/linkedin/*.csv` changes are pushed to `main`. Changes to the generator,
-its tests, workflow, or package files also trigger it. Unrelated website edits do
+its tests, shared CSV helper, workflow, or package files also trigger it. Unrelated website edits do
 not trigger a draft. It can also run manually from **Actions → Prepare LinkedIn
 profile update → Run workflow** after the workflow is pushed to GitHub.
 
@@ -233,10 +236,37 @@ the GitHub account, update both `src/constants/github.ts` and the username in
 
 ### Résumé and sharing images
 
-The existing résumé is `public/documents/resume-2025.pdf`, linked from the header
-and experience section. Replace it and update both links when the filename
-changes. The sharing image is `public/images/social-preview.png`; update it and
-the portfolio screenshot when the introduction or visual identity changes.
+The current résumé is generated at `public/documents/resume.pdf`. The header and
+experience section both use the stable `/documents/resume.pdf` URL. `pnpm dev`
+generates it at startup; `pnpm build` regenerates it before static export, so a
+push to `main` automatically publishes an updated PDF with the website.
+
+The generator reads headline, About, name, location, experience, and skills from
+the curated CSVs. Education and contact details live in `src/data/resume.json`,
+preserved from the original PDF. Keep that file accurate alongside profile edits.
+The generated PDF uses selectable text, standard PDF fonts, A4 pages, automatic
+wrapping, and page breaks that keep ordinary experience entries together.
+Characters outside the standard font encoding fail generation rather than
+silently disappearing; adding broader language support requires embedding a
+suitable font.
+
+To regenerate after CSV edits during a running development session:
+
+```sh
+pnpm export:resume
+```
+
+The PDF is generated output and is ignored by Git. Commit its CSV inputs,
+supplemental details, and generator instead. Invalid data leaves the previous
+PDF intact and fails the build.
+
+The Pages workflow also uploads a `resume-pdf` artifact, retained for 30 days,
+so the PDF can be downloaded from a successful run. No LinkedIn API access or
+credentials are involved. To update the LinkedIn profile's attached résumé,
+download this PDF and replace the attachment manually.
+
+The sharing image is `public/images/social-preview.png`; update it and the
+portfolio screenshot when the introduction or visual identity changes.
 
 The committed screenshots and sharing image are bitmap assets. There is no
 committed screenshot renderer; use a browser capture or a design tool, keep the

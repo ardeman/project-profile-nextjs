@@ -85,6 +85,10 @@ This file owns conventions and architectural constraints.
 - Do not hand-edit generated output in `.next/`, `out/`, `node_modules/`,
   `next-env.d.ts`, or TypeScript build-info files. Use an isolated checkout if a
   development server and validation build would share generated output.
+- The current résumé PDF is generated output. Edit its CSV inputs and
+  `src/data/resume.json`, then use the generator described in
+  [README → Résumé and sharing images](README.md#résumé-and-sharing-images).
+  Keep generation before static export and outside browser code.
 - Pushing `main` publishes through the workflow; see [README → Deployment](README.md#deployment).
   Follow the user's authorization for commits, pushes, and publishing without
   adding a separate approval requirement when that action is already authorized.
@@ -111,3 +115,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Apply the theme before painting, then manage it through React context so saved/system preferences work without an initial background flash.
 - 2026-10-09: Use native disclosures for project details and earlier experience so those interactions also work without JavaScript.
 - 2026-10-09: Generate LinkedIn profile drafts on curated CSV changes so wording can be reused without requiring restricted profile-edit API access.
+- 2026-10-09: Generate the résumé from curated CSVs and preserved education/contact details before each static build so the website and downloadable PDF share current content.

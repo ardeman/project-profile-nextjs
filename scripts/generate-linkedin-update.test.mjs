@@ -6,9 +6,9 @@ import test from 'node:test'
 
 import {
   generateLinkedinUpdate,
-  parseProfileCsv,
   renderLinkedinUpdate,
 } from './generate-linkedin-update.mjs'
+import { parseProfileCsv } from './profile-data.mjs'
 
 const fixtures = {
   'Profile.csv':

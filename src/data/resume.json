@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    "mail@ardeman.com",
+    "are.theman@gmail.com",
+    "https://ardeman.com",
+    "https://linkedin.com/in/ardeman"
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering — Electrical, Electronics and Communications Engineering",
+      "school": "Universitas Syiah Kuala"
+    }
+  ]
+}

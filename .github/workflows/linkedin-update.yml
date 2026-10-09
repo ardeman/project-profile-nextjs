@@ -6,6 +6,7 @@ on:
     paths:
       - 'public/linkedin/*.csv'
       - 'scripts/generate-linkedin-update*.mjs'
+      - 'scripts/profile-data.mjs'
       - '.github/workflows/linkedin-update.yml'
       - 'package.json'
       - 'pnpm-lock.yaml'

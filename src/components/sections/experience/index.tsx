@@ -161,7 +161,7 @@ export const Experience = () => {
         <div className="mt-6">
           <a
             className="text-link"
-            href="/documents/resume-2025.pdf"
+            href="/documents/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"
             aria-label="View résumé (opens in a new tab)"

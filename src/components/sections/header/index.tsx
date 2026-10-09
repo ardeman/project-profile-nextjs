@@ -96,7 +96,7 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
             Message on LinkedIn
           </a>
           <a
-            href="/documents/resume-2025.pdf"
+            href="/documents/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"
             aria-label="View résumé (opens in a new tab)"

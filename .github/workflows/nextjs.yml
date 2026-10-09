@@ -41,8 +41,17 @@ jobs:
           restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Test résumé generation
+        run: pnpm test:resume
       - name: Build static site
         run: pnpm build
+      - name: Upload résumé PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: public/documents/resume.pdf
+          if-no-files-found: error
+          retention-days: 30
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
