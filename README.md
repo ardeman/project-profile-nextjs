@@ -32,24 +32,26 @@ format staged files; it does not run a production build.
 
 ## Commands
 
-| Task                                  | Command                             |
-| ------------------------------------- | ----------------------------------- |
-| Install locked dependencies           | `pnpm install --frozen-lockfile`    |
-| Run the development server            | `pnpm dev`                          |
-| Check lint without changing files     | `pnpm exec next lint`               |
-| Fix lint findings                     | `pnpm lint`                         |
-| Check TypeScript                      | `pnpm exec tsc --noEmit`            |
-| Format JavaScript and TypeScript      | `pnpm format`                       |
-| Format root documentation             | `pnpm exec prettier --write "*.md"` |
-| Check root documentation formatting   | `pnpm exec prettier --check "*.md"` |
-| Build the static website into `out/`  | `pnpm build`                        |
-| Preview the static export             | `pnpm start`                        |
-| Refresh the saved GitHub project data | `pnpm refresh:projects`             |
-| Prepare LinkedIn profile text         | `pnpm export:linkedin`              |
-| Test LinkedIn draft generation        | `pnpm test:linkedin`                |
-| Generate the current résumé PDF       | `pnpm export:resume`                |
-| Test résumé generation                | `pnpm test:resume`                  |
-| Enable local Git hooks                | `pnpm prepare`                      |
+| Task                                  | Command                                       |
+| ------------------------------------- | --------------------------------------------- |
+| Install locked dependencies           | `pnpm install --frozen-lockfile`              |
+| Run the development server            | `pnpm dev`                                    |
+| Check lint without changing files     | `pnpm exec next lint`                         |
+| Fix lint findings                     | `pnpm lint`                                   |
+| Check TypeScript                      | `pnpm exec tsc --noEmit`                      |
+| Format JavaScript and TypeScript      | `pnpm format`                                 |
+| Format root documentation             | `pnpm exec prettier --write "*.md"`           |
+| Check root documentation formatting   | `pnpm exec prettier --check "*.md"`           |
+| Build the static website into `out/`  | `pnpm build`                                  |
+| Preview the static export             | `pnpm start`                                  |
+| Refresh the saved GitHub project data | `pnpm refresh:projects`                       |
+| Prepare LinkedIn profile text         | `pnpm export:linkedin`                        |
+| Test LinkedIn draft generation        | `pnpm test:linkedin`                          |
+| Generate the current résumé PDF       | `pnpm export:resume`                          |
+| Test résumé generation                | `pnpm test:resume`                            |
+| Sync a marked GitHub profile README   | `pnpm sync:github-profile /path/to/README.md` |
+| Test GitHub profile synchronization   | `pnpm test:github-profile`                    |
+| Enable local Git hooks                | `pnpm prepare`                                |
 
 `pnpm start` serves `out/` with `serve`; it requires a completed build and can
 fetch the preview utility through pnpx. It does not start a Next.js application
@@ -69,7 +71,8 @@ pnpm build
 All three must pass. The build parses the profile CSV files and verifies that
 both routes can be exported. Run `pnpm test:linkedin` when changing the LinkedIn
 generator or its workflow. Run `pnpm test:resume` when changing the résumé
-generator, shared CSV helpers, or build integration. These Node tests cover exports; the application
+generator, shared CSV helpers, or build integration. Run `pnpm test:github-profile`
+when changing GitHub profile synchronization or shared CSV helpers. These Node tests cover exports; the application
 has no automated browser suite, so these commands do not replace checking the UI.
 
 For documentation-only changes, check Markdown formatting and local links. A
@@ -124,7 +127,7 @@ public/
   linkedin/             Public profile content in CSV files
   documents/            Generated current résumé PDF
   images/               Project screenshots, sharing card, and favicons
-scripts/                GitHub refresh, shared CSV helpers, LinkedIn/PDF exports and tests
+scripts/                GitHub refresh, shared CSV helpers, LinkedIn/PDF exports, profile sync and tests
 .github/workflows/      GitHub Pages deployment, résumé artifact, LinkedIn drafts
 .husky/                 Pre-commit hook
 ```
@@ -157,6 +160,41 @@ The `First Name` column is parsed, but the displayed name is currently written
 in the header and page metadata. If changing identity, update those together.
 Everything under `public/`, including CSV files and the résumé, is publicly
 accessible after deployment. Keep only information intended for publication.
+
+### GitHub profile synchronization
+
+The [GitHub profile README](https://github.com/ardeman/ardeman) uses the same
+curated CSVs as the portfolio. Its introduction, About, all skills, and first
+three positions are generated by `scripts/sync-github-profile.mjs`. The résumé
+link points to the PDF generated by the portfolio build.
+
+The [sync workflow](https://github.com/ardeman/ardeman/blob/main/.github/workflows/sync-profile.yml)
+lives in the profile repository. It checks portfolio `main` hourly, at minute 17
+UTC, and commits only when generated content changes. Scheduled runs can be
+delayed by GitHub. For an immediate update, use **ardeman/ardeman → Actions →
+Sync portfolio profile → Run workflow**. GitHub may disable scheduled workflows
+after 60 days without activity in a public repository; re-enable the workflow
+from Actions if necessary.
+
+No `.env` or personal access token is needed: the workflow reads this public
+repository and writes only to its own repository using `GITHUB_TOKEN`.
+The banner, badges, GitHub stats, and contact section remain manually editable.
+Keep generated copy between the `portfolio-profile:intro:start/end` and
+`portfolio-profile:details:start/end` HTML comment markers. Edit the CSVs to
+change that copy; the next sync replaces edits inside those sections.
+
+To sync a local checkout of the profile repository:
+
+```sh
+pnpm sync:github-profile /path/to/ardeman/README.md
+pnpm test:github-profile
+```
+
+The generator requires one correctly ordered, non-overlapping pair of markers
+for each section. It validates all CSV inputs before writing and preserves the
+existing README when validation fails. Running it again with identical inputs
+does not rewrite the file. Keep marker setup deliberate when adopting another
+README; the generator never replaces an unmarked document.
 
 ### LinkedIn update drafts
 

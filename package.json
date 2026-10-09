@@ -13,7 +13,9 @@
     "export:linkedin": "node scripts/generate-linkedin-update.mjs",
     "test:linkedin": "node --test scripts/generate-linkedin-update.test.mjs",
     "export:resume": "node scripts/generate-resume.mjs",
-    "test:resume": "node --test scripts/generate-resume.test.mjs"
+    "test:resume": "node --test scripts/generate-resume.test.mjs",
+    "sync:github-profile": "node scripts/sync-github-profile.mjs",
+    "test:github-profile": "node --test scripts/sync-github-profile.test.mjs"
   },
   "dependencies": {
     "@fontsource/geist-mono": "^5.1.0",

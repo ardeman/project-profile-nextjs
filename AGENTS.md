@@ -82,6 +82,11 @@ This file owns conventions and architectural constraints.
   [README → LinkedIn update drafts](README.md#linkedin-update-drafts). Keep its
   output outside `public/`. Do not introduce account credentials or browser
   automation as a substitute for approved profile-edit API access.
+- GitHub profile synchronization owns only the marked introduction and details
+  sections; see [README → GitHub profile synchronization](README.md#github-profile-synchronization).
+  Preserve handwritten sections and fail on missing or ambiguous markers. Keep
+  the scheduled writer in the destination repository so no cross-repository
+  personal token is required.
 - Do not hand-edit generated output in `.next/`, `out/`, `node_modules/`,
   `next-env.d.ts`, or TypeScript build-info files. Use an isolated checkout if a
   development server and validation build would share generated output.
@@ -116,3 +121,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Use native disclosures for project details and earlier experience so those interactions also work without JavaScript.
 - 2026-10-09: Generate LinkedIn profile drafts on curated CSV changes so wording can be reused without requiring restricted profile-edit API access.
 - 2026-10-09: Generate the résumé from curated CSVs and preserved education/contact details before each static build so the website and downloadable PDF share current content.
+- 2026-10-09: Pull public portfolio data from the GitHub profile repository on a schedule so its README stays current using only its own scoped Actions token.
