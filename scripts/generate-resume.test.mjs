@@ -37,7 +37,10 @@ const details = {
 }
 
 function extractText(document) {
-  const decoder = new TextDecoder('windows-1252')
+  // Decode WinAnsi explicitly: some Node releases decode Windows-1252 as Latin-1.
+  // https://github.com/nodejs/node/issues/56542
+  const punctuation =
+    '€\u0081‚ƒ„…†‡ˆ‰Š‹Œ\u008DŽ\u008F\u0090‘’“”•–—˜™š›œ\u009DžŸ'
   return document
     .getPages()
     .flatMap((page) =>
@@ -49,7 +52,13 @@ function extractText(document) {
             decodePDFRawStream(document.context.lookup(reference)).decode()
           ).toString()
           return [...operators.matchAll(/<([\dA-Fa-f]+)> Tj/g)].map((match) =>
-            decoder.decode(Buffer.from(match[1], 'hex'))
+            [...Buffer.from(match[1], 'hex')]
+              .map((byte) =>
+                byte >= 0x80 && byte <= 0x9f
+                  ? punctuation[byte - 0x80]
+                  : String.fromCodePoint(byte)
+              )
+              .join('')
           )
         })
     )
