@@ -1,0 +1,30 @@
+name: Sync GitHub profile
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-github-profile
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger profile synchronization
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_SYNC_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo '::error::Add PROFILE_SYNC_TOKEN to this repository Actions secrets. Use a fine-grained token for ardeman/ardeman with Actions: Read and write.'
+            exit 1
+          fi
+          gh workflow run sync-profile.yml --repo ardeman/ardeman --ref main
+          echo 'Triggered README synchronization in ardeman/ardeman from the latest portfolio main branch.' >> "$GITHUB_STEP_SUMMARY"
+          echo '[View synchronization runs](https://github.com/ardeman/ardeman/actions/workflows/sync-profile.yml)' >> "$GITHUB_STEP_SUMMARY"

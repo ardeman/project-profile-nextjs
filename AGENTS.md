@@ -85,8 +85,9 @@ This file owns conventions and architectural constraints.
 - GitHub profile synchronization owns only the marked introduction and details
   sections; see [README → GitHub profile synchronization](README.md#github-profile-synchronization).
   Preserve handwritten sections and fail on missing or ambiguous markers. Keep
-  the scheduled writer in the destination repository so no cross-repository
-  personal token is required.
+  the writer in the destination repository. The source push workflow dispatches
+  it with an Actions-only token in an Actions secret; never reuse local CLI
+  credentials or introduce a polling schedule.
 - Do not hand-edit generated output in `.next/`, `out/`, `node_modules/`,
   `next-env.d.ts`, or TypeScript build-info files. Use an isolated checkout if a
   development server and validation build would share generated output.
@@ -121,4 +122,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Use native disclosures for project details and earlier experience so those interactions also work without JavaScript.
 - 2026-10-09: Generate LinkedIn profile drafts on curated CSV changes so wording can be reused without requiring restricted profile-edit API access.
 - 2026-10-09: Generate the résumé from curated CSVs and preserved education/contact details before each static build so the website and downloadable PDF share current content.
-- 2026-10-09: Pull public portfolio data from the GitHub profile repository on a schedule so its README stays current using only its own scoped Actions token.
+- 2026-10-09: Trigger GitHub profile synchronization on portfolio main pushes using an Actions-only dispatch token; the destination workflow commits with its own scoped Actions token.
