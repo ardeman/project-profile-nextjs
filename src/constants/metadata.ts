@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 const description =
-  'Ardeman is a front-end engineer building thoughtful web applications with React, Next.js, and TypeScript. Explore selected projects and professional experience.'
+  'Ardeman is a front-end engineer and team lead in Jakarta, building clear, usable web experiences with React, Next.js, and TypeScript.'
 export const metadata: Metadata = {
   metadataBase: new URL('https://ardeman.com'),
   title: 'Ardeman',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/',
-    title: 'Ardeman — Front-End Engineer',
+    title: 'Ardeman — Front-End Engineer & Team Lead',
     description,
     siteName: 'Ardeman',
     locale: 'en_US',
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
         url: '/images/social-preview.png',
         width: 1200,
         height: 630,
-        alt: 'Ardeman — Front-End Engineer. Selected work, experience, and playful learning.',
+        alt: 'Ardeman — Front-End Engineer & Team Lead. Building useful things for the web.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ardeman — Front-End Engineer',
+    title: 'Ardeman — Front-End Engineer & Team Lead',
     description,
     images: ['/images/social-preview.png'],
   },

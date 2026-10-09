@@ -69,7 +69,7 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
     <header className="lg:sticky lg:top-0 lg:flex lg:h-dvh lg:w-[34%] lg:shrink-0 lg:flex-col lg:justify-between lg:gap-8 lg:overflow-y-auto lg:py-16 xl:w-[36%] xl:py-20">
       <div>
         <p className="text-muted mb-5 font-mono text-[11px] uppercase tracking-[0.2em]">
-          A personal collection of work
+          Building useful things for the web
         </p>
         <h1 className="oldenburg-regular text-ink text-5xl tracking-tight sm:text-6xl">
           <a href="/">Ardeman</a>
