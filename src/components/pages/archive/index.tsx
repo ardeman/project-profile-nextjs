@@ -15,7 +15,7 @@ export const ArchivePage = () => {
   const { data: projects, isError, isFetching, refetch } = useGetProjects()
   const filteredProjects = projects?.filter(
     (project) =>
-      !project.fork && !project.archived && project.name !== 'ardeman',
+      project.name.startsWith('project') && !project.fork && !project.archived,
   )
   return (
     <main

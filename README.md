@@ -302,8 +302,9 @@ not extra CSV columns such as addresses.
   text in the featured project data. The UI uses an 8:5 image frame. Add an
   optional `darkImage` with the same framing to follow the portfolio’s resolved
   theme; projects without it use their default `image` in both themes.
-- The archive excludes forks, archived repositories, and the GitHub profile
-  repository. Featured projects use their configured order.
+- The archive includes only repositories whose names start with `project`,
+  excluding forks and archived repositories. Featured projects use their
+  configured order.
 
 GitHub metadata is committed in `src/data/projects.json`. The browser renders
 that snapshot first, then requests current public metadata with at most ten
