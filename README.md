@@ -378,6 +378,12 @@ manages persistence and system changes. Keep both paths consistent, including
 when localStorage is unavailable. Viewport/browser theme colors live separately
 in `src/constants/viewport.ts`.
 
+Favicons follow the resolved theme using the matching assets in
+`public/images/light/` and `public/images/dark/`. Their editable `favicon.svg`
+sources preserve the Oldenburg “A” and use each theme’s accent and canvas colors.
+When changing the palette, update those sources and export the matching ICO,
+16px/32px PNG, Apple touch, and Android icons together.
+
 ## Deployment
 
 [`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml) builds and deploys
