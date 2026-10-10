@@ -3,7 +3,7 @@
     "id": 865244817,
     "name": "project-profile-nextjs",
     "html_url": "https://github.com/ardeman/project-profile-nextjs",
-    "description": "A personal website built with Next.js and Tailwind CSS",
+    "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
     "homepage": "https://ardeman.com/",
     "language": "TypeScript",
     "stargazers_count": 0,
@@ -16,15 +16,64 @@
       "node_id": "MDc6TGljZW5zZTEz"
     },
     "topics": [
+      "accessibility",
       "dark-mode",
       "github-actions",
       "github-pages",
       "light-mode",
-      "next-js",
+      "nextjs",
+      "personal-website",
       "pnpm",
-      "tailwind-css",
-      "tanstack-query"
+      "portfolio",
+      "react",
+      "static-site",
+      "tailwindcss",
+      "tanstack-query",
+      "typescript"
     ],
+    "fork": false,
+    "archived": false
+  },
+  {
+    "id": 897823180,
+    "name": "project-catatsaja-reactrouter",
+    "html_url": "https://github.com/ardeman/project-catatsaja-reactrouter",
+    "description": "A personal productivity application that helps you manage tasks, notes, and finances in one place.",
+    "homepage": "https://catatsaja.ardeman.com",
+    "language": "TypeScript",
+    "stargazers_count": 2,
+    "forks_count": 0,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "topics": [
+      "firebase",
+      "firebase-auth",
+      "firebase-hosting",
+      "firestore",
+      "github-actions",
+      "react-router-v7",
+      "typescript",
+      "vite"
+    ],
+    "fork": false,
+    "archived": false
+  },
+  {
+    "id": 350058040,
+    "name": "ardeman",
+    "html_url": "https://github.com/ardeman/ardeman",
+    "description": "Config files for my GitHub profile.",
+    "homepage": "https://github.com/ardeman",
+    "language": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "license": null,
+    "topics": ["config", "github-config"],
     "fork": false,
     "archived": false
   },
@@ -73,7 +122,7 @@
     "id": 994533091,
     "name": "project-steamdeck-nvm",
     "html_url": "https://github.com/ardeman/project-steamdeck-nvm",
-    "description": "NVM for Steam Deck is a lightweight Python tool that manages Node.js versions on the Steam Deck\u2019s read-only file system. It auto-switches Node.js versions using .nvmrc files, offers easy one-command setup/removal, and installs missing versions automatically\u2014no manual setup required.",
+    "description": "NVM for Steam Deck is a lightweight Python tool that manages Node.js versions on the Steam Deck’s read-only file system. It auto-switches Node.js versions using .nvmrc files, offers easy one-command setup/removal, and installs missing versions automatically—no manual setup required.",
     "homepage": "",
     "language": "Python",
     "stargazers_count": 3,
@@ -154,35 +203,6 @@
     "archived": false
   },
   {
-    "id": 897823180,
-    "name": "project-catatsaja-reactrouter",
-    "html_url": "https://github.com/ardeman/project-catatsaja-reactrouter",
-    "description": "A personal productivity application that helps you manage tasks, notes, and finances in one place.",
-    "homepage": "https://catatsaja.ardeman.com",
-    "language": "TypeScript",
-    "stargazers_count": 2,
-    "forks_count": 0,
-    "license": {
-      "key": "mit",
-      "name": "MIT License",
-      "spdx_id": "MIT",
-      "url": "https://api.github.com/licenses/mit",
-      "node_id": "MDc6TGljZW5zZTEz"
-    },
-    "topics": [
-      "firebase",
-      "firebase-auth",
-      "firebase-hosting",
-      "firestore",
-      "github-actions",
-      "react-router-v7",
-      "typescript",
-      "vite"
-    ],
-    "fork": false,
-    "archived": false
-  },
-  {
     "id": 299063365,
     "name": "project-bootstrap-datepicker",
     "html_url": "https://github.com/ardeman/project-bootstrap-datepicker",
@@ -220,20 +240,6 @@
     },
     "topics": ["datatables", "plugins"],
     "fork": true,
-    "archived": false
-  },
-  {
-    "id": 350058040,
-    "name": "ardeman",
-    "html_url": "https://github.com/ardeman/ardeman",
-    "description": "Config files for my GitHub profile.",
-    "homepage": "https://github.com/ardeman",
-    "language": null,
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
-    "topics": ["config", "github-config"],
-    "fork": false,
     "archived": false
   },
   {
