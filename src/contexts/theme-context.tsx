@@ -32,6 +32,15 @@ const createThemeStore = () => {
     document.documentElement.classList.toggle('dark', resolved === 'dark')
     document.documentElement.classList.toggle('light', resolved === 'light')
     document.documentElement.style.colorScheme = resolved
+    // Override the system-only metadata while retaining its no-JavaScript fallback.
+    for (const icon of document.querySelectorAll<HTMLLinkElement>(
+      'link[rel="icon"][href="/images/light/favicon.ico"], link[rel="icon"][href="/images/dark/favicon.ico"]',
+    )) {
+      icon.media =
+        icon.getAttribute('href') === `/images/${resolved}/favicon.ico`
+          ? 'all'
+          : 'not all'
+    }
   }
   const notify = () => {
     apply()
