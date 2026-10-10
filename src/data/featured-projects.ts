@@ -21,15 +21,17 @@ export const featuredProjects = [
     title: 'Catat Saja',
     linkLabel: 'View project',
     category: 'Everyday tools',
-    summary: 'Notes and checklists, organized and shared in one place.',
+    summary: 'Notes, tasks, and finances, organized and shared in one place.',
     technologies: ['React Router', 'TypeScript', 'Firebase'],
     image: '/images/projects/catatsaja.png',
     darkImage: '/images/projects/catatsaja-dark.png',
     alt: 'Catat Saja landing page showing a weekly plan note and a shared grocery checklist',
-    problem: 'Keep everyday notes and checklists together and easy to share.',
+    problem:
+      'Keep everyday notes, tasks, and income and expenses together without switching between apps.',
     contribution:
-      'A React Router and Firebase application with rich-text notes, checklists, and sharing with view or edit access.',
-    result: 'Write notes, check off tasks, and share them across devices.',
+      'A React Router and Firebase application with rich-text notes, task checklists, and shared finance books. Income and expense entries support multiple currencies and retain their exchange rates.',
+    result:
+      'Write notes, track tasks and balances, search across all three, and share with view or edit access. Available in English and Indonesian, with installation on phones and computers.',
   },
   {
     name: 'project-profile-nextjs',

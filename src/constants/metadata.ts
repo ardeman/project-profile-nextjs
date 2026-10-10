@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 const description =
-  'Ardeman is a front-end engineer and team lead in Jakarta, building clear, usable web experiences with React, Next.js, and TypeScript.'
+  'Ardeman is a front-end engineer and team lead in Jakarta, with experience across web applications, full-stack development, and front-end delivery.'
 export const metadata: Metadata = {
   metadataBase: new URL('https://ardeman.com'),
   title: 'Ardeman',
