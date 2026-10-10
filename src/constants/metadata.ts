@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: '/images/social-preview.png',
         width: 1200,
         height: 630,
-        alt: 'Ardeman — Front-End Engineer & Team Lead. Building useful things for the web.',
+        alt: 'Ardeman — Front-End Engineer & Team Lead. Building useful apps.',
       },
     ],
   },

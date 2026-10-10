@@ -25,7 +25,7 @@ export const featuredProjects = [
     technologies: ['React Router', 'TypeScript', 'Firebase'],
     image: '/images/projects/catatsaja.png',
     darkImage: '/images/projects/catatsaja-dark.png',
-    alt: 'Catat Saja landing page showing a weekly plan note and a shared grocery checklist',
+    alt: 'Catat Saja landing page showing a weekly plan note, a shared grocery checklist, and a trip finance book',
     problem:
       'Keep everyday notes, tasks, and income and expenses together without switching between apps.',
     contribution:
