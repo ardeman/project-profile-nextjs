@@ -74,6 +74,9 @@ export const ThemeToggle = () => {
               key={value}
               type="button"
               aria-pressed={theme === value}
+              // Safari blurs the focused option before clicking another button.
+              // Keep focus inside the picker until onClick applies the selection.
+              onMouseDown={(event) => event.preventDefault()}
               onClick={() => {
                 setTheme(value)
                 setIsOpen(false)
