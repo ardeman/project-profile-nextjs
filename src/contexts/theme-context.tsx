@@ -32,14 +32,23 @@ const createThemeStore = () => {
     document.documentElement.classList.toggle('dark', resolved === 'dark')
     document.documentElement.classList.toggle('light', resolved === 'light')
     document.documentElement.style.colorScheme = resolved
-    // Override the system-only metadata while retaining its no-JavaScript fallback.
+    // Update the URL directly; some browsers do not reconsider media-only changes.
+    // Leave Next's metadata URLs intact and give the active icon its own link.
+    const favicon = `/images/${resolved}/favicon.ico?v=2`
     for (const icon of document.querySelectorAll<HTMLLinkElement>(
-      'link[rel="icon"][href="/images/light/favicon.ico"], link[rel="icon"][href="/images/dark/favicon.ico"]',
+      'link[rel="icon"][media][href^="/images/light/favicon.ico"], link[rel="icon"][media][href^="/images/dark/favicon.ico"]',
     )) {
-      icon.media =
-        icon.getAttribute('href') === `/images/${resolved}/favicon.ico`
-          ? 'all'
-          : 'not all'
+      icon.media = 'not all'
+    }
+    let activeIcon = document.querySelector<HTMLLinkElement>('#theme-favicon')
+    if (!activeIcon) {
+      activeIcon = document.createElement('link')
+      activeIcon.id = 'theme-favicon'
+      activeIcon.rel = 'icon'
+      activeIcon.href = favicon
+      document.head.append(activeIcon)
+    } else if (activeIcon.getAttribute('href') !== favicon) {
+      activeIcon.href = favicon
     }
   }
   const notify = () => {

@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     icon: [
       {
         media: '(prefers-color-scheme: dark)',
-        url: '/images/dark/favicon.ico',
+        url: '/images/dark/favicon.ico?v=2',
       },
       {
         media: '(prefers-color-scheme: light)',
-        url: '/images/light/favicon.ico',
+        url: '/images/light/favicon.ico?v=2',
       },
     ],
   },

@@ -383,6 +383,11 @@ Favicons follow the resolved theme using the matching assets in
 sources preserve the Oldenburg “A” and use each theme’s accent and canvas colors.
 When changing the palette, update those sources and export the matching ICO,
 16px/32px PNG, Apple touch, and Android icons together.
+The theme store updates the favicon URL directly; metadata media queries remain
+the fallback without JavaScript. The `v` query in metadata and the theme store
+versions raster exports and must stay consistent when refreshing them. Safari
+may keep showing a cached tab icon despite URL changes; see
+[WebKit’s favicon update issue](https://bugs.webkit.org/show_bug.cgi?id=266426).
 
 ## Deployment
 
