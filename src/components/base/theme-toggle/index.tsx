@@ -11,7 +11,11 @@ const options = [
   { value: 'system', label: 'System', Icon: GoDeviceDesktop },
 ] as const
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({
+  placement = 'above',
+}: {
+  placement?: 'above' | 'below'
+}) => {
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const container = useRef<HTMLDivElement>(null)
@@ -67,7 +71,7 @@ export const ThemeToggle = () => {
           id={id}
           role="group"
           aria-label="Color theme"
-          className="absolute right-0 bottom-full z-50 mb-2 flex min-w-[140px] flex-col gap-1 rounded-xl border border-line bg-surface p-2 shadow-lg"
+          className={`absolute right-0 z-50 flex min-w-[140px] flex-col gap-1 rounded-xl border border-line bg-surface p-2 shadow-lg ${placement === 'above' ? 'bottom-full mb-2' : 'top-full mt-2'}`}
         >
           {options.map(({ value, label, Icon: OptionIcon }) => (
             <button
