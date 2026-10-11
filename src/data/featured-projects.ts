@@ -21,17 +21,18 @@ export const featuredProjects = [
     title: 'Catat Saja',
     linkLabel: 'View project',
     category: 'Everyday tools',
-    summary: 'Notes, tasks, and finances, organized and shared in one place.',
-    technologies: ['React Router', 'TypeScript', 'Firebase'],
+    summary:
+      'Notes, tasks, finances, and health logs, encrypted and shared in one place.',
+    technologies: ['React Router', 'TypeScript', 'Firebase', 'Web Crypto'],
     image: '/images/projects/catatsaja.png',
     darkImage: '/images/projects/catatsaja-dark.png',
-    alt: 'Catat Saja landing page showing a weekly plan note, a shared grocery checklist, and a trip finance book',
+    alt: 'Catat Saja landing page showing a weekly plan note, a grocery checklist, a shared health log, and a trip finance book with spending by category',
     problem:
-      'Keep everyday notes, tasks, and income and expenses together without switching between apps.',
+      'Keep everyday notes, tasks, money, and family health records together, with control over who can read them.',
     contribution:
-      'A React Router and Firebase application with rich-text notes, task checklists, and shared finance books. Income and expense entries support multiple currencies and retain their exchange rates.',
+      'A React Router and Firebase app with autosaving Markdown notes, checklists, multi-currency finance books with cash flow and spending charts, and health logs for body measurements, child growth, lab results, calories, and periods. Web Crypto encrypts records on the device, including when sharing them.',
     result:
-      'Write notes, track tasks and balances, search across all three, and share with view or edit access. Available in English and Indonesian, with installation on phones and computers.',
+      'Search across notes, tasks, finances, and health logs, and share any record with view or edit access and real-time updates. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
   },
   {
     name: 'project-profile-nextjs',

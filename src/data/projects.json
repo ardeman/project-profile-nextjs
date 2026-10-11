@@ -38,7 +38,7 @@
     "id": 897823180,
     "name": "project-catatsaja-reactrouter",
     "html_url": "https://github.com/ardeman/project-catatsaja-reactrouter",
-    "description": "A personal productivity application that helps you manage tasks, notes, and finances in one place.",
+    "description": "Catat Saja: notes, checklists, finances and health logs in one place. End-to-end encrypted, shareable, installable, in English and Bahasa Indonesia.",
     "homepage": "https://catatsaja.ardeman.com",
     "language": "TypeScript",
     "stargazers_count": 2,
@@ -51,14 +51,18 @@
       "node_id": "MDc6TGljZW5zZTEz"
     },
     "topics": [
+      "end-to-end-encryption",
       "firebase",
       "firebase-auth",
       "firebase-hosting",
       "firestore",
       "github-actions",
-      "react-router-v7",
+      "pwa",
+      "react-router",
+      "tailwindcss",
       "typescript",
-      "vite"
+      "vite",
+      "web-crypto"
     ],
     "fork": false,
     "archived": false
