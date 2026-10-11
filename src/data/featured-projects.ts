@@ -8,6 +8,10 @@ export const featuredProjects = [
       'A coding adventure for children using picture blocks and spoken instructions.',
     technologies: ['Flutter', 'Dart', 'Android'],
     image: '/images/projects/cobalagi.png',
+    video: {
+      id: 'GkgvJ2ZXoL0',
+      title: 'Coba Lagi 2.0.0: learn to code through play, no reading needed',
+    },
     alt: 'Coba Lagi coding game with a path, character, and visual instruction blocks',
     problem:
       'Introduce coding concepts through play, including for children who are still learning to read.',
@@ -26,6 +30,11 @@ export const featuredProjects = [
     technologies: ['React Router', 'TypeScript', 'Firebase', 'Web Crypto'],
     image: '/images/projects/catatsaja.png',
     darkImage: '/images/projects/catatsaja-dark.png',
+    video: {
+      id: 'iLcWg5vs8Hs',
+      title:
+        'Catat Saja v2026-10-11: notes, budget and family health in one private app',
+    },
     alt: 'Catat Saja landing page showing a weekly plan note, a grocery checklist, a shared health log, and a trip finance book with spending by category',
     problem:
       'Keep everyday notes, tasks, money, and family health records together, with control over who can read them.',

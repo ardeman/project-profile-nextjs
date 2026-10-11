@@ -20,7 +20,8 @@
   }
 }
 
-#projects article > a:focus-visible {
+#projects article > a:focus-visible,
+#projects article > iframe:focus-visible {
   outline-color: rgb(var(--accent));
   outline-offset: -3px;
 }

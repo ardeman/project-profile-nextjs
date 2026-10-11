@@ -302,6 +302,12 @@ not extra CSV columns such as addresses.
   text in the featured project data. The UI uses an 8:5 image frame. Add an
   optional `darkImage` with the same framing to follow the portfolio’s resolved
   theme; projects without it use their default `image` in both themes.
+- Add an optional `video` with a YouTube `id` and descriptive `title` to feature a
+  project demo. Its screenshot becomes a click-to-play preview; the player loads
+  from `youtube-nocookie.com` only after activation. Without JavaScript, the
+  preview opens the video on YouTube. A direct YouTube link stays available below
+  the project details. Video selection is curated and does not fetch the channel
+  during builds or page loads.
 - The archive includes only repositories whose names start with `project`,
   excluding forks and archived repositories. Featured projects use their
   configured order.

@@ -1,12 +1,101 @@
 'use client'
 
 import Image from 'next/image'
-import { GoArrowRight, GoArrowUpRight } from 'react-icons/go'
+import { useState } from 'react'
+import { GoArrowRight, GoArrowUpRight, GoPlay } from 'react-icons/go'
 
 import { Capsule, Title } from '@/components/base'
 import { featuredProjects } from '@/data/featured-projects'
 import snapshot from '@/data/projects.json'
 import { useGetProjects } from '@/hooks'
+
+const focusVideoPlayer = (player: HTMLIFrameElement | null) => {
+  player?.focus()
+}
+
+const ProjectMedia = ({
+  feature,
+  projectUrl,
+}: {
+  feature: (typeof featuredProjects)[number]
+  projectUrl: string
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  if (isPlaying && feature.video) {
+    return (
+      <iframe
+        ref={focusVideoPlayer}
+        src={`https://www.youtube-nocookie.com/embed/${feature.video.id}?autoplay=1&rel=0`}
+        title={feature.video.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        className="aspect-[8/5] w-full border-b border-line"
+      />
+    )
+  }
+
+  return (
+    <a
+      href={
+        feature.video
+          ? `https://www.youtube.com/watch?v=${feature.video.id}`
+          : projectUrl
+      }
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={
+        feature.video
+          ? `Play ${feature.title} video demo`
+          : `${feature.title} (opens in a new tab)`
+      }
+      onClick={
+        feature.video
+          ? (event) => {
+              if (
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey
+              )
+                return
+              event.preventDefault()
+              setIsPlaying(true)
+            }
+          : undefined
+      }
+      className="group relative block overflow-hidden border-b border-line bg-accent-soft/40"
+    >
+      <Image
+        src={feature.image}
+        alt={feature.alt}
+        width={1200}
+        height={750}
+        sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
+        className={`aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 ${feature.darkImage ? 'dark:hidden' : ''}`}
+      />
+      {feature.darkImage && (
+        <Image
+          src={feature.darkImage}
+          alt={feature.alt}
+          width={1200}
+          height={750}
+          sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
+          className="hidden aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 dark:block"
+        />
+      )}
+      {feature.video && (
+        <span className="absolute inset-x-0 bottom-5 flex justify-center">
+          <span className="inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-medium text-on-accent shadow-lg">
+            <GoPlay aria-hidden="true" />
+            Watch demo
+          </span>
+        </span>
+      )}
+    </a>
+  )
+}
 
 export const Projects = () => {
   const { data: projects, isError, isFetching, refetch } = useGetProjects()
@@ -28,32 +117,10 @@ export const Projects = () => {
           return (
             <li key={feature.name}>
               <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
-                <a
-                  href={project.homepage || project.html_url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={`${feature.title} (opens in a new tab)`}
-                  className="group block overflow-hidden border-b border-line bg-accent-soft/40"
-                >
-                  <Image
-                    src={feature.image}
-                    alt={feature.alt}
-                    width={1200}
-                    height={750}
-                    sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
-                    className={`aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 ${feature.darkImage ? 'dark:hidden' : ''}`}
-                  />
-                  {feature.darkImage && (
-                    <Image
-                      src={feature.darkImage}
-                      alt={feature.alt}
-                      width={1200}
-                      height={750}
-                      sizes="(min-width: 1280px) 600px, (min-width: 1024px) 520px, 100vw"
-                      className="hidden aspect-[8/5] w-full object-contain transition-opacity duration-200 group-hover:opacity-90 dark:block"
-                    />
-                  )}
-                </a>
+                <ProjectMedia
+                  feature={feature}
+                  projectUrl={project.homepage || project.html_url}
+                />
                 <div className="p-5 sm:p-6">
                   <p className="mb-2 font-mono text-[10px] tracking-[0.18em] text-muted uppercase">
                     0{index + 1} / {feature.category}
@@ -93,6 +160,18 @@ export const Projects = () => {
                     </dl>
                   </details>
                   <div className="mt-3 flex flex-wrap items-center gap-x-5">
+                    {feature.video && (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${feature.video.id}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="text-link"
+                        aria-label={`Watch ${feature.title} on YouTube (opens in a new tab)`}
+                      >
+                        Watch on YouTube
+                        <GoArrowUpRight aria-hidden="true" />
+                      </a>
+                    )}
                     {project.homepage && (
                       <a
                         href={project.homepage}
