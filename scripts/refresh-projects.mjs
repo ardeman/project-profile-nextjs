@@ -5,11 +5,11 @@ const signal = AbortSignal.timeout(15_000)
 for (let page = 1; page <= 10; page++) {
   const response = await fetch(
     `https://api.github.com/users/ardeman/repos?per_page=100&sort=updated&page=${page}`,
-    { signal }
+    { signal },
   )
   if (!response.ok)
     throw new Error(
-      `GitHub returned ${response.status}; saved snapshot was not changed`
+      `GitHub returned ${response.status}; saved snapshot was not changed`,
     )
   const repositories = await response.json()
   if (!Array.isArray(repositories))
@@ -18,7 +18,7 @@ for (let page = 1; page <= 10; page++) {
   if (repositories.length < 100) break
   if (page === 10)
     throw new Error(
-      'GitHub pagination limit exceeded; saved snapshot was not changed'
+      'GitHub pagination limit exceeded; saved snapshot was not changed',
     )
 }
 const fields = [
@@ -28,17 +28,15 @@ const fields = [
   'description',
   'homepage',
   'language',
-  'stargazers_count',
-  'forks_count',
-  'license',
   'topics',
   'fork',
   'archived',
 ]
-const snapshot = projects.map((project) =>
-  Object.fromEntries(fields.map((field) => [field, project[field]]))
-)
+const snapshot = projects.map((project) => ({
+  ...Object.fromEntries(fields.map((field) => [field, project[field]])),
+  license: project.license ? { spdx_id: project.license.spdx_id } : null,
+}))
 await writeFile(
   new URL('../src/data/projects.json', import.meta.url),
-  `${JSON.stringify(snapshot, null, 2)}\n`
+  `${JSON.stringify(snapshot, null, 2)}\n`,
 )

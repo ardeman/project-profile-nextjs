@@ -14,7 +14,7 @@ import {
 const readRows = async <T>(filename: string): Promise<T[]> => {
   const csv = await readFile(
     path.join(process.cwd(), 'public/linkedin', filename),
-    'utf8'
+    'utf8',
   )
   const result = Papa.parse<T>(csv, {
     header: true,
@@ -39,7 +39,6 @@ export const getProfile = async (): Promise<LinkedinData> => {
   }
   return {
     profileData: {
-      'First Name': profiles[0]['First Name'],
       Headline: profiles[0].Headline,
       Summary: profiles[0].Summary,
     },

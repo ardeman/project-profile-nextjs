@@ -189,8 +189,9 @@ contains commas.
 a missing headline/introduction fail the build. In development, refresh the page
 after changing a CSV file; production content changes require a rebuild.
 
-The `First Name` column is parsed, but the displayed name is currently written
-in the header and page metadata. If changing identity, update those together.
+The displayed name is written in the header and page metadata. The résumé and
+GitHub profile generators read `First Name` from the CSV. If changing identity,
+update those together.
 Everything under `public/`, including CSV files and the résumé, is publicly
 accessible after deployment. Keep only information intended for publication.
 
@@ -312,7 +313,8 @@ not extra CSV columns such as addresses.
   excluding forks and archived repositories. Featured projects use their
   configured order.
 
-GitHub metadata is committed in `src/data/projects.json`. The browser renders
+GitHub metadata used by the UI is committed in `src/data/projects.json`; unused
+star/fork counts and extra license metadata are omitted. The browser renders
 that snapshot first, then requests current public metadata with at most ten
 pages, a ten-second overall timeout, cancellation, and one retry. A failed refresh
 keeps the saved data. The featured
@@ -388,8 +390,9 @@ in `src/constants/viewport.ts`.
 Favicons follow the resolved theme using the matching assets in
 `public/images/light/` and `public/images/dark/`. Their editable `favicon.svg`
 sources preserve the Oldenburg “A” and use each theme’s accent and canvas colors.
-When changing the palette, update those sources and export the matching ICO,
-16px/32px PNG, Apple touch, and Android icons together.
+When changing the palette, update those sources and export the matching ICO
+files. Only the ICO files are served as favicons; unused PNG variants and web
+manifests are not kept. Preserve font attribution in each theme's `about.txt`.
 The theme store updates the favicon URL directly; metadata media queries remain
 the fallback without JavaScript. The `v` query in metadata and the theme store
 versions raster exports and must stay consistent when refreshing them. Safari

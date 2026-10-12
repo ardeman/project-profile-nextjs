@@ -3,7 +3,6 @@ export type TProfileSummary = {
 }
 
 export type TProfile = {
-  'First Name': string
   Headline: string
   Summary: string
 }

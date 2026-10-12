@@ -30,7 +30,7 @@ const renderPosition = (position: TPositions, index: number) => {
       className="border-b border-line pb-8 last:border-none last:pb-0"
       key={index}
     >
-      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
+      <div className="relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4">
         <header
           className="z-10 mt-1 mb-2 font-mono text-[11px] font-medium tracking-wide text-muted uppercase sm:col-span-2"
           aria-label={`${position['Started On']} — ${
@@ -167,7 +167,7 @@ export const Experience = () => {
           >
             <span className="inline-block">
               View résumé{' '}
-              <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
+              <GoArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px" />
             </span>
           </a>
         </div>

@@ -6,15 +6,6 @@
     "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
     "homepage": "https://ardeman.com/",
     "language": "TypeScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "mit",
-      "name": "MIT License",
-      "spdx_id": "MIT",
-      "url": "https://api.github.com/licenses/mit",
-      "node_id": "MDc6TGljZW5zZTEz"
-    },
     "topics": [
       "accessibility",
       "dark-mode",
@@ -32,7 +23,10 @@
       "typescript"
     ],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
   },
   {
     "id": 897823180,
@@ -41,15 +35,6 @@
     "description": "Catat Saja: notes, checklists, finances and health logs in one place. End-to-end encrypted, shareable, installable, in English and Bahasa Indonesia.",
     "homepage": "https://catatsaja.ardeman.com",
     "language": "TypeScript",
-    "stargazers_count": 2,
-    "forks_count": 0,
-    "license": {
-      "key": "mit",
-      "name": "MIT License",
-      "spdx_id": "MIT",
-      "url": "https://api.github.com/licenses/mit",
-      "node_id": "MDc6TGljZW5zZTEz"
-    },
     "topics": [
       "end-to-end-encryption",
       "firebase",
@@ -65,7 +50,10 @@
       "web-crypto"
     ],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
   },
   {
     "id": 350058040,
@@ -74,12 +62,10 @@
     "description": "Config files for my GitHub profile.",
     "homepage": "https://github.com/ardeman",
     "language": null,
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": ["config", "github-config"],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 1405027223,
@@ -88,15 +74,6 @@
     "description": "Coba Lagi helps children learn the basics of coding through play. Kids put picture blocks in order to guide their little friend along a path to the flag. No reading needed: every instruction is spoken aloud, in Bahasa Indonesia and English. Readers can type real code too.",
     "homepage": "https://cobalagi.ardeman.com/",
     "language": "Dart",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "gpl-3.0",
-      "name": "GNU General Public License v3.0",
-      "spdx_id": "GPL-3.0",
-      "url": "https://api.github.com/licenses/gpl-3.0",
-      "node_id": "MDc6TGljZW5zZTk="
-    },
     "topics": [
       "android",
       "bahasa-indonesia",
@@ -120,7 +97,10 @@
       "windows"
     ],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "GPL-3.0"
+    }
   },
   {
     "id": 994533091,
@@ -129,15 +109,6 @@
     "description": "NVM for Steam Deck is a lightweight Python tool that manages Node.js versions on the Steam Deck’s read-only file system. It auto-switches Node.js versions using .nvmrc files, offers easy one-command setup/removal, and installs missing versions automatically—no manual setup required.",
     "homepage": "",
     "language": "Python",
-    "stargazers_count": 3,
-    "forks_count": 0,
-    "license": {
-      "key": "mit",
-      "name": "MIT License",
-      "spdx_id": "MIT",
-      "url": "https://api.github.com/licenses/mit",
-      "node_id": "MDc6TGljZW5zZTEz"
-    },
     "topics": [
       "node-version-manager",
       "nodejs",
@@ -148,7 +119,10 @@
       "steamos"
     ],
     "fork": true,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
   },
   {
     "id": 1287014913,
@@ -157,12 +131,10 @@
     "description": null,
     "homepage": null,
     "language": "Python",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 1287011238,
@@ -171,12 +143,10 @@
     "description": null,
     "homepage": null,
     "language": "Jupyter Notebook",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 1160866351,
@@ -185,12 +155,10 @@
     "description": null,
     "homepage": null,
     "language": "Dart",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 1054704793,
@@ -199,12 +167,10 @@
     "description": "Quick Tools - Essential Android System Utilities",
     "homepage": "",
     "language": "Kotlin",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 299063365,
@@ -213,18 +179,12 @@
     "description": "A datepicker for twitter bootstrap (@twbs)",
     "homepage": "",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "apache-2.0",
-      "name": "Apache License 2.0",
-      "spdx_id": "Apache-2.0",
-      "url": "https://api.github.com/licenses/apache-2.0",
-      "node_id": "MDc6TGljZW5zZTI="
-    },
     "topics": ["bootstrap", "datepicker"],
     "fork": true,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "Apache-2.0"
+    }
   },
   {
     "id": 305075213,
@@ -233,18 +193,12 @@
     "description": "Plug-ins for DataTables",
     "homepage": "",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "other",
-      "name": "Other",
-      "spdx_id": "NOASSERTION",
-      "url": null,
-      "node_id": "MDc6TGljZW5zZTA="
-    },
     "topics": ["datatables", "plugins"],
     "fork": true,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "NOASSERTION"
+    }
   },
   {
     "id": 1015839251,
@@ -253,18 +207,12 @@
     "description": ":zap: Dynamically generated stats for your github readmes",
     "homepage": "https://github-readme-stats.vercel.app",
     "language": null,
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "mit",
-      "name": "MIT License",
-      "spdx_id": "MIT",
-      "url": "https://api.github.com/licenses/mit",
-      "node_id": "MDc6TGljZW5zZTEz"
-    },
     "topics": [],
     "fork": true,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
   },
   {
     "id": 971117548,
@@ -273,18 +221,12 @@
     "description": "MinIO on Render using SG region",
     "homepage": "",
     "language": "Dockerfile",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": {
-      "key": "apache-2.0",
-      "name": "Apache License 2.0",
-      "spdx_id": "Apache-2.0",
-      "url": "https://api.github.com/licenses/apache-2.0",
-      "node_id": "MDc6TGljZW5zZTI="
-    },
     "topics": [],
     "fork": true,
-    "archived": false
+    "archived": false,
+    "license": {
+      "spdx_id": "Apache-2.0"
+    }
   },
   {
     "id": 678610241,
@@ -293,12 +235,10 @@
     "description": null,
     "homepage": "https://exercise-react-placeautocomplete.vercel.app",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 677060952,
@@ -307,12 +247,10 @@
     "description": null,
     "homepage": "https://exercise-next-cryptotrading.vercel.app/",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 630478885,
@@ -321,12 +259,10 @@
     "description": null,
     "homepage": "https://exercise-next-daftarpengguna.vercel.app/",
     "language": "TypeScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 597781967,
@@ -335,12 +271,10 @@
     "description": null,
     "homepage": "https://cheerful-tiramisu-6e225b.netlify.app",
     "language": "Vue",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 451033230,
@@ -349,12 +283,10 @@
     "description": null,
     "homepage": "https://lucid-mahavira-7a2cbd.netlify.app",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 448703145,
@@ -363,12 +295,10 @@
     "description": null,
     "homepage": "https://ardeman.github.io/exercise-css-youfor2032/",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 227162386,
@@ -377,12 +307,10 @@
     "description": "Simple JavaScript Tic Tac Toe game",
     "homepage": "https://ardeman.github.io/exercise-jquery-tictactoeGame/",
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 225070346,
@@ -391,12 +319,10 @@
     "description": "Single page application to search and filter furniture products.",
     "homepage": "https://ardeman.github.io/exercise-vuejs-furnitureFilter",
     "language": "HTML",
-    "stargazers_count": 0,
-    "forks_count": 1,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   },
   {
     "id": 323341476,
@@ -405,11 +331,9 @@
     "description": "Simple parking management",
     "homepage": null,
     "language": "JavaScript",
-    "stargazers_count": 0,
-    "forks_count": 0,
-    "license": null,
     "topics": [],
     "fork": false,
-    "archived": false
+    "archived": false,
+    "license": null
   }
 ]

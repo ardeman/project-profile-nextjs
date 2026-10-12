@@ -113,7 +113,7 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
           target="_blank"
           rel="noreferrer noopener"
           aria-label={`Visit ${youtubeChannel.handle} on YouTube (opens in a new tab)`}
-          className="group mt-6 flex max-w-sm items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-accent/40 hover:bg-accent-soft"
+          className="mt-6 flex max-w-sm items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-accent/40 hover:bg-accent-soft"
         >
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
             <FaYoutube
