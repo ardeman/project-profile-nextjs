@@ -9,8 +9,8 @@ export const featuredProjects = [
     technologies: ['Flutter', 'Dart', 'Android'],
     image: '/images/projects/cobalagi.png',
     video: {
-      id: 'GkgvJ2ZXoL0',
-      title: 'Coba Lagi 2.0.0: learn to code through play, no reading needed',
+      id: 'WotaFEFb2ug',
+      title: 'Coba Lagi 2.1.0: learn to code through play, no reading needed',
     },
     alt: 'Coba Lagi coding game with a path, character, and visual instruction blocks',
     problem:
