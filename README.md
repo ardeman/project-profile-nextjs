@@ -176,7 +176,7 @@ scripts/                GitHub refresh, shared CSV helpers, LinkedIn/PDF exports
 | Experience                                                   | `public/linkedin/Positions.csv`                                          |
 | Skills                                                       | `public/linkedin/Skills.csv`                                             |
 | Eyebrow tagline, contact action, résumé link, and navigation | `src/components/sections/header/index.tsx`                               |
-| Social links                                                 | `src/components/sections/header/data.tsx`                                |
+| Social links and featured YouTube channel                    | `src/components/sections/header/data.tsx`                                |
 | Browser name heading                                         | `src/components/sections/header/index.tsx` (currently literal `Ardeman`) |
 | Search description and sharing metadata                      | `src/constants/metadata.ts`                                              |
 

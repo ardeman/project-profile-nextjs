@@ -1,6 +1,11 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa6'
 
 import { TSocial } from './type'
+
+export const youtubeChannel = {
+  handle: '@MrArdeman',
+  url: 'https://www.youtube.com/@MrArdeman',
+}
 
 export const socials: TSocial[] = [
   {
@@ -12,5 +17,10 @@ export const socials: TSocial[] = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/ardeman/',
     icon: <FaLinkedin className="h-5 w-5" />,
+  },
+  {
+    name: 'YouTube',
+    url: youtubeChannel.url,
+    icon: <FaYoutube className="h-5 w-5" />,
   },
 ]

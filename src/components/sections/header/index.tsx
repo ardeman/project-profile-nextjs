@@ -2,11 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { FaYoutube } from 'react-icons/fa6'
+import { GoArrowUpRight } from 'react-icons/go'
 
 import { ThemeToggle } from '@/components/base'
 import { useLinkedinContext } from '@/contexts'
 
-import { socials } from './data'
+import { socials, youtubeChannel } from './data'
 import { TProps } from './type'
 
 const sections = ['about', 'projects', 'experience', 'skills']
@@ -106,6 +108,35 @@ export const Header = ({ setActiveSection, activeSection }: TProps) => {
             View résumé
           </a>
         </div>
+        <a
+          href={youtubeChannel.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`Visit ${youtubeChannel.handle} on YouTube (opens in a new tab)`}
+          className="group mt-6 flex max-w-sm items-center gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-accent/40 hover:bg-accent-soft"
+        >
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
+            <FaYoutube
+              aria-hidden="true"
+              className="h-6 w-6"
+            />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-mono text-[10px] tracking-wider text-muted uppercase">
+              My YouTube channel
+            </span>
+            <span className="mt-1 block text-base font-semibold text-ink">
+              {youtubeChannel.handle}
+            </span>
+            <span className="mt-1 block text-sm text-accent">
+              Watch on YouTube
+            </span>
+          </span>
+          <GoArrowUpRight
+            aria-hidden="true"
+            className="h-5 w-5 shrink-0 text-accent"
+          />
+        </a>
         <nav
           className="mt-12 hidden lg:block"
           aria-label="In-page jump links"
