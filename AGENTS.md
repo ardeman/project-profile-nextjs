@@ -124,3 +124,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Generate the résumé from curated CSVs and preserved education/contact details before each static build so the website and downloadable PDF share current content.
 - 2026-10-09: Trigger GitHub profile synchronization on portfolio main pushes using an Actions-only dispatch token; the destination workflow commits with its own scoped Actions token.
 - 2026-10-09: Update to Next.js 16/React 19, Node 24 LTS, pnpm 12, ESLint flat configuration, and Tailwind 4 CSS themes to remove outdated tooling and apply security fixes while retaining static export.
+- 2026-10-15: Use cookieless Cloudflare Web Analytics injected by the Cloudflare proxy, plus DNS-verified Search Console, so visits are measured without cookies, a consent banner, or analytics code in the repository.

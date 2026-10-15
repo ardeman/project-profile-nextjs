@@ -411,6 +411,14 @@ GitHub Pages must be configured to use GitHub Actions. The public URL is
 and unoptimized images. A deployment under a repository subpath needs a separate
 review of absolute asset URLs and navigation links.
 
+Visitor analytics use cookieless Cloudflare Web Analytics. The domain is proxied
+through Cloudflare, which injects the beacon automatically (Web analytics →
+Manage site → RUM: Enable), so the repository contains no analytics code or
+token. Adding the snippet manually as well would count each visit twice.
+Google Search Console is verified through a DNS TXT record, so the repository
+holds no verification token; submit `https://ardeman.com/sitemap.xml` there
+after a sitemap change.
+
 Before publishing, run [Checks](#checks), inspect the [UI](#checking-ui-changes),
 and review the content changes. After the workflow finishes, check the homepage,
 archive, résumé, images, and sharing metadata on the published site.
