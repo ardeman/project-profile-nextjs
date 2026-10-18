@@ -333,6 +333,29 @@ Review the resulting diff before committing. When changing
 the GitHub account, update both `src/constants/github.ts` and the username in
 `scripts/refresh-projects.mjs`, then regenerate the snapshot.
 
+### Reviewing profile data
+
+When asked whether profile data is current, compare it with these sources and
+propose changes for the owner to confirm before editing:
+
+1. **Featured repositories:** read `feat`/`fix` commits and releases since the
+   last change to `src/data/featured-projects.ts` (`git log -1 -- <file>`), for
+   example with
+   `gh api "repos/ardeman/<repo>/commits?since=<date>" --jq '.[].commit.message'`
+   and `gh release list -R ardeman/<repo>`. Update case-study copy,
+   technologies, and the About paragraph for notable user-facing features.
+2. **Demo videos:** check the
+   [channel feed](https://www.youtube.com/feeds/videos.xml?channel_id=UCy2g780t2et-7GY1wmGF94w)
+   (@MrArdeman) for newer full demos; skip `#shorts`. Feature the English
+   version.
+3. **Platforms and availability:** list a platform or store only after the owner
+   confirms it is released. Builds in closed testing, store review, or planned
+   for the next release do not count.
+4. **Profile, experience, and skills:** suggest skills the featured projects
+   demonstrate and ask about role or job changes. These CSVs mirror LinkedIn, so
+   remind the owner to make the same edits there.
+5. Run `pnpm refresh:projects`, then the [checks](#checks).
+
 ### Résumé and sharing images
 
 The current résumé is generated at `public/documents/resume.pdf`. The header and

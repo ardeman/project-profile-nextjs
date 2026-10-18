@@ -62,6 +62,10 @@ This file owns conventions and architectural constraints.
 - Claims must be supported by the owner's profile and actual project features.
   Do not invent impact metrics, job history, contact details, or authenticated
   product screens. Use authentic screenshots and descriptive alt text.
+- When reviewing whether profile data is current, follow
+  [README → Reviewing profile data](README.md#reviewing-profile-data): gather
+  repository, release, and channel changes yourself, then confirm proposed copy
+  and platform availability with the owner before editing.
 
 ## Guardrails
 
