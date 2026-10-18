@@ -6,7 +6,7 @@ export const featuredProjects = [
     category: 'Playful learning',
     summary:
       'A coding adventure for children using picture blocks and spoken instructions.',
-    technologies: ['Flutter', 'Dart', 'Android'],
+    technologies: ['Flutter', 'Dart', 'Android', 'Linux'],
     image: '/images/projects/cobalagi.png',
     video: {
       id: 'WotaFEFb2ug',
@@ -16,7 +16,7 @@ export const featuredProjects = [
     problem:
       'Introduce coding concepts through play, including for children who are still learning to read.',
     contribution:
-      'Visual coding puzzles with spoken instructions in Indonesian and English, plus a typed-code mode for children who can read.',
+      'Visual coding puzzles with spoken instructions in Indonesian and English, plus a typed-code mode for children who can read. Playable with a game controller, including on Steam Deck.',
     result:
       'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts.',
   },
@@ -27,21 +27,26 @@ export const featuredProjects = [
     category: 'Everyday tools',
     summary:
       'Notes, tasks, finances, and health logs, encrypted and shared in one place.',
-    technologies: ['React Router', 'TypeScript', 'Firebase', 'Web Crypto'],
+    technologies: [
+      'React Router',
+      'TypeScript',
+      'Firebase',
+      'Web Crypto',
+      'Gemini',
+    ],
     image: '/images/projects/catatsaja.png',
     darkImage: '/images/projects/catatsaja-dark.png',
     video: {
-      id: 'iLcWg5vs8Hs',
-      title:
-        'Catat Saja v2026-10-11: notes, budget and family health in one private app',
+      id: 'KAJqhUYZLLQ',
+      title: '4 real-life stories, 1 private app | Catat Saja',
     },
     alt: 'Catat Saja landing page showing a weekly plan note, a grocery checklist, a shared health log, and a trip finance book with spending by category',
     problem:
       'Keep everyday notes, tasks, money, and family health records together, with control over who can read them.',
     contribution:
-      'A React Router and Firebase app with autosaving Markdown notes, checklists, multi-currency finance books with cash flow and spending charts, and health logs for body measurements, child growth, lab results, calories, and periods. Web Crypto encrypts records on the device, including when sharing them.',
+      'A React Router and Firebase app with autosaving Markdown notes, checklists, multi-currency finance books with cash flow and spending charts, and health logs for body measurements, child growth, lab results, calories, and a period calendar with predictions, plus medicine reminders with dose tracking. Gemini helps scan receipts, dictate notes, and turn pasted text into tasks. Web Crypto encrypts records on the device, including when sharing them.',
     result:
-      'Search across notes, tasks, finances, and health logs, and share any record with view or edit access and real-time updates. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
+      'Search across notes, tasks, finances, and health logs, and share any record with view or edit access, real-time updates, and push notifications for reminders and invitations. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
   },
   {
     name: 'project-profile-nextjs',

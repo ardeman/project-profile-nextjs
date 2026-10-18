@@ -1,34 +1,5 @@
 [
   {
-    "id": 865244817,
-    "name": "project-profile-nextjs",
-    "html_url": "https://github.com/ardeman/project-profile-nextjs",
-    "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
-    "homepage": "https://ardeman.com/",
-    "language": "TypeScript",
-    "topics": [
-      "accessibility",
-      "dark-mode",
-      "github-actions",
-      "github-pages",
-      "light-mode",
-      "nextjs",
-      "personal-website",
-      "pnpm",
-      "portfolio",
-      "react",
-      "static-site",
-      "tailwindcss",
-      "tanstack-query",
-      "typescript"
-    ],
-    "fork": false,
-    "archived": false,
-    "license": {
-      "spdx_id": "MIT"
-    }
-  },
-  {
     "id": 897823180,
     "name": "project-catatsaja-reactrouter",
     "html_url": "https://github.com/ardeman/project-catatsaja-reactrouter",
@@ -54,18 +25,6 @@
     "license": {
       "spdx_id": "MIT"
     }
-  },
-  {
-    "id": 350058040,
-    "name": "ardeman",
-    "html_url": "https://github.com/ardeman/ardeman",
-    "description": "Config files for my GitHub profile.",
-    "homepage": "https://github.com/ardeman",
-    "language": null,
-    "topics": ["config", "github-config"],
-    "fork": false,
-    "archived": false,
-    "license": null
   },
   {
     "id": 1405027223,
@@ -101,6 +60,47 @@
     "license": {
       "spdx_id": "GPL-3.0"
     }
+  },
+  {
+    "id": 865244817,
+    "name": "project-profile-nextjs",
+    "html_url": "https://github.com/ardeman/project-profile-nextjs",
+    "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
+    "homepage": "https://ardeman.com/",
+    "language": "TypeScript",
+    "topics": [
+      "accessibility",
+      "dark-mode",
+      "github-actions",
+      "github-pages",
+      "light-mode",
+      "nextjs",
+      "personal-website",
+      "pnpm",
+      "portfolio",
+      "react",
+      "static-site",
+      "tailwindcss",
+      "tanstack-query",
+      "typescript"
+    ],
+    "fork": false,
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
+  },
+  {
+    "id": 350058040,
+    "name": "ardeman",
+    "html_url": "https://github.com/ardeman/ardeman",
+    "description": "Config files for my GitHub profile.",
+    "homepage": "https://github.com/ardeman",
+    "language": null,
+    "topics": ["config", "github-config"],
+    "fork": false,
+    "archived": false,
+    "license": null
   },
   {
     "id": 994533091,
