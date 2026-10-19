@@ -1,12 +1,15 @@
 import { ReactNode } from 'react'
 import { FaDatabase } from 'react-icons/fa'
 import {
+  SiDart,
   SiFirebase,
+  SiFlutter,
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
   SiNuxt,
   SiReact,
+  SiReactrouter,
   SiSass,
   SiTailwindcss,
   SiTypescript,
@@ -62,6 +65,18 @@ const SKILL_METADATA: Record<
   SQL: {
     categories: ['backend', 'languages'],
     icon: <FaDatabase className="h-3 w-3 text-[#336791]" />,
+  },
+  Flutter: {
+    categories: ['frontend'],
+    icon: <SiFlutter className="h-3.5 w-3.5 text-[#02569B]" />,
+  },
+  Dart: {
+    categories: ['frontend', 'languages'],
+    icon: <SiDart className="h-3.5 w-3.5 text-[#0175C2]" />,
+  },
+  'React Router': {
+    categories: ['frontend'],
+    icon: <SiReactrouter className="h-3.5 w-3.5 text-[#CA4245]" />,
   },
 }
 
