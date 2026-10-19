@@ -250,8 +250,7 @@ export const ArchivePage = () => {
       )}
       <footer className="mt-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <p className="max-w-sm text-sm leading-6 text-muted">
-          For a closer look at the ideas and decisions behind selected projects,
-          visit the portfolio.
+          Short on time? Start with the handful of projects I&apos;d show first.
         </p>
         <Link
           href="/#projects"
