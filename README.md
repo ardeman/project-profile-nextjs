@@ -155,7 +155,7 @@ src/
   constants/            Page metadata, viewport colors, GitHub username
   styles/               Theme tokens, shared styles, and local font imports
   types/                Shared profile and project types
-  utils/                Experience dates and skill categories/icons
+  utils/                Experience dates, skill categories/icons, language colors
 public/
   linkedin/             Public profile content in CSV files
   documents/            Generated current résumé PDF

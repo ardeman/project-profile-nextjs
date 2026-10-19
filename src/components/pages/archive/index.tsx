@@ -6,6 +6,7 @@ import { GoArrowUpRight } from 'react-icons/go'
 import { Capsule, PageNavigation } from '@/components/base'
 import { featuredProjects } from '@/data/featured-projects'
 import { useGetProjects } from '@/hooks'
+import { getLanguageColor } from '@/utils'
 
 const getTitle = (name: string) =>
   featuredProjects.find((project) => project.name === name)?.title ||
@@ -80,10 +81,11 @@ export const ArchivePage = () => {
               )
               const title = getTitle(project.name)
               const description = featured?.summary || project.description
-              const technologies = featured?.technologies || [
-                ...(project.language ? [project.language] : []),
-                ...project.topics.slice(0, 2),
-              ]
+              // The language is shown beside its color dot, so omit it here.
+              const language = project.language?.toLowerCase()
+              const technologies = (featured?.technologies || project.topics)
+                .filter((technology) => technology.toLowerCase() !== language)
+                .slice(0, featured ? undefined : 2)
               return (
                 <tr
                   key={project.id}
@@ -108,7 +110,14 @@ export const ArchivePage = () => {
                       </p>
                     )}
                     {project.language && (
-                      <p className="mt-2 font-mono text-[11px] font-normal text-muted md:hidden">
+                      <p className="mt-2 flex items-center gap-1.5 font-mono text-[11px] font-normal text-muted">
+                        <span
+                          aria-hidden="true"
+                          className="h-2 w-2 shrink-0 rounded-full bg-muted"
+                          style={{
+                            backgroundColor: getLanguageColor(project.language),
+                          }}
+                        />
                         {project.language}
                       </p>
                     )}
