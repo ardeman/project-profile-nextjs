@@ -175,6 +175,7 @@ scripts/                GitHub refresh, shared CSV helpers, LinkedIn/PDF exports
 | Short introduction below the role                            | `public/linkedin/Profile Summary.csv` (`Profile Summary`)                |
 | Experience                                                   | `public/linkedin/Positions.csv`                                          |
 | Skills                                                       | `public/linkedin/Skills.csv`                                             |
+| Skill icons and filter categories                            | `src/utils/skills.tsx` (unmapped skills show no icon, under Frontend)    |
 | Eyebrow tagline, contact action, résumé link, and navigation | `src/components/sections/header/index.tsx`                               |
 | Social links and featured YouTube channel                    | `src/components/sections/header/data.tsx`                                |
 | Browser name heading                                         | `src/components/sections/header/index.tsx` (currently literal `Ardeman`) |
@@ -317,7 +318,8 @@ not extra CSV columns such as addresses.
   excluding forks and archived repositories. Featured projects use their
   configured order on the homepage. Archive rows use curated details when a
   project has them, show the main language with its GitHub color, and link
-  featured rows to their homepage card.
+  featured rows to their homepage card. Add a color to `src/utils/languages.ts`
+  when a new repository language appears; unmapped languages use a gray dot.
 
 GitHub metadata used by the UI is committed in `src/data/projects.json`; unused
 star/fork counts and extra license metadata are omitted. The browser renders
