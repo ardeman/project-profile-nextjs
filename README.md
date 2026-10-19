@@ -296,11 +296,15 @@ not extra CSV columns such as addresses.
 
 ### Selected projects and the archive
 
-- Edit `src/data/featured-projects.ts` to choose homepage projects and update their
-  titles, descriptions, technologies, image paths, and link labels. Each `name`
-  must match a repository in the saved GitHub data.
+- Edit `projectDetails` in `src/data/project-details.ts` to update project
+  titles, descriptions, technologies, case-study copy, image paths, and link
+  labels. Each `name` must match a repository in the saved GitHub data.
+- List repository names in `featuredProjectNames` to choose homepage projects and
+  their order. A project removed from that list keeps its details in the archive,
+  with its screenshot, case study, and demo link. Featured projects need an
+  `image` and `alt`; other entries may omit them.
 - Save authentic screenshots in `public/images/projects/` and update their alt
-  text in the featured project data. The UI uses an 8:5 image frame. Add an
+  text in the project details. The UI uses an 8:5 image frame. Add an
   optional `darkImage` with the same framing to follow the portfolio’s resolved
   theme; projects without it use their default `image` in both themes.
 - Add an optional `video` with a YouTube `id` and descriptive `title` to feature a
@@ -311,7 +315,9 @@ not extra CSV columns such as addresses.
   during builds or page loads.
 - The archive includes only repositories whose names start with `project`,
   excluding forks and archived repositories. Featured projects use their
-  configured order.
+  configured order on the homepage. Archive rows use curated details when a
+  project has them, show the main language with its GitHub color, and link
+  featured rows to their homepage card.
 
 GitHub metadata used by the UI is committed in `src/data/projects.json`; unused
 star/fork counts and extra license metadata are omitted. The browser renders
@@ -339,7 +345,7 @@ When asked whether profile data is current, compare it with these sources and
 propose changes for the owner to confirm before editing:
 
 1. **Featured repositories:** read `feat`/`fix` commits and releases since the
-   last change to `src/data/featured-projects.ts` (`git log -1 -- <file>`), for
+   last change to `src/data/project-details.ts` (`git log -1 -- <file>`), for
    example with
    `gh api "repos/ardeman/<repo>/commits?since=<date>" --jq '.[].commit.message'`
    and `gh release list -R ardeman/<repo>`. Update case-study copy,

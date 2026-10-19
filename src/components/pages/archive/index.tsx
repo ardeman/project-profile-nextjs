@@ -1,15 +1,16 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { GoArrowUpRight } from 'react-icons/go'
 
-import { Capsule, PageNavigation } from '@/components/base'
-import { featuredProjects } from '@/data/featured-projects'
+import { Capsule, PageNavigation, ProjectStory } from '@/components/base'
+import { featuredProjectNames, getProjectDetails } from '@/data/project-details'
 import { useGetProjects } from '@/hooks'
 import { getLanguageColor } from '@/utils'
 
 const getTitle = (name: string) =>
-  featuredProjects.find((project) => project.name === name)?.title ||
+  getProjectDetails(name)?.title ||
   name.replace(/^(project|exercise)[_-]/, '').replaceAll(/[_-]/g, ' ')
 
 export const ArchivePage = () => {
@@ -76,16 +77,15 @@ export const ArchivePage = () => {
         <tbody>
           {filteredProjects?.length ? (
             filteredProjects.map((project) => {
-              const featured = featuredProjects.find(
-                (item) => item.name === project.name,
-              )
+              const details = getProjectDetails(project.name)
+              const isFeatured = featuredProjectNames.includes(project.name)
               const title = getTitle(project.name)
-              const description = featured?.summary || project.description
+              const description = details?.summary || project.description
               // The language is shown beside its color dot, so omit it here.
               const language = project.language?.toLowerCase()
-              const technologies = (featured?.technologies || project.topics)
+              const technologies = (details?.technologies || project.topics)
                 .filter((technology) => technology.toLowerCase() !== language)
-                .slice(0, featured ? undefined : 2)
+                .slice(0, details ? undefined : 2)
               return (
                 <tr
                   key={project.id}
@@ -95,32 +95,76 @@ export const ArchivePage = () => {
                     scope="row"
                     className="py-6 pr-4 align-top font-medium sm:pr-8"
                   >
-                    <a
-                      href={project.homepage || project.html_url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="inline-flex min-h-11 items-center text-base leading-6 text-ink capitalize transition-colors hover:text-accent sm:text-lg"
-                      aria-label={`${title} (opens in a new tab)`}
-                    >
-                      {title}
-                    </a>
-                    {description && (
-                      <p className="mt-1 max-w-md text-sm leading-6 font-normal text-muted">
-                        {description}
-                      </p>
-                    )}
-                    {project.language && (
-                      <p className="mt-2 flex items-center gap-1.5 font-mono text-[11px] font-normal text-muted">
-                        <span
-                          aria-hidden="true"
-                          className="h-2 w-2 shrink-0 rounded-full bg-muted"
-                          style={{
-                            backgroundColor: getLanguageColor(project.language),
-                          }}
-                        />
-                        {project.language}
-                      </p>
-                    )}
+                    <div className="flex gap-5">
+                      {details?.image && (
+                        <div className="mt-2 hidden w-28 shrink-0 self-start overflow-hidden rounded-lg border border-line bg-accent-soft/40 sm:block">
+                          <Image
+                            src={details.image}
+                            alt=""
+                            width={224}
+                            height={140}
+                            className={`aspect-[8/5] w-full object-cover ${details.darkImage ? 'dark:hidden' : ''}`}
+                          />
+                          {details.darkImage && (
+                            <Image
+                              src={details.darkImage}
+                              alt=""
+                              width={224}
+                              height={140}
+                              className="hidden aspect-[8/5] w-full object-cover dark:block"
+                            />
+                          )}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <a
+                          href={project.homepage || project.html_url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="inline-flex min-h-11 items-center text-base leading-6 text-ink capitalize transition-colors hover:text-accent sm:text-lg"
+                          aria-label={`${title} (opens in a new tab)`}
+                        >
+                          {title}
+                        </a>
+                        {description && (
+                          <p className="mt-1 max-w-md text-sm leading-6 font-normal text-muted">
+                            {description}
+                          </p>
+                        )}
+                        {(project.language || isFeatured) && (
+                          <p className="mt-2 flex flex-wrap items-center gap-x-4 font-mono text-[11px] font-normal text-muted">
+                            {project.language && (
+                              <span className="inline-flex items-center gap-1.5">
+                                <span
+                                  aria-hidden="true"
+                                  className="h-2 w-2 shrink-0 rounded-full bg-muted"
+                                  style={{
+                                    backgroundColor: getLanguageColor(
+                                      project.language,
+                                    ),
+                                  }}
+                                />
+                                {project.language}
+                              </span>
+                            )}
+                            {isFeatured && (
+                              <Link
+                                href={`/#work-${project.name}`}
+                                className="inline-flex min-h-11 items-center text-accent underline-offset-4 hover:underline"
+                              >
+                                In selected work
+                              </Link>
+                            )}
+                          </p>
+                        )}
+                        {details && (
+                          <ProjectStory
+                            details={details}
+                            className="mt-2 font-normal"
+                          />
+                        )}
+                      </div>
+                    </div>
                   </th>
                   <td className="hidden py-7 pr-4 align-top md:table-cell">
                     <ul className="flex flex-wrap">
@@ -146,6 +190,18 @@ export const ArchivePage = () => {
                           aria-label={`${title} website (opens in a new tab)`}
                         >
                           Website
+                          <GoArrowUpRight aria-hidden="true" />
+                        </a>
+                      )}
+                      {details?.video && (
+                        <a
+                          href={`https://www.youtube.com/watch?v=${details.video.id}`}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="text-link"
+                          aria-label={`Watch ${title} demo on YouTube (opens in a new tab)`}
+                        >
+                          Demo
                           <GoArrowUpRight aria-hidden="true" />
                         </a>
                       )}

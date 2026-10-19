@@ -4,10 +4,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { GoArrowRight, GoArrowUpRight, GoPlay } from 'react-icons/go'
 
-import { Capsule, Title } from '@/components/base'
-import { featuredProjects } from '@/data/featured-projects'
+import { Capsule, ProjectStory, Title } from '@/components/base'
+import { featuredProjects } from '@/data/project-details'
 import snapshot from '@/data/projects.json'
 import { useGetProjects } from '@/hooks'
+import { TProjectDetails } from '@/types'
 
 const focusVideoPlayer = (player: HTMLIFrameElement | null) => {
   player?.focus()
@@ -17,10 +18,12 @@ const ProjectMedia = ({
   feature,
   projectUrl,
 }: {
-  feature: (typeof featuredProjects)[number]
+  feature: TProjectDetails
   projectUrl: string
 }) => {
   const [isPlaying, setIsPlaying] = useState(false)
+
+  if (!feature.image || !feature.alt) return null
 
   if (isPlaying && feature.video) {
     return (
@@ -115,7 +118,11 @@ export const Projects = () => {
             snapshot.find((item) => item.name === feature.name)
           if (!project) return null
           return (
-            <li key={feature.name}>
+            <li
+              key={feature.name}
+              id={`work-${feature.name}`}
+              className="scroll-mt-24 lg:scroll-mt-20"
+            >
               <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
                 <ProjectMedia
                   feature={feature}
@@ -139,26 +146,10 @@ export const Projects = () => {
                       <Capsule key={technology}>{technology}</Capsule>
                     ))}
                   </ul>
-                  <details className="mt-4 border-t border-line pt-4 text-sm leading-6 text-muted">
-                    <summary className="w-fit cursor-pointer font-medium text-ink transition-colors hover:text-accent">
-                      Read more
-                      <span className="sr-only"> about {feature.title}</span>
-                    </summary>
-                    <dl className="mt-4 space-y-3">
-                      <div>
-                        <dt className="font-medium text-ink">The idea</dt>
-                        <dd>{feature.problem}</dd>
-                      </div>
-                      <div>
-                        <dt className="font-medium text-ink">What I built</dt>
-                        <dd>{feature.contribution}</dd>
-                      </div>
-                      <div>
-                        <dt className="font-medium text-ink">How it works</dt>
-                        <dd>{feature.result}</dd>
-                      </div>
-                    </dl>
-                  </details>
+                  <ProjectStory
+                    details={feature}
+                    className="mt-4 border-t border-line pt-4"
+                  />
                   <div className="mt-3 flex flex-wrap items-center gap-x-5">
                     {feature.video && (
                       <a

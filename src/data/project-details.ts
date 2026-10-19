@@ -1,4 +1,7 @@
-export const featuredProjects = [
+import { TProjectDetails } from '@/types'
+
+// Curated copy for any repository, whether or not it appears in Selected work.
+export const projectDetails: TProjectDetails[] = [
   {
     name: 'project_cobalagi_flutter',
     title: 'Coba Lagi',
@@ -65,3 +68,18 @@ export const featuredProjects = [
       'Visitors can explore projects and experience using a keyboard or touch, with project details available even when live updates fail.',
   },
 ]
+
+// Repositories shown in Selected work, in display order. Removing a name here
+// keeps its details in the archive.
+export const featuredProjectNames = [
+  'project_cobalagi_flutter',
+  'project-catatsaja-reactrouter',
+  'project-profile-nextjs',
+]
+
+export const getProjectDetails = (name: string) =>
+  projectDetails.find((project) => project.name === name)
+
+export const featuredProjects = featuredProjectNames
+  .map((name) => getProjectDetails(name))
+  .filter((project): project is TProjectDetails => Boolean(project))
