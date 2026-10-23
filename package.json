@@ -46,7 +46,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "pdf-lib": "^1.17.1",
-    "postcss": "^8.5.29",
+    "postcss": "^8.5.30",
     "prettier": "3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
