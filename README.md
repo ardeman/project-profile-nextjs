@@ -12,7 +12,7 @@ repositories. Both pages support light, dark, and system themes.
 
 ## Getting started
 
-Use Node.js 24.19.0 LTS (`.nvmrc`) and pnpm 12.10.1 (`package.json`). The deployment workflow
+Use Node.js 24.22.1 LTS (`.nvmrc`) and pnpm 12.10.1 (`package.json`). The deployment workflow
 uses the same versions. No environment variables or GitHub token are required
 for the website or manual LinkedIn synchronization workflow.
 
