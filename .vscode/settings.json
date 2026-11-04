@@ -14,5 +14,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
-  "editor.renderWhitespace": "all"
+  "editor.renderWhitespace": "all",
+  "chat.useAgentsMdFile": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true
 }

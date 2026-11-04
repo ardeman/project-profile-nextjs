@@ -108,7 +108,7 @@ This file owns conventions and architectural constraints.
 - When setup, commands, source locations, or deployment change, update `README.md`.
   When conventions or constraints change, update this file.
 - Keep one owner for each topic; link to it instead of copying instructions.
-- `CLAUDE.md` and `GEMINI.md` must each contain only `@AGENTS.md` and a newline.
+- `CLAUDE.md` and `GEMINI.md` must each contain only `@AGENTS.md` and a newline, and `.github/copilot-instructions.md` only a pointer to `AGENTS.md`.
 - Add an architectural decision below when a change alters how the application
   is built or maintained. State its date, choice, and reason in one line.
 

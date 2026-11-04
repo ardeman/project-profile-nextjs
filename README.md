@@ -470,12 +470,13 @@ archive, résumé, images, and sharing metadata on the published site.
 
 Each topic has one home. Update the owning file instead of copying instructions.
 
-| File                                           | Audience                   | Owns                                                                |
-| ---------------------------------------------- | -------------------------- | ------------------------------------------------------------------- |
-| [README.md](README.md)                         | Humans and AI agents       | Overview, setup, commands, layout, content, styling, deployment     |
-| [AGENTS.md](AGENTS.md)                         | AI agents and contributors | Conventions, guardrails, definition of done, architecture decisions |
-| [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md) | Claude Code and Gemini CLI | Only an import of `AGENTS.md`                                       |
-| [LICENSE](LICENSE)                             | Everyone                   | MIT license terms                                                   |
+| File                                                               | Audience                   | Owns                                                                               |
+| ------------------------------------------------------------------ | -------------------------- | ---------------------------------------------------------------------------------- |
+| [README.md](README.md)                                             | Humans and AI agents       | Overview, setup, commands, layout, content, styling, deployment                    |
+| [AGENTS.md](AGENTS.md)                                             | AI agents and contributors | Conventions, guardrails, definition of done, architecture decisions                |
+| [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md)                     | Claude Code and Gemini CLI | Only an import of `AGENTS.md`                                                      |
+| [.github/copilot-instructions.md](.github/copilot-instructions.md) | GitHub Copilot             | Only a pointer to `AGENTS.md`; `copilot-setup-steps.yml` prepares its coding agent |
+| [LICENSE](LICENSE)                                                 | Everyone                   | MIT license terms                                                                  |
 
 ## License and credit
 
