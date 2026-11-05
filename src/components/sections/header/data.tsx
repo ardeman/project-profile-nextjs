@@ -1,4 +1,10 @@
-import { FaGithub, FaGooglePlay, FaLinkedin, FaYoutube } from 'react-icons/fa6'
+import {
+  FaAppStoreIos,
+  FaGithub,
+  FaGooglePlay,
+  FaLinkedin,
+  FaYoutube,
+} from 'react-icons/fa6'
 
 import { TSocial } from './type'
 
@@ -27,5 +33,10 @@ export const socials: TSocial[] = [
     name: 'Google Play',
     url: 'https://play.google.com/store/apps/dev?id=7867682702873066080',
     icon: <FaGooglePlay className="h-5 w-5" />,
+  },
+  {
+    name: 'App Store',
+    url: 'https://apps.apple.com/developer/ardeman/id6823508007',
+    icon: <FaAppStoreIos className="h-5 w-5" />,
   },
 ]
