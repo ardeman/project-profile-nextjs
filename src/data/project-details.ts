@@ -9,7 +9,15 @@ export const projectDetails: TProjectDetails[] = [
     category: 'Playful learning',
     summary:
       'A coding adventure for children using picture blocks and spoken instructions.',
-    technologies: ['Flutter', 'Dart', 'Android', 'Windows', 'macOS', 'Linux'],
+    technologies: [
+      'Flutter',
+      'Dart',
+      'Android',
+      'iOS',
+      'Windows',
+      'macOS',
+      'Linux',
+    ],
     image: '/images/projects/cobalagi.png',
     video: {
       id: 'QtcAlUmpbhU',
@@ -21,7 +29,7 @@ export const projectDetails: TProjectDetails[] = [
     contribution:
       'Visual coding puzzles with spoken instructions in Indonesian, English, Javanese, and Sundanese, plus a typed-code mode for children who can read. Playable with a game controller, including on Steam Deck.',
     result:
-      'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts. Available on Google Play, and as downloads for Windows, macOS, and Linux, including Steam Deck.',
+      'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts. Available on Google Play and the App Store, and as downloads for Windows, macOS, and Linux, including Steam Deck.',
   },
   {
     name: 'project-catatsaja-reactrouter',
