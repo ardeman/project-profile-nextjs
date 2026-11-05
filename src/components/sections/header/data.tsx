@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa6'
+import { FaGithub, FaGooglePlay, FaLinkedin, FaYoutube } from 'react-icons/fa6'
 
 import { TSocial } from './type'
 
@@ -22,5 +22,10 @@ export const socials: TSocial[] = [
     name: 'YouTube',
     url: youtubeChannel.url,
     icon: <FaYoutube className="h-5 w-5" />,
+  },
+  {
+    name: 'Google Play',
+    url: 'https://play.google.com/store/apps/dev?id=7867682702873066080',
+    icon: <FaGooglePlay className="h-5 w-5" />,
   },
 ]

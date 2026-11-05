@@ -9,19 +9,19 @@ export const projectDetails: TProjectDetails[] = [
     category: 'Playful learning',
     summary:
       'A coding adventure for children using picture blocks and spoken instructions.',
-    technologies: ['Flutter', 'Dart', 'Android', 'Linux'],
+    technologies: ['Flutter', 'Dart', 'Android', 'Windows', 'macOS', 'Linux'],
     image: '/images/projects/cobalagi.png',
     video: {
-      id: 'WotaFEFb2ug',
-      title: 'Coba Lagi 2.1.0: learn to code through play, no reading needed',
+      id: 'QtcAlUmpbhU',
+      title: 'Coba Lagi 2.9.0: learn to code through play, no reading needed',
     },
     alt: 'Coba Lagi coding game with a path, character, and visual instruction blocks',
     problem:
       'Introduce coding concepts through play, including for children who are still learning to read.',
     contribution:
-      'Visual coding puzzles with spoken instructions in Indonesian and English, plus a typed-code mode for children who can read. Playable with a game controller, including on Steam Deck.',
+      'Visual coding puzzles with spoken instructions in Indonesian, English, Javanese, and Sundanese, plus a typed-code mode for children who can read. Playable with a game controller, including on Steam Deck.',
     result:
-      'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts.',
+      'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts. Available on Google Play, and as downloads for Windows, macOS, and Linux, including Steam Deck.',
   },
   {
     name: 'project-catatsaja-reactrouter',
@@ -47,7 +47,7 @@ export const projectDetails: TProjectDetails[] = [
     problem:
       'Keep everyday notes, tasks, money, and family health records together, with control over who can read them.',
     contribution:
-      'A React Router and Firebase app with autosaving Markdown notes, checklists, multi-currency finance books with cash flow and spending charts, and health logs for body measurements, child growth, lab results, calories, and a period calendar with predictions, plus medicine reminders with dose tracking. Gemini helps scan receipts, dictate notes, and turn pasted text into tasks. Web Crypto encrypts records on the device, including when sharing them.',
+      'A React Router and Firebase app with autosaving Markdown notes, checklists, multi-currency finance books with cash flow and spending charts, savings goals, and recurring entries, and health logs for body measurements, child growth, lab results, calories, and a period calendar with predictions, plus medicine reminders with dose tracking. Gemini helps scan receipts, dictate notes, and turn pasted text into tasks. Web Crypto encrypts records on the device, including when sharing them.',
     result:
       'Search across notes, tasks, finances, and health logs, and share any record with view or edit access, real-time updates, and push notifications for reminders and invitations. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
   },
