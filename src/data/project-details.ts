@@ -32,6 +32,23 @@ export const projectDetails: TProjectDetails[] = [
       'Children arrange instructions to guide a character to the goal, then explore loops and other coding concepts. Available on Google Play and the App Store, and as downloads for Windows, macOS, and Linux, including Steam Deck.',
   },
   {
+    name: 'project_bedug_flutter',
+    title: 'Bedug',
+    linkLabel: 'View project',
+    category: 'Daily worship',
+    summary:
+      'Prayer times, the Qibla, the Quran, and a Hijri calendar, free and private.',
+    technologies: ['Flutter', 'Dart', 'Riverpod', 'iOS', 'WidgetKit'],
+    image: '/images/projects/bedug.png',
+    alt: 'Bedug prayer times screen counting down to Asr in Jakarta, with a date strip and the night prayer, Imsak, and Fajr times',
+    problem:
+      'Keep prayer times, reminders, and daily worship in one app that works offline, without ads or an account.',
+    contribution:
+      'A Flutter app with Kemenag RI or nine global calculation methods, adhan reminders, the Quran with page mode and a khatam planner, morning and evening dhikr, a Qibla compass, a Hijri calendar, a Ramadan fasting log, and a zakat calculator. Its design follows each platform, with Liquid Glass on Apple devices, plus home screen and lock screen widgets.',
+    result:
+      'Everything is calculated on the device, so reading, bookmarks, and fasting logs stay private. Available in Indonesian, English, Arabic, and Malay on the App Store for iPhone and iPad.',
+  },
+  {
     name: 'project-catatsaja-reactrouter',
     title: 'Catat Saja',
     linkLabel: 'View project',
@@ -81,8 +98,8 @@ export const projectDetails: TProjectDetails[] = [
 // keeps its details in the archive.
 export const featuredProjectNames = [
   'project_cobalagi_flutter',
+  'project_bedug_flutter',
   'project-catatsaja-reactrouter',
-  'project-profile-nextjs',
 ]
 
 // Forks are hidden from the archive unless the owner contributed to them.
