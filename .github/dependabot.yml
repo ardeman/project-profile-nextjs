@@ -4,6 +4,10 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # Types must match the Node.js major pinned in package.json engines.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       framework:
         patterns:
