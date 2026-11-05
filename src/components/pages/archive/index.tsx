@@ -5,7 +5,11 @@ import Link from 'next/link'
 import { GoArrowUpRight } from 'react-icons/go'
 
 import { Capsule, PageNavigation, ProjectStory } from '@/components/base'
-import { featuredProjectNames, getProjectDetails } from '@/data/project-details'
+import {
+  contributedForkNames,
+  featuredProjectNames,
+  getProjectDetails,
+} from '@/data/project-details'
 import { useGetProjects } from '@/hooks'
 import { getLanguageColor } from '@/utils'
 
@@ -17,7 +21,9 @@ export const ArchivePage = () => {
   const { data: projects, isError, isFetching, refetch } = useGetProjects()
   const filteredProjects = projects?.filter(
     (project) =>
-      project.name.startsWith('project') && !project.fork && !project.archived,
+      project.name.startsWith('project') &&
+      (!project.fork || contributedForkNames.includes(project.name)) &&
+      !project.archived,
   )
   return (
     <main

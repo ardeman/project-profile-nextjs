@@ -85,6 +85,9 @@ export const featuredProjectNames = [
   'project-profile-nextjs',
 ]
 
+// Forks are hidden from the archive unless the owner contributed to them.
+export const contributedForkNames = ['project-tesbareng-react']
+
 export const getProjectDetails = (name: string) =>
   projectDetails.find((project) => project.name === name)
 
