@@ -40,7 +40,7 @@ export const projectDetails: TProjectDetails[] = [
       'Prayer times, the Qibla, the Quran, and a Hijri calendar, free and private.',
     technologies: ['Flutter', 'Dart', 'Riverpod', 'iOS', 'WidgetKit'],
     image: '/images/projects/bedug.png',
-    alt: 'Bedug prayer times screen counting down to Asr in Jakarta, with a date strip and the night prayer, Imsak, and Fajr times',
+    alt: 'Three Bedug iPhone screens: the opening page of Al-Baqara in page mode, prayer times counting down to Asr in Jakarta, and the Qibla compass above the worship menu',
     problem:
       'Keep prayer times, reminders, and daily worship in one app that works offline, without ads or an account.',
     contribution:
