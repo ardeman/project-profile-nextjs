@@ -477,11 +477,14 @@ Each topic has one home. Update the owning file instead of copying instructions.
 | [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md)                     | Claude Code and Gemini CLI | Only an import of `AGENTS.md`                                                      |
 | [.github/copilot-instructions.md](.github/copilot-instructions.md) | GitHub Copilot             | Only a pointer to `AGENTS.md`; `copilot-setup-steps.yml` prepares its coding agent |
 | [LICENSE](LICENSE)                                                 | Everyone                   | MIT license terms                                                                  |
+| [NOTICE](NOTICE)                                                   | Everyone                   | Personal content excluded from the MIT license                                     |
 
 ## License and credit
 
 The code is available under the [MIT license](LICENSE). Keep its copyright and
-license notice when reusing it. If you fork this portfolio, please credit
+license notice when reusing it. Personal content (profile data, résumé,
+photographs, screenshots, and logos) is not covered by that license; see
+[NOTICE](NOTICE). If you fork this portfolio, please credit
 [ardeman.com](https://ardeman.com/). The original layout was inspired by
 [Brittany Chiang’s portfolio](https://brittanychiang.com/); the site footer keeps
 that credit. Replace personal content, résumé, and project images for your own
