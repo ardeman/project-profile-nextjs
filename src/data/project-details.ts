@@ -77,6 +77,23 @@ export const projectDetails: TProjectDetails[] = [
       'Search across notes, tasks, finances, and health logs, and share any record with view or edit access, real-time updates, and push notifications for reminders and invitations. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
   },
   {
+    name: 'project-bilahaksara-godot',
+    title: 'Bilah Aksara',
+    linkLabel: 'View project',
+    category: 'Story adventure',
+    summary:
+      'A story-driven pixel-art adventure set in the Acehnese sultanate.',
+    technologies: ['Godot', 'GDScript', 'Android', 'iOS'],
+    image: '/images/projects/bilahaksara.png',
+    alt: 'Bilah Aksara landing page with pixel-art sunset, palm trees, and the game title over the water',
+    problem:
+      'Tell an Acehnese historical adventure on phones, with sea battles and deck combat that stay readable as pixel art.',
+    contribution:
+      'A Godot 4 game for Android and iOS: story chapters from Era 1 through the Golden Age, sea steering and cannon fire, and deck fights with attack, parry, and dodge, in Indonesian and English.',
+    result:
+      'The full story spine is playable end to end. A public landing page introduces the game; builds are in closed testing on Play and TestFlight.',
+  },
+  {
     name: 'project-profile-nextjs',
     title: 'Personal portfolio',
     linkLabel: 'View project',
@@ -100,6 +117,7 @@ export const featuredProjectNames = [
   'project_cobalagi_flutter',
   'project_bedug_flutter',
   'project-catatsaja-reactrouter',
+  'project-bilahaksara-godot',
 ]
 
 // Forks are hidden from the archive unless the owner contributed to them.

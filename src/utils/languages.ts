@@ -2,6 +2,7 @@
 const LANGUAGE_COLORS: Record<string, string> = {
   Dart: '#00B4AB',
   Dockerfile: '#384D54',
+  GDScript: '#355570',
   HTML: '#E34C26',
   JavaScript: '#F1E05A',
   'Jupyter Notebook': '#DA5B0B',

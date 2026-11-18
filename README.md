@@ -149,7 +149,7 @@ src/
     sections/           Header, About, selected projects, experience, skills, footer
   contexts/             Build-provided profile data and client theme state
   lib/                  Server-side profile CSV parsing
-  data/                 Curated project copy, saved GitHub metadata, résumé details
+  data/                 Curated project copy, local/private projects, saved GitHub metadata, résumé details
   apis/                 Bounded, cancellable browser GitHub requests
   hooks/                Project query with saved-data fallback
   constants/            Page metadata, viewport colors, GitHub username
@@ -299,11 +299,17 @@ not extra CSV columns such as addresses.
 
 - Edit `projectDetails` in `src/data/project-details.ts` to update project
   titles, descriptions, technologies, case-study copy, image paths, and link
-  labels. Each `name` must match a repository in the saved GitHub data.
+  labels. Each `name` must match a repository in the saved GitHub data or in
+  `src/data/local-projects.ts`.
 - List repository names in `featuredProjectNames` to choose homepage projects and
   their order. A project removed from that list keeps its details in the archive,
   with its screenshot, case study, and demo link. Featured projects need an
   `image` and `alt`; other entries may omit them.
+- Private or otherwise unpublished repositories belong in
+  `src/data/local-projects.ts`. The project query merges those entries into the
+  public GitHub snapshot by name, so `pnpm refresh:projects` does not remove
+  them. Leave `html_url` empty to hide the Source link and show only the
+  website when `homepage` is set.
 - Save authentic screenshots in `public/images/projects/` and update their alt
   text in the project details. The UI uses an 8:5 image frame. Add an
   optional `darkImage` with the same framing to follow the portfolio’s resolved

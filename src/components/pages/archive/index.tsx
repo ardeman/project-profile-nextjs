@@ -123,15 +123,21 @@ export const ArchivePage = () => {
                         </div>
                       )}
                       <div className="min-w-0">
-                        <a
-                          href={project.homepage || project.html_url}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="inline-flex min-h-11 items-center text-base leading-6 text-ink capitalize transition-colors hover:text-accent sm:text-lg"
-                          aria-label={`${title} (opens in a new tab)`}
-                        >
-                          {title}
-                        </a>
+                        {project.homepage || project.html_url ? (
+                          <a
+                            href={project.homepage || project.html_url}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="inline-flex min-h-11 items-center text-base leading-6 text-ink capitalize transition-colors hover:text-accent sm:text-lg"
+                            aria-label={`${title} (opens in a new tab)`}
+                          >
+                            {title}
+                          </a>
+                        ) : (
+                          <span className="inline-flex min-h-11 items-center text-base leading-6 text-ink capitalize sm:text-lg">
+                            {title}
+                          </span>
+                        )}
                         {description && (
                           <p className="mt-1 max-w-md text-sm leading-6 font-normal text-muted">
                             {description}
@@ -211,16 +217,18 @@ export const ArchivePage = () => {
                           <GoArrowUpRight aria-hidden="true" />
                         </a>
                       )}
-                      <a
-                        href={project.html_url}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="text-link"
-                        aria-label={`${title} source code (opens in a new tab)`}
-                      >
-                        Source
-                        <GoArrowUpRight aria-hidden="true" />
-                      </a>
+                      {project.html_url && (
+                        <a
+                          href={project.html_url}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="text-link"
+                          aria-label={`${title} source code (opens in a new tab)`}
+                        >
+                          Source
+                          <GoArrowUpRight aria-hidden="true" />
+                        </a>
+                      )}
                     </div>
                   </td>
                 </tr>

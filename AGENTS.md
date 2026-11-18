@@ -130,3 +130,4 @@ is the documentation date, not a claim about when a dependency was introduced.
 - 2026-10-09: Update to Next.js 16/React 19, Node 24 LTS, pnpm 12, ESLint flat configuration, and Tailwind 4 CSS themes to remove outdated tooling and apply security fixes while retaining static export.
 - 2026-10-15: Use cookieless Cloudflare Web Analytics injected by the Cloudflare proxy, plus DNS-verified Search Console, so visits are measured without cookies, a consent banner, or analytics code in the repository.
 - 2026-10-19: Key curated project details by repository and list featured names separately so a project leaving Selected work keeps its copy, screenshot, and demo in the archive.
+- 2026-11-18: Merge curated local projects (empty html_url hides Source) into the public GitHub list so private repos can appear on the portfolio without a GitHub link.

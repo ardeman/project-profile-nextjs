@@ -5,10 +5,13 @@ import { useState } from 'react'
 import { GoArrowRight, GoArrowUpRight, GoPlay } from 'react-icons/go'
 
 import { Capsule, ProjectStory, Title } from '@/components/base'
+import { mergeProjectsWithLocal } from '@/data/local-projects'
 import { featuredProjects } from '@/data/project-details'
 import snapshot from '@/data/projects.json'
 import { useGetProjects } from '@/hooks'
 import { TProjectDetails } from '@/types'
+
+const savedProjects = mergeProjectsWithLocal(snapshot)
 
 const focusVideoPlayer = (player: HTMLIFrameElement | null) => {
   player?.focus()
@@ -115,8 +118,9 @@ export const Projects = () => {
         {featuredProjects.map((feature, index) => {
           const project =
             projects?.find((item) => item.name === feature.name) ||
-            snapshot.find((item) => item.name === feature.name)
+            savedProjects.find((item) => item.name === feature.name)
           if (!project) return null
+          const projectUrl = project.homepage || project.html_url
           return (
             <li
               key={feature.name}
@@ -124,10 +128,12 @@ export const Projects = () => {
               className="scroll-mt-24 lg:scroll-mt-20"
             >
               <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_2px_12px_rgba(30,15,50,0.025)]">
-                <ProjectMedia
-                  feature={feature}
-                  projectUrl={project.homepage || project.html_url}
-                />
+                {projectUrl && (
+                  <ProjectMedia
+                    feature={feature}
+                    projectUrl={projectUrl}
+                  />
+                )}
                 <div className="p-5 sm:p-6">
                   <p className="mb-2 font-mono text-[10px] tracking-[0.18em] text-muted uppercase">
                     0{index + 1} / {feature.category}
@@ -175,16 +181,18 @@ export const Projects = () => {
                         <GoArrowUpRight aria-hidden="true" />
                       </a>
                     )}
-                    <a
-                      href={project.html_url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="text-link"
-                      aria-label={`${feature.title} source code (opens in a new tab)`}
-                    >
-                      Source code
-                      <GoArrowUpRight aria-hidden="true" />
-                    </a>
+                    {project.html_url && (
+                      <a
+                        href={project.html_url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="text-link"
+                        aria-label={`${feature.title} source code (opens in a new tab)`}
+                      >
+                        Source code
+                        <GoArrowUpRight aria-hidden="true" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
