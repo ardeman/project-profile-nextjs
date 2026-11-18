@@ -321,11 +321,12 @@ not extra CSV columns such as addresses.
   the project details. Video selection is curated and does not fetch the channel
   during builds or page loads.
 - The archive includes only repositories whose names start with `project`,
-  excluding forks and archived repositories. Featured projects use their
-  configured order on the homepage. Archive rows use curated details when a
-  project has them, show the main language with its GitHub color, and link
-  featured rows to their homepage card. Add a color to `src/utils/languages.ts`
-  when a new repository language appears; unmapped languages use a gray dot.
+  excluding forks and archived repositories. Featured projects appear first in
+  Selected work order; the rest are sorted by display title. Archive rows use
+  curated details when a project has them, show the main language with its
+  GitHub color, and link featured rows to their homepage card. Add a color to
+  `src/utils/languages.ts` when a new repository language appears; unmapped
+  languages use a gray dot.
 
 GitHub metadata used by the UI is committed in `src/data/projects.json`; unused
 star/fork counts and extra license metadata are omitted. The browser renders

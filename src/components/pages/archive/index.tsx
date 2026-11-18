@@ -17,14 +17,31 @@ const getTitle = (name: string) =>
   getProjectDetails(name)?.title ||
   name.replace(/^(project|exercise)[_-]/, '').replaceAll(/[_-]/g, ' ')
 
+const featuredRank = (name: string) => {
+  const index = featuredProjectNames.indexOf(name)
+  return index === -1 ? Infinity : index
+}
+
 export const ArchivePage = () => {
   const { data: projects, isError, isFetching, refetch } = useGetProjects()
-  const filteredProjects = projects?.filter(
-    (project) =>
-      project.name.startsWith('project') &&
-      (!project.fork || contributedForkNames.includes(project.name)) &&
-      !project.archived,
-  )
+  const filteredProjects = projects
+    ?.filter(
+      (project) =>
+        project.name.startsWith('project') &&
+        (!project.fork || contributedForkNames.includes(project.name)) &&
+        !project.archived,
+    )
+    .toSorted((left, right) => {
+      const byFeatured = featuredRank(left.name) - featuredRank(right.name)
+      if (byFeatured !== 0) return byFeatured
+      return getTitle(left.name).localeCompare(
+        getTitle(right.name),
+        undefined,
+        {
+          sensitivity: 'base',
+        },
+      )
+    })
   return (
     <main
       id="content"

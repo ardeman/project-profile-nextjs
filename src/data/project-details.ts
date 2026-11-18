@@ -77,6 +77,31 @@ export const projectDetails: TProjectDetails[] = [
       'Search across notes, tasks, finances, and health logs, and share any record with view or edit access, real-time updates, and push notifications for reminders and invitations. Finance entries keep their exchange rates, and health charts show trends and reference ranges. Available in English and Indonesian as an installable app for phones and computers.',
   },
   {
+    name: 'project-krida-kmp',
+    title: 'Krida',
+    linkLabel: 'View project',
+    category: 'Board games',
+    summary:
+      '3D voxel board games from Nusantara you can play together on Android and iOS.',
+    technologies: [
+      'Kotlin Multiplatform',
+      'Compose',
+      'SwiftUI',
+      'RealityKit',
+      'Filament',
+      'Android',
+      'iOS',
+    ],
+    image: '/images/projects/krida.png',
+    alt: 'Krida landing page with Play together, anywhere, a voxel board with coloured pieces, and Congklak, Snakes and ladders, and Ludo game cards',
+    problem:
+      'Play congklak, ular tangga, ludo, and other familiar games with family and friends, even when some people bring Android and others bring iPhone.',
+    contribution:
+      'Native Android and iOS apps with a shared Kotlin Multiplatform rules layer: online rooms, Bluetooth or local Wi‑Fi nearby play, pass-and-play, and computer opponents, with Filament and RealityKit voxel boards.',
+    result:
+      'Six games on one table, including cross-platform matches. Available on the App Store for iPhone and iPad; Android is in closed testing.',
+  },
+  {
     name: 'project-bilahaksara-godot',
     title: 'Bilah Aksara',
     linkLabel: 'View project',
@@ -93,6 +118,7 @@ export const projectDetails: TProjectDetails[] = [
     result:
       'The full story spine is playable end to end. A public landing page introduces the game; builds are in closed testing on Play and TestFlight.',
   },
+
   {
     name: 'project-profile-nextjs',
     title: 'Personal portfolio',
@@ -117,6 +143,7 @@ export const featuredProjectNames = [
   'project_cobalagi_flutter',
   'project_bedug_flutter',
   'project-catatsaja-reactrouter',
+  'project-krida-kmp',
   'project-bilahaksara-godot',
 ]
 
