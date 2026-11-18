@@ -1,69 +1,90 @@
 [
   {
-    "id": 865244817,
-    "name": "project-profile-nextjs",
-    "html_url": "https://github.com/ardeman/project-profile-nextjs",
-    "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
-    "homepage": "https://ardeman.com/",
+    "id": 1439288831,
+    "name": "project-pamerstudio-node",
+    "html_url": "https://github.com/ardeman/project-pamerstudio-node",
+    "description": "Promo videos and marketing for my apps, made with scripts, plus Pamer Studio on the web",
+    "homepage": "",
+    "language": "TypeScript",
+    "topics": [],
+    "fork": false,
+    "archived": false,
+    "license": null
+  },
+  {
+    "id": 1444469678,
+    "name": "project-tesbareng-react",
+    "html_url": "https://github.com/ardeman/project-tesbareng-react",
+    "description": "Shared test-for-test tracker for indie Android developers meeting Google Play’s closed-testing requirement.",
+    "homepage": "https://tesbareng.vercel.app",
     "language": "TypeScript",
     "topics": [
-      "accessibility",
-      "dark-mode",
-      "github-actions",
-      "github-pages",
-      "light-mode",
-      "nextjs",
-      "personal-website",
-      "pnpm",
-      "portfolio",
+      "closed-testing",
+      "google-play",
       "react",
-      "static-site",
-      "tailwindcss",
-      "tanstack-query",
-      "typescript"
+      "supabase",
+      "typescript",
+      "vite"
+    ],
+    "fork": true,
+    "archived": false,
+    "license": null
+  },
+  {
+    "id": 1448992116,
+    "name": "project-krida-kmp",
+    "html_url": "https://github.com/ardeman/project-krida-kmp",
+    "description": "3D voxel board games from Nusantara (ludo, ular tangga, congklak, and more) for Android and iOS — online or offline over Bluetooth/LAN, cross-platform.",
+    "homepage": "https://krida.ardeman.com",
+    "language": "Kotlin",
+    "topics": [
+      "android",
+      "bluetooth",
+      "board-games",
+      "cloudflare-workers",
+      "compose",
+      "filament",
+      "ios",
+      "kotlin-multiplatform",
+      "realitykit",
+      "swiftui"
+    ],
+    "fork": false,
+    "archived": false,
+    "license": null
+  },
+  {
+    "id": 1458119266,
+    "name": "bilahaksara-web",
+    "html_url": "https://github.com/ardeman/bilahaksara-web",
+    "description": "Public marketing + privacy site for Bilah Aksara",
+    "homepage": null,
+    "language": "CSS",
+    "topics": [],
+    "fork": false,
+    "archived": false,
+    "license": null
+  },
+  {
+    "id": 1431810261,
+    "name": "project-dahlunas-go",
+    "html_url": "https://github.com/ardeman/project-dahlunas-go",
+    "description": "Go and htmx checkout for Ardeman's own projects: Midtrans (and optional Lemon Squeezy) payments delivering signed offline unlock codes.",
+    "homepage": "https://dahlunas.ardeman.com",
+    "language": "Go",
+    "topics": [
+      "cloud-run",
+      "ed25519",
+      "go",
+      "htmx",
+      "lemonsqueezy",
+      "midtrans"
     ],
     "fork": false,
     "archived": false,
     "license": {
       "spdx_id": "MIT"
     }
-  },
-  {
-    "id": 1444469678,
-    "name": "project-tesbareng-react",
-    "html_url": "https://github.com/ardeman/project-tesbareng-react",
-    "description": "Tes bareng for Google Tester Indonesia",
-    "homepage": "https://tesbareng.vercel.app",
-    "language": "TypeScript",
-    "topics": [],
-    "fork": true,
-    "archived": false,
-    "license": null
-  },
-  {
-    "id": 1160866351,
-    "name": "project_bedug_flutter",
-    "html_url": "https://github.com/ardeman/project_bedug_flutter",
-    "description": "Cross-platform Muslim prayer times app with a Hijri calendar and adhan notifications, built with Flutter. Liquid Glass on iOS/macOS, Material 3 on Android/Linux, Fluent on Windows. In Indonesian, English, Arabic and Malay.",
-    "homepage": "https://bedug.ardeman.com",
-    "language": "Dart",
-    "topics": [
-      "adhan",
-      "cross-platform",
-      "dart",
-      "flutter",
-      "hijri-calendar",
-      "islam",
-      "liquid-glass",
-      "material-design",
-      "muslim",
-      "prayer-times",
-      "riverpod",
-      "salat"
-    ],
-    "fork": false,
-    "archived": false,
-    "license": null
   },
   {
     "id": 1405027223,
@@ -101,39 +122,6 @@
     }
   },
   {
-    "id": 1439288831,
-    "name": "project-pamerstudio-node",
-    "html_url": "https://github.com/ardeman/project-pamerstudio-node",
-    "description": "Promo videos and marketing for my apps, made with scripts, plus Pamer Studio on the web",
-    "homepage": null,
-    "language": "JavaScript",
-    "topics": [],
-    "fork": false,
-    "archived": false,
-    "license": null
-  },
-  {
-    "id": 1431810261,
-    "name": "project-dahlunas-go",
-    "html_url": "https://github.com/ardeman/project-dahlunas-go",
-    "description": "Go and htmx checkout for Ardeman's own projects: Midtrans (and optional Lemon Squeezy) payments delivering signed offline unlock codes.",
-    "homepage": "https://dahlunas.ardeman.com",
-    "language": "Go",
-    "topics": [
-      "cloud-run",
-      "ed25519",
-      "go",
-      "htmx",
-      "lemonsqueezy",
-      "midtrans"
-    ],
-    "fork": false,
-    "archived": false,
-    "license": {
-      "spdx_id": "MIT"
-    }
-  },
-  {
     "id": 897823180,
     "name": "project-catatsaja-reactrouter",
     "html_url": "https://github.com/ardeman/project-catatsaja-reactrouter",
@@ -153,6 +141,62 @@
       "typescript",
       "vite",
       "web-crypto"
+    ],
+    "fork": false,
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
+  },
+  {
+    "id": 865244817,
+    "name": "project-profile-nextjs",
+    "html_url": "https://github.com/ardeman/project-profile-nextjs",
+    "description": "Personal portfolio showcasing selected projects and professional experience, built with Next.js, React, TypeScript, and Tailwind CSS. Includes light/dark themes and a generated résumé.",
+    "homepage": "https://ardeman.com/",
+    "language": "TypeScript",
+    "topics": [
+      "accessibility",
+      "dark-mode",
+      "github-actions",
+      "github-pages",
+      "light-mode",
+      "nextjs",
+      "personal-website",
+      "pnpm",
+      "portfolio",
+      "react",
+      "static-site",
+      "tailwindcss",
+      "tanstack-query",
+      "typescript"
+    ],
+    "fork": false,
+    "archived": false,
+    "license": {
+      "spdx_id": "MIT"
+    }
+  },
+  {
+    "id": 1160866351,
+    "name": "project_bedug_flutter",
+    "html_url": "https://github.com/ardeman/project_bedug_flutter",
+    "description": "Cross-platform Muslim prayer times app with a Hijri calendar and adhan notifications, built with Flutter. Liquid Glass on iOS/macOS, Material 3 on Android/Linux, Fluent on Windows. In Indonesian, English, Arabic and Malay.",
+    "homepage": "https://bedug.ardeman.com",
+    "language": "Dart",
+    "topics": [
+      "adhan",
+      "cross-platform",
+      "dart",
+      "flutter",
+      "hijri-calendar",
+      "islam",
+      "liquid-glass",
+      "material-design",
+      "muslim",
+      "prayer-times",
+      "riverpod",
+      "salat"
     ],
     "fork": false,
     "archived": false,
